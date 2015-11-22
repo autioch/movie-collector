@@ -1,5 +1,6 @@
 'use strict';
 
+let fs = require('fs');
 let ffmpeg = require('fluent-ffmpeg');
 let config = requireFrom('app/config');
 let Counter = requireFrom('app/counter');
@@ -14,6 +15,21 @@ const counterSettings = {
 };
 
 module.exports = function (folders, callback) {
+
+  let configOk = true;
+  if (!fs.existsSync(config.paths.ffmpeg)) {
+    configOk = false;
+    console.log(`File ffmpeg.exe not found. Path ${config.paths.ffmpeg} appears to be incorrect.`);
+  }
+  if (!fs.existsSync(config.paths.ffprobe)) {
+    configOk = false;
+    console.log(`File ffprobe.exe not found. Path ${config.paths.ffprobe} appears to be incorrect.`);
+  }
+
+  if (!configOk) {
+    console.log(`Failed to probe files. Make sure paths for ffmpeg are correct.`);
+    return callback(null, folders);
+  }
 
   let movies = [];
   folders.forEach(function (folder) {

@@ -15,5 +15,12 @@
     "filesize": "^3.1.4",
     "fluent-ffmpeg": "^2.0.1",
     "lodash": "^3.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/autioch/movie-collector"
+  },
+  "scripts": {
+    "install": "node app/install.js"
   }
 }

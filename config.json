@@ -1,14 +1,13 @@
 {
-  "rootPath": "e:/download",
+  "rootPath": "e:/movies",
   "formats": {
     "video": ["avi", "mp4", "mkv", "m4v"],
     "subtitle": ["srt", "txt", "sub", "idx"],
     "ignore": ["jpg", "bmp"]
   },
   "paths": {
-    "ffmpeg": "F:/repositories/movie-collector/ffmpeg/bin/ffmpeg.exe",
-    "ffprobe": "F:/repositories/movie-collector/ffmpeg/bin/ffprobe.exe",
-    "output": "F:/repositories/movie-collector/output"
+    "ffmpeg": "d:/tools/movie-collector/ffmpeg/bin/ffmpeg.exe",
+    "ffprobe": "d:/tools/movie-collector/ffmpeg/bin/ffprobe.exe"
   },
   "steps": [{
     "module": "dirToJSON",
