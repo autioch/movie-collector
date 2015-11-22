@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Movie list</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="list.css">
+</head>
+
+<body>
+  <table class="filelist">
+    <thead>
+      <tr>
+        <th class="file__year js-sort-year">
+          <div>Year</div>
+          <input type="text" placeholder="Search" />
+        </th>
+        <th class="file__name js-sort-title">
+          <div>Title</div>
+          <input type="text" placeholder="Search title" />
+        </th>
+        <th class="file__genre js-sort-genre">
+          <div>Genre</div>
+          <input type="text" placeholder="Search genre" />
+        </th>
+        <th class="file__duration js-sort-duration">
+          <div>Dur.</div>
+          <input type="text" placeholder="Search" />
+        </th>
+        <th class="file__rating js-sort-rating">
+          <div>Rate</div>
+          <input type="text" placeholder="Search" />
+        </th>
+        <th class="file__metascore js-sort-rating">
+          <div>Score</div>
+          <input type="text" placeholder="Search" />
+        </th>
+        <th class="file__subs js-sort-subs">
+          <div>Subs</div>
+          <input type="text" placeholder="Search" />
+        </th>
+        <th class="file__resolution js-sort-resolution">
+          <div>Resolution</div>
+          <input type="text" placeholder="Search" />
+        </th>
+        <th class="file__size js-sort-size">
+          <div>Size</div>
+          <input type="text" placeholder="Search" />
+        </th>
+      </tr>
+    </thead>
+    <tbody class="filelist__body">
+      <% folders.forEach(function(folder){ %>
+        <% folder.videos.forEach(function(file){ %>
+          <tr>
+            <td class="file__year">${file.year}</td>
+            <td class="file__name" title="${file.plot}">${file.name}</td>
+            <td class="file__genre">${file.genre}</td>
+            <td class="file__duration">${file.duration}</td>
+            <td class="file__rating">${file.imdbRating}</td>
+            <td class="file__rating">${file.metascore}</td>
+            <td class="file__subs">${file.subs ? 'Yes' : ''}</td>
+            <td class="file__resolution">${file.width}x${file.height}</td>
+            <td class="file__size">${file.size}</td>
+          </tr>
+          <% }) %>
+            <% }) %>
+    </tbody>
+  </table>
+  <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="list.js"></script>
+</body>
+
+</html>

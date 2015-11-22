@@ -1,0 +1,19 @@
+{
+  "name": "movie-collector",
+  "version": "1.0.0",
+  "description": "Parser for movie files, using mmpeg and omdb.",
+  "main": "index.js",
+  "keywords": [
+    "movie",
+    "video",
+    "mmpeg",
+    "omdb"
+  ],
+  "author": "autioch",
+  "license": "ISC",
+  "dependencies": {
+    "filesize": "^3.1.4",
+    "fluent-ffmpeg": "^2.0.1",
+    "lodash": "^3.10.1"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "rootPath": "e:/download",
+  "formats": {
+    "video": ["avi", "mp4", "mkv", "m4v"],
+    "subtitle": ["srt", "txt", "sub", "idx"],
+    "ignore": ["jpg", "bmp"]
+  },
+  "paths": {
+    "ffmpeg": "F:/repositories/movie-collector/ffmpeg/bin/ffmpeg.exe",
+    "ffprobe": "F:/repositories/movie-collector/ffmpeg/bin/ffprobe.exe",
+    "output": "F:/repositories/movie-collector/output"
+  },
+  "steps": [{
+    "module": "dirToJSON",
+    "execute": true
+  }, {
+    "module": "fileToVideo",
+    "execute": true
+  }, {
+    "module": "ffProbe",
+    "execute": true
+  }, {
+    "module": "queryOmdb",
+    "execute": true
+  }, {
+    "module": "getStats",
+    "execute": true
+  }, {
+    "module": "outputList",
+    "execute": true
+  }, {
+    "module": "outputStats",
+    "execute": true
+  }]
+}

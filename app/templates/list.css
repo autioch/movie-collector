@@ -1,0 +1,56 @@
+html {
+  font: normal 14px Consolas, Courier;
+}
+body {
+  /*
+  width: 960px;
+  margin: auto;
+  */
+}
+.filelist {
+  /*width: 100%;*/
+  width: 1200px;
+  margin: auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: solid 1px #aaa;
+}
+.filelist td {
+  border: solid 1px #aaa;
+  padding: 3px 5px;
+  vertical-align: top;
+}
+.filelist__body >tr:hover {
+  background: #def;
+}
+.file__size, .file__subs, .file__rating, .file__duration, .file__year, .file__metascore {
+  width: 50px;
+}
+.file__resolution {
+  width: 90px;
+}
+.file__size, .file__duration, .file__resolution {
+  text-align: right;
+}
+.file__year, .file__rating, .file__subs {
+  text-align: center;
+}
+.file__genre {
+  width: 300px;
+}
+th {
+  padding: 0;
+}
+th:not(:last-child){
+  border-right: solid 1px #aaa;
+}
+th div {
+  padding: 2px 5px;
+}
+th input {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: solid 1px #aaa;
+  box-sizing: border-box;
+}
