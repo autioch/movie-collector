@@ -1,6 +1,6 @@
 {
   "name": "movie-collector",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Parser for movie files, using mmpeg and omdb.",
   "main": "index.js",
   "keywords": [
@@ -12,9 +12,12 @@
   "author": "autioch",
   "license": "ISC",
   "dependencies": {
+    "app-root-path": "^1.0.0",
+    "bluebird": "^3.3.5",
     "filesize": "^3.1.4",
     "fluent-ffmpeg": "^2.0.1",
-    "lodash": "^3.10.1"
+    "lodash.throttle": "^4.0.1",
+    "progress": "^1.1.8"
   },
   "repository": {
     "type": "git",
@@ -22,5 +25,8 @@
   },
   "scripts": {
     "install": "node app/install.js"
+  },
+  "engines": {
+    "node": ">=6"
   }
 }

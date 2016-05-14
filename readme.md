@@ -1,36 +1,33 @@
-# Movie-collector
-Nodejs application for collecting information about videos.
+# Movie collector
+Nodejs application for collecting information about video files.
 
- _**Note: this is my first real application for node (5 in particular).**_
-1. Searches given directory for videos.
-2. Uses ffmpeg to extract video details, like resolution, audio and video streams.
-3. Accesses Open Media Database for video description, like rating, category.
-4. Calculates stats for found videos.
-5. Generates simple html output for stats and video list.
+## Available steps
+Steps can be disabled if they were run before. See more in configuration.
+1. `parseDir` searches given directory for video (and subtitles) related files.
+2. `parseVideo` transforms collected files into video data.
+3. `ffProbe` uses ffmpeg to scan video files for extra data. This step requires ffmpeg installed.
+4. `queryOmdb` queries openIMDB server for extra data. This step requires internet connection.
+5. `viewList` outputs html page listing all videos.
+6. `stat` calculates base statistics from collected data.
+7. `viewStat` outputs html page displaing stats collected with `stat`.
 
 ## Requirments
-1. This application was developed on Windows, with Node 5. I can not guarantee that it will work anywhere else. Feel free to pull request :)
+1. Build on Windows, Node 6. I can't guarantee that it will work anywhere else.
 2. Depends on installing ffmpeg for probing found videos.
 3. Requires internet access to query OMDB.
 
 ## Installation
-1. Download package
-2. Run `npm install` to install node dependecies.
-3. Download `ffmpeg` and extract zip contents to ffmpeg folder.
+1. Download `ffmpeg` and extract zip contents to ffmpeg folder.
 
 ## Configuration
-1. Set configuration details in `config.json`.
+Configuration is stored in `config.js`.
 
-## Expected folder structure
+### rootPath
+Path to be parsed in `parseDir`.
 
-```
-rootPath
-    folder
-        file
-        file
-    folder
-        file
-```
+### formats
+File extensions to be used during `parseVideo` step.
 
-## Development
-This application is build for my private requirments. I will modify to suit my needs. If You have any ideas or suggestions, feel free to pull request :)
+### paths
+`ffProbe` requires ffmpeg to be installed. By default, it expects it to be located in
+folder `ffmpeg` next to `app` folder. If it's changed, adjust the paths.

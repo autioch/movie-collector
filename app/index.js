@@ -1,15 +1,23 @@
+global.reqAbs = require('app-root-path').require;
+const steps = require('./steps');
+const config = reqAbs('config');
+const cacheLoad = reqAbs('app/utils/cacheLoad');
+
+const stepsToExecute = steps.filter(step => config.steps.indexOf(step.key) > -1);
+
+let startingValue;
+
+if (stepsToExecute.length) {
+  const firstStep = stepsToExecute[0];
+  if (firstStep.startingValue) {
+    startingValue = firstStep.startingValue;
+  } else {
+    const previousStep = steps[steps.indexOf(firstStep) - 1];
+    startingValue = cacheLoad(previousStep.key);
+  }
+}
+
 module.exports = {
-  /* Parsing steps */
-  dirToJSON: requireFrom('app/steps/dirToJSON'),
-  fileToVideo: requireFrom('app/steps/fileToVideo'),
-  ffProbe: requireFrom('app/steps/ffProbe'),
-  queryOmdb: requireFrom('app/steps/queryOmdb'),
-  getStats: requireFrom('app/steps/getStats'),
-  outputList: requireFrom('app/steps/outputList'),
-  outputStats: requireFrom('app/steps/outputStats'),
-  /* Cache modules */
-  cacheSave: requireFrom('app/cacheSave'),
-  cacheLoad: requireFrom('app/cacheLoad'),
-  /* Config */
-  config: requireFrom('app/config')
+  steps: stepsToExecute,
+  startingValue: startingValue
 };
