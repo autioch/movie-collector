@@ -7,6 +7,6 @@ const filesizeSettings = {
   output: 'object'
 };
 
-module.exports = function formatFilesize(fileSize) {
-  return filesize(fileSize, filesizeSettings);
-};
+export default function formatFilesize(fileSize) {
+  return Math.round(filesize(fileSize, filesizeSettings).value);
+}

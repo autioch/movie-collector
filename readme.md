@@ -31,3 +31,15 @@ File extensions to be used during `parseVideo` step.
 ### paths
 `ffProbe` requires ffmpeg to be installed. By default, it expects it to be located in
 folder `ffmpeg` next to `app` folder. If it's changed, adjust the paths.
+
+### steps
+List of steps to run.
+
+#### Disabling steps
+All steps write their results to the cache folder. Any step can be disabled if it was at least once run.
+If the step was run, its cache will be used by other steps.
+
+## webApp
+After parsing video folder, it is possible to build simple web app that will allow to view the collected data.
+1. `cache/stat.json` and `cache/queryOmdb.json` must be copied into `webApp/build` folder.
+2. Run `npm run webApp` to build the data. Optionally `npm run webApp:watch`, `npm run webApp:production`.

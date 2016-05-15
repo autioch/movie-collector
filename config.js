@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  rootPath: 'e:/movie',
+  rootPath: 'g:/filmy',
   formats: {
     video: ['avi', 'mp4', 'mkv', 'm4v'],
     subtitle: ['srt', 'txt', 'sub', 'idx'],
@@ -16,8 +16,8 @@ module.exports = {
     'parseVideo',
     'ffProbe',
     'queryOmdb',
-    'viewList',
-    'stat',
-    'viewStat'
+    // 'viewList'
+    'stat'
+  // 'viewStat'
   ]
 };

@@ -1,0 +1,11 @@
+<span class="folder-toggle__name"><%= folder.name %> <span class="folder-toggle__count">(<%= folder.count %>)</span></span>
+<span class="folder-toggle__genre">
+<% if (folder.genres){ %>
+    <%= folder.genres.join(' ') %>
+<% } %>
+</span>
+<span class="folder-toggle__rating">
+<% if (folder.rating){ %>
+    <%= folder.rating %>
+<% } %>
+</span>

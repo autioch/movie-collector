@@ -1,0 +1,58 @@
+.video-view {
+  padding: 0.5em;
+  &:hover {
+    background: #def;
+  }
+}
+
+.video-view__info {
+  // color: #777;
+  // font-size: 0.9em;
+}
+
+.video-view__review {
+  // color: #777;
+//   font-size: 0.9em;
+}
+
+.video-view__plot {
+  padding: 0.25em 0;
+}
+
+.video-view__production {
+  // color: #777;
+  // font-size: 0.9em;
+}
+
+.video-view__director {
+  &:before {
+    content: 'Director: '
+  }
+}
+
+.video-view__actors{
+  &:before {
+    content: 'Actors: '
+  }
+}
+
+.video-view__imdbRating {
+  &:after {
+    content: ' rating';
+  }
+}
+
+.video-view__imdbVotes {
+  &:before {
+    content: ' (';
+  }
+  &:after {
+    content: ' votes)';
+  }
+}
+
+.video-view__metascore {
+  &:before {
+    content: 'Metascore: '
+  }
+}

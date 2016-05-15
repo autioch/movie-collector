@@ -1,0 +1,75 @@
+body, html {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%; }
+
+body {
+  font: 14px Verdana;
+  color: #333; }
+.video-view {
+  padding: 0.5em; }
+  .video-view:hover {
+    background: #def; }
+
+.video-view__plot {
+  padding: 0.25em 0; }
+
+.video-view__director:before {
+  content: 'Director: '; }
+
+.video-view__actors:before {
+  content: 'Actors: '; }
+
+.video-view__imdbRating:after {
+  content: ' rating'; }
+
+.video-view__imdbVotes:before {
+  content: ' ('; }
+
+.video-view__imdbVotes:after {
+  content: ' votes)'; }
+
+.video-view__metascore:before {
+  content: 'Metascore: '; }
+.folder-toggle__name, .folder-toggle__genre, .folder-toggle__rating {
+  display: table-cell;
+  vertical-align: top;
+  padding: 0.25em 0.5em; }
+
+.folder-view__toggle {
+  display: table;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.2em; }
+  .folder-view__toggle:hover {
+    color: #0af; }
+  .is-expanded > .folder-view__toggle {
+    font-weight: bold; }
+
+.folder-toggle__name {
+  width: 45%; }
+
+.folder-toggle__genre {
+  width: 45%;
+  font-size: 0.9em;
+  color: #777; }
+
+.folder-toggle__count {
+  font-size: 0.9em;
+  color: #777; }
+
+.folder-toggle__rating {
+  text-align: right;
+  font-size: 0.9em;
+  color: #777; }
+.folder-view {
+  border-bottom: solid 1px #ddd; }
+
+.folder-view__content {
+  margin-left: 1.5em;
+  height: 0;
+  overflow: hidden; }
+  .is-expanded > .folder-view__content {
+    height: auto; }

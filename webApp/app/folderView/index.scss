@@ -1,0 +1,12 @@
+.folder-view {
+  border-bottom: solid 1px #ddd;
+}
+
+.folder-view__content {
+  margin-left: 1.5em;
+  height: 0;
+  overflow: hidden;
+  .is-expanded > & {
+    height: auto;
+  }
+}
