@@ -14,6 +14,6 @@ function renderList(list) {
   });
 }
 
-window.fetch('queryOmdb.json')
+window.fetch('data/queryOmdb.json')
   .then(response => response.json())
   .then(renderList);

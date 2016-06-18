@@ -45,6 +45,4 @@ Temporary Items
 # App special folders
 /node_modules
 /ffmpeg
-/cache/*
-/database/*
-/output/*
+/dist

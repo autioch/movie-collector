@@ -1,6 +1,6 @@
 {
   "name": "movie-collector",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Parser for movie files, using mmpeg and omdb.",
   "main": "index.js",
   "keywords": [
@@ -26,7 +26,7 @@
     "fluent-ffmpeg": "^2.0.1",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.16.1",
-    "jquery": "^2.2.3",
+    "jquery": "^3.0.0",
     "lodash": "^4.12.0",
     "lodash.template": "^4.2.5",
     "lodash.throttle": "^4.0.1",
@@ -46,8 +46,8 @@
     "view": "node run viewer:dist & node run serve",
     "serve": "node server",
     "viewer": "webpack --config webpack.config.js",
-    "viewer:develop": "npm run serve & webpack --config webpack.config.js --watch",
-    "viewer:dist": "webpack --config webpack.config.js -p"
+    "viewer:dist": "webpack --config webpack.config.js -p",
+    "viewer:develop": "webpack --config webpack.config.js --watch"
   },
   "engines": {
     "node": ">=6"

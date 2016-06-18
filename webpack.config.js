@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const isProduction = process.argv.indexOf('-p') > -1;
+const isWatch = process.argv.indexOf('--watch') > -1;
 
 const webpackConfig = {
   entry: path.join(__dirname, 'viewer', 'index'),
@@ -75,6 +76,10 @@ console.log('Input  ', webpackConfig.entry);
 console.log('Output ', webpackConfig.output.path);
 console.log('Modules', webpackConfig.resolve.root.join('   '));
 console.log('Loaders', webpackConfig.resolveLoader.root.join('   '));
+
+if (isWatch) {
+  require('./server');
+}
 
 if (!isProduction) {
   webpackConfig.devtool = '#eval';
