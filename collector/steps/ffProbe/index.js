@@ -1,7 +1,7 @@
 const bluebird = require('bluebird');
-const getVideos = reqAbs('app/utils/getVideos');
+const getVideos = reqAbs('collector/utils/getVideos');
 const probe = require('./probe');
-const getProgressBar = reqAbs('app/utils/getProgressBar');
+const getProgressBar = reqAbs('collector/utils/getProgressBar');
 
 module.exports = function(item) {
   const videos = getVideos(item);

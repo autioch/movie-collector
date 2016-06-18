@@ -7,9 +7,7 @@ Steps can be disabled if they were run before. See more in configuration.
 2. `parseVideo` transforms collected files into video data.
 3. `ffProbe` uses ffmpeg to scan video files for extra data. This step requires ffmpeg installed.
 4. `queryOmdb` queries openIMDB server for extra data. This step requires internet connection.
-5. `viewList` outputs html page listing all videos.
 6. `stat` calculates base statistics from collected data.
-7. `viewStat` outputs html page displaing stats collected with `stat`.
 
 ## Requirments
 1. Build on Windows, Node 6. I can't guarantee that it will work anywhere else.
@@ -18,28 +16,25 @@ Steps can be disabled if they were run before. See more in configuration.
 
 ## Installation
 1. Download `ffmpeg` and extract zip contents to ffmpeg folder.
+2. Run `npm install`.
 
-## Configuration
-Configuration is stored in `config.js`.
+## Collector
+Collector is a node app that searches given directory for movies and subtitles. To run it, type in console `npm run collect`. Configuration for collector is stored in `config.js`.
 
-### rootPath
+#### rootPath
 Path to be parsed in `parseDir`.
 
-### formats
+#### formats
 File extensions to be used during `parseVideo` step.
 
-### paths
-`ffProbe` requires ffmpeg to be installed. By default, it expects it to be located in
-folder `ffmpeg` next to `app` folder. If it's changed, adjust the paths.
+#### paths
+`ffProbe` requires ffmpeg to be installed. By default, it expects it to be located in folder `ffmpeg` in the app folder. If it's changed, adjust the paths.
 
-### steps
+#### steps
 List of steps to run.
 
-#### Disabling steps
-All steps write their results to the cache folder. Any step can be disabled if it was at least once run.
-If the step was run, its cache will be used by other steps.
+##### Disabling steps
+All steps write their results to the cache folder. You may skip some first steps if they were run before, same skip some last steps if you don't require them.
 
-## webApp
-After parsing video folder, it is possible to build simple web app that will allow to view the collected data.
-1. `cache/stat.json` and `cache/queryOmdb.json` must be copied into `webApp/build` folder.
-2. Run `npm run webApp` to build the data. Optionally `npm run webApp:watch`, `npm run webApp:production`.
+## Viewer
+Viewer is app that uses the collector output to present found movies. To run it, type in console `npm run view`.

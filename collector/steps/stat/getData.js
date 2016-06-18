@@ -1,4 +1,4 @@
-const getVideos = reqAbs('app/utils/getVideos');
+const getVideos = reqAbs('collector/utils/getVideos');
 const ignore = require('./ignore');
 
 function addData(data, key, value) {

@@ -1,6 +1,6 @@
 const bluebird = require('bluebird');
 const parse = require('./parse');
-const getProgressBar = reqAbs('app/utils/getProgressBar');
+const getProgressBar = reqAbs('collector/utils/getProgressBar');
 
 module.exports = function(dir) {
   const progressBar = getProgressBar('Parse video', 1);

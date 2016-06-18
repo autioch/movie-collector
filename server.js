@@ -5,7 +5,7 @@ const url = require('url');
 const path = require('path');
 const fs = require('fs');
 const PORT = 80;
-const root = path.join(__dirname, 'build');
+const root = path.join(__dirname, 'dist');
 
 function getTime() {
   const time = new Date();

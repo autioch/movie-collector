@@ -9,12 +9,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const isProduction = process.argv.indexOf('-p') > -1;
-const isWatch = process.argv.indexOf('--watch') > -1;
 
 const webpackConfig = {
-  entry: path.join(__dirname, 'index'),
+  entry: path.join(__dirname, 'viewer', 'index'),
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'dist'),
     filename: `index${isProduction ? '.min' : ''}.js`
   },
   resolve: {
@@ -52,7 +51,7 @@ const webpackConfig = {
     // }),
     new ExtractTextPlugin('index.css'),
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'index.html')
+      template: path.join(__dirname, 'viewer/index.html')
     })
   ],
   resolveLoader: {
@@ -77,9 +76,6 @@ console.log('Output ', webpackConfig.output.path);
 console.log('Modules', webpackConfig.resolve.root.join('   '));
 console.log('Loaders', webpackConfig.resolveLoader.root.join('   '));
 
-if (isWatch) {
-  require('./server');
-}
 if (!isProduction) {
   webpackConfig.devtool = '#eval';
 }

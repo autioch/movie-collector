@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Movie list</title>
+  <meta name="description" content="Watched movie list">
+  <meta name="author" content="Jakub Szczepaniak">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <main></main>
+  <script type="text/x-template" id="template__folder">
+    <% if (videos.length > 1){ %>
+    <div class="folder__name"><%- name %></div>
+    <% } %>
+    <div class="folder__count"><%- videos.length %> movie<%- videos.length > 1 ? 's' : '' %></div>
+    <ul class="folder__contents">
+      <% videos.forEach(function(video, index){ %>
+        <li class="video">
+          <ul class="video-desc">
+            <li class="video-desc__name"><%- video.name  %></li>
+            <li class="video-desc__year"><%- video.year %></li>
+            <li class="video-desc__duration"><%- video.duration %></li>
+          </ul>
+          <% if (!video.genre){ %>
+            <div class="video-details--missing">No movie details available :(</div>
+          <% } %>
+          <ul class="video-details">
+            <li class="video-details__year"><%- video.year %></li>
+            <% if (video.genre.length > 3){ %>
+              <li class="video-details__genre"><%- video.genre %></li>
+            <% } %>
+            <% if (video.plot.length > 3){ %>
+              <li class="video-details__plot"><%- video.plot %></li>
+            <% } %>
+            <li class="video-details__director"><%- video.director %></li>
+            <li class="video-details__actors"><%- video.actors %></li>
+          </ul>
+          <ul class="video-rating">
+            <li class="video-rating__awards"><%- video.awards %></li>
+            <li class="video-rating__metascore"><%- video.metascore %></li>
+            <li class="video-rating__imdb"><%- video.imdbRating %></li>
+          </ul>
+          <ul class="file-details">
+            <li class="file-details__size"><%- video.size  %></li>
+            <li class="file-details__quality"><%- video.width * video.height %></li>
+            <li class="file-details__subs"><%- video.subs ? 'Yes' : 'No' %></li>
+            <li class="file-details__audio"><%- video.audio.map(function(audio){
+              return audio.language
+            }).join(', ') %></li>
+          </ul>
+        </li>
+      <% }) %>
+    </ul>
+  </script>
+  <!-- <script src="scripts/libs/jquery-2.2.0.min.js"></script> -->
+  <script src="scripts/libs/underscore-min.js"></script>
+  <!-- <script src="scripts/libs/backbone-min.js"></script> -->
+  <script src="scripts/database.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

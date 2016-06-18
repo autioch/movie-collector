@@ -1,8 +1,7 @@
 module.exports = function(fileName) {
-  const file = `../../cache/${fileName}.json`;
-  let data;
+  let data = null;
   try {
-    data = require(file);
+    data = reqAbs(`./dist/data/${fileName}.json`);
   } catch (e) {
     console.warn(`Failed to load cache ${fileName}`);
   }

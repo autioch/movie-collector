@@ -42,9 +42,12 @@
     "url": "https://github.com/autioch/movie-collector"
   },
   "scripts": {
-    "webApp": "webpack --config webApp/webpack.config.js",
-    "webApp:watch": "webpack --config webApp/webpack.config.js --watch",
-    "webApp:production": "webpack --config webApp/webpack.config.js -p"
+    "collect": "node collector",
+    "view": "node run viewer:dist & node run serve",
+    "serve": "node server",
+    "viewer": "webpack --config webpack.config.js",
+    "viewer:develop": "npm run serve & webpack --config webpack.config.js --watch",
+    "viewer:dist": "webpack --config webpack.config.js -p"
   },
   "engines": {
     "node": ">=6"

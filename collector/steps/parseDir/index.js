@@ -1,5 +1,5 @@
 const readItem = require('./readItem');
-const getProgressBar = reqAbs('app/utils/getProgressBar');
+const getProgressBar = reqAbs('collector/utils/getProgressBar');
 
 module.exports = function(dir) {
   const progressBar = getProgressBar('Parse dir', 1);

@@ -1,5 +1,5 @@
 const ProgressBar = require('progress');
-const padRight = reqAbs('app/utils/padRight');
+const padRight = reqAbs('collector/utils/padRight');
 
 const fixedWidth = 12; //for spacing, scroll and percent
 const labelWidth = 12;
