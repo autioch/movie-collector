@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  rootPath: 'e:/movie',
+  rootPath: 'g:/filmy',
   formats: {
     video: ['avi', 'mp4', 'mkv', 'm4v'],
     subtitle: ['srt', 'txt', 'sub', 'idx'],
@@ -12,10 +12,10 @@ module.exports = {
     ffprobe: path.join(__dirname, 'ffmpeg', 'bin', 'ffprobe.exe')
   },
   steps: [
-    // 'parseDir',
-    // 'parseVideo',
-    // 'ffProbe',
-    // 'queryOmdb',
-    // 'stat'
+    'parseDir',
+    'parseVideo',
+    'ffProbe',
+    'queryOmdb',
+    'stat'
   ]
 };

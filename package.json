@@ -43,7 +43,7 @@
   },
   "scripts": {
     "collect": "node collector",
-    "view": "node run viewer:dist & node run serve",
+    "view": "npm run viewer:dist & npm run serve",
     "serve": "node server",
     "viewer": "webpack --config webpack.config.js",
     "viewer:dist": "webpack --config webpack.config.js -p",

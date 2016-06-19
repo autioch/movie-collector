@@ -10,11 +10,16 @@ export default Backbone.View.extend({
     'click .js-close': 'closeMenu'
   },
   initialize: function() {
-    this.listenTo(this.model, 'change:isExpanded', this.updateExpand);
+    const subviews = this.model.get('subviews');
+    this
+      .listenTo(this.model, 'change:isExpanded', this.updateExpand)
+      .listenTo(subviews, 'add', this.renderSubview)
+      .listenTo(subviews, 'remove', this.removeSubview);
   },
   render: function() {
     this.$el.html(this.template());
     this.updateExpand(this.model);
+    this.renderSubviews();
     return this;
   },
   updateExpand: function(model) {
@@ -22,5 +27,16 @@ export default Backbone.View.extend({
   },
   closeMenu: function() {
     this.model.set('isExpanded', false);
+  },
+  renderSubviews() {
+    this.model.get('subviews').forEach(model => this.renderSubview(model));
+  },
+  renderSubview(model) {
+    const view = model.get('view');
+    this.$('.js-subviews').append(view.$el);
+    view.render();
+  },
+  removeSubview(model) {
+    model.get('view').remove();
   }
 });
