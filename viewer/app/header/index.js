@@ -6,6 +6,6 @@ const view = new View({
   model
 });
 
-view.render().$el.appendTo('.app-container');
+view.render().$el.prependTo('.app-container');
 
 export default model;

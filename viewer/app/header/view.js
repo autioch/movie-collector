@@ -4,7 +4,7 @@ import markup from './markup.html';
 import _ from 'lodash';
 
 export default Backbone.View.extend({
-  className: 'footer',
+  className: 'header',
   template: _.template(markup),
   initialize() {
     const subviews = this.model.get('subviews');
@@ -22,7 +22,7 @@ export default Backbone.View.extend({
   },
   renderSubview(model) {
     const view = model.get('view');
-    this.$el.append(view.$el);
+    this.$('.js-subviews').append(view.$el);
     view.render();
   },
   removeSubview(model) {

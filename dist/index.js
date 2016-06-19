@@ -53,7 +53,7 @@
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar _list = __webpack_require__(56);\n\nvar _list2 = _interopRequireDefault(_list);\n\n__webpack_require__(51);\n\n__webpack_require__(79);\n\n__webpack_require__(77);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nwindow.fetch('data/queryOmdb.json').then(function (response) {\n  return response.json();\n}).then(function (list) {\n  return _list2.default.render(list);\n});\n// import './sidemenu';\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/index.js\n ** module id = 4\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/index.js?");
+	eval("'use strict';\n\nvar _list = __webpack_require__(56);\n\nvar _list2 = _interopRequireDefault(_list);\n\n__webpack_require__(84);\n\n__webpack_require__(79);\n\n__webpack_require__(37);\n\n__webpack_require__(77);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nwindow.fetch('data/ffProbe.json').then(function (response) {\n  return response.json();\n}).then(function (list) {\n  return _list2.default.render(list);\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/index.js\n ** module id = 4\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/index.js?");
 
 /***/ },
 /* 5 */,
@@ -158,7 +158,12 @@
 /* 34 */,
 /* 35 */,
 /* 36 */,
-/* 37 */,
+/* 37 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nvar _view = __webpack_require__(42);\n\nvar _view2 = _interopRequireDefault(_view);\n\nvar _view3 = __webpack_require__(43);\n\nvar _view4 = _interopRequireDefault(_view3);\n\nvar _viewModel = __webpack_require__(47);\n\nvar _viewModel2 = _interopRequireDefault(_viewModel);\n\nvar _header = __webpack_require__(84);\n\nvar _header2 = _interopRequireDefault(_header);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar viewModel = new _viewModel2.default();\n\nvar iconView = new _view2.default({\n  model: viewModel\n});\n_header2.default.registerSubview(iconView);\n\nnew _view4.default({\n  model: viewModel\n}).render().$el.appendTo('body');\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/sidemenu/index.js\n ** module id = 37\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/sidemenu/index.js?");
+
+/***/ },
 /* 38 */
 /***/ function(module, exports) {
 
@@ -168,40 +173,55 @@
 /* 39 */,
 /* 40 */,
 /* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
+/* 42 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\n__webpack_require__(44);\n\nvar _markup = __webpack_require__(46);\n\nvar _markup2 = _interopRequireDefault(_markup);\n\nvar _lodash = __webpack_require__(18);\n\nvar _lodash2 = _interopRequireDefault(_lodash);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.View.extend({\n  className: 'sidemenu-icon',\n  template: _lodash2.default.template(_markup2.default),\n  events: {\n    click: 'toggleMenu'\n  },\n  render: function render() {\n    this.$el.html(this.template());\n    return this;\n  },\n  toggleMenu: function toggleMenu() {\n    this.model.toggleExpand();\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/sidemenu/icon/view.js\n ** module id = 42\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/sidemenu/icon/view.js?");
+
+/***/ },
+/* 43 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\n__webpack_require__(48);\n\nvar _markup = __webpack_require__(50);\n\nvar _markup2 = _interopRequireDefault(_markup);\n\nvar _lodash = __webpack_require__(18);\n\nvar _lodash2 = _interopRequireDefault(_lodash);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.View.extend({\n  className: 'sidebar',\n  template: _lodash2.default.template(_markup2.default),\n  events: {\n    'click .js-close': 'closeMenu'\n  },\n  initialize: function initialize() {\n    this.listenTo(this.model, 'change:isExpanded', this.updateExpand);\n  },\n  render: function render() {\n    this.$el.html(this.template());\n    this.updateExpand(this.model);\n    return this;\n  },\n  updateExpand: function updateExpand(model) {\n    this.$el.toggleClass('is-expanded', model.get('isExpanded'));\n  },\n  closeMenu: function closeMenu() {\n    this.model.set('isExpanded', false);\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/sidemenu/sidebar/view.js\n ** module id = 43\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/sidemenu/sidebar/view.js?");
+
+/***/ },
+/* 44 */
+/***/ function(module, exports) {
+
+	eval("// removed by extract-text-webpack-plugin\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/sidemenu/icon/index.scss\n ** module id = 44\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/sidemenu/icon/index.scss?");
+
+/***/ },
 /* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
+/* 46 */
+/***/ function(module, exports) {
+
+	eval("module.exports = \"<svg class=\\\"sidemenu-icon-svg\\\" height=\\\"32px\\\" version=\\\"1.1\\\" viewBox=\\\"0 0 32 32\\\" width=\\\"32px\\\" xml:space=\\\"preserve\\\" xmlns=\\\"http://www.w3.org/2000/svg\\\" xmlns:xlink=\\\"http://www.w3.org/1999/xlink\\\">\\r\\n  <path class=\\\"sidemenu-icon-path\\\" d=\\\"M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z\\\"/>\\r\\n</svg>\\r\\n\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/sidemenu/icon/markup.html\n ** module id = 46\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/sidemenu/icon/markup.html?");
+
+/***/ },
+/* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.Model.extend({\n  defaults: function defaults() {\n    return {\n      isExpanded: false\n    };\n  },\n  toggleExpand: function toggleExpand() {\n    this.set('isExpanded', !this.get('isExpanded'));\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/sidemenu/viewModel.js\n ** module id = 47\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/sidemenu/viewModel.js?");
+
+/***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	eval("// removed by extract-text-webpack-plugin\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/sidemenu/sidebar/index.scss\n ** module id = 48\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/sidemenu/sidebar/index.scss?");
+
+/***/ },
 /* 49 */,
-/* 50 */,
-/* 51 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("'use strict';\n\nvar _view = __webpack_require__(55);\n\nvar _view2 = _interopRequireDefault(_view);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nnew _view2.default().render().$el.prependTo('.app-container');\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/topmenu/index.js\n ** module id = 51\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/topmenu/index.js?");
-
-/***/ },
-/* 52 */
+/* 50 */
 /***/ function(module, exports) {
 
-	eval("module.exports = \"<div class=\\\"js-sidebar-placeholder\\\"></div>\\r\\n<div class=\\\"\\\">Movie list</div>\\r\\n\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/topmenu/markup.html\n ** module id = 52\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/topmenu/markup.html?");
+	eval("module.exports = \"<div class=\\\"sidebar__header\\\">\\r\\n  <div class=\\\"sidebar__title\\\">Options</div>\\r\\n  <div class=\\\"sidebar__close js-close\\\">X</div>\\r\\n</div>\\r\\n\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/sidemenu/sidebar/markup.html\n ** module id = 50\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/sidemenu/sidebar/markup.html?");
 
 /***/ },
-/* 53 */
-/***/ function(module, exports) {
-
-	eval("// removed by extract-text-webpack-plugin\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/topmenu/index.scss\n ** module id = 53\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/topmenu/index.scss?");
-
-/***/ },
+/* 51 */,
+/* 52 */,
+/* 53 */,
 /* 54 */,
-/* 55 */
-/***/ function(module, exports, __webpack_require__) {
-
-	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\n__webpack_require__(53);\n\nvar _markup = __webpack_require__(52);\n\nvar _markup2 = _interopRequireDefault(_markup);\n\nvar _lodash = __webpack_require__(18);\n\nvar _lodash2 = _interopRequireDefault(_lodash);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.View.extend({\n  className: 'topmenu',\n  template: _lodash2.default.template(_markup2.default),\n  events: {\n    click: 'toggleMenu'\n  },\n  render: function render() {\n    this.$el.html(this.template());\n    return this;\n  },\n  toggleMenu: function toggleMenu() {\n    this.model.toggleExpand();\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/topmenu/view.js\n ** module id = 55\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/topmenu/view.js?");
-
-/***/ },
+/* 55 */,
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -318,13 +338,13 @@
 /* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar _view = __webpack_require__(80);\n\nvar _view2 = _interopRequireDefault(_view);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nnew _view2.default().render().$el.appendTo('.app-container');\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/footer/index.js\n ** module id = 79\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/footer/index.js?");
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _view = __webpack_require__(80);\n\nvar _view2 = _interopRequireDefault(_view);\n\nvar _viewModel = __webpack_require__(90);\n\nvar _viewModel2 = _interopRequireDefault(_viewModel);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar model = new _viewModel2.default();\nvar view = new _view2.default({\n  model: model\n});\n\nview.render().$el.appendTo('.app-container');\n\nexports.default = model;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/footer/index.js\n ** module id = 79\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/footer/index.js?");
 
 /***/ },
 /* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\n__webpack_require__(81);\n\nvar _markup = __webpack_require__(83);\n\nvar _markup2 = _interopRequireDefault(_markup);\n\nvar _lodash = __webpack_require__(18);\n\nvar _lodash2 = _interopRequireDefault(_lodash);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.View.extend({\n  className: 'footer',\n  template: _lodash2.default.template(_markup2.default),\n  events: {\n    click: 'toggleMenu'\n  },\n  render: function render() {\n    this.$el.html(this.template());\n    return this;\n  },\n  toggleMenu: function toggleMenu() {\n    this.model.toggleExpand();\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/footer/view.js\n ** module id = 80\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/footer/view.js?");
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\n__webpack_require__(81);\n\nvar _markup = __webpack_require__(83);\n\nvar _markup2 = _interopRequireDefault(_markup);\n\nvar _lodash = __webpack_require__(18);\n\nvar _lodash2 = _interopRequireDefault(_lodash);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.View.extend({\n  className: 'footer',\n  template: _lodash2.default.template(_markup2.default),\n  initialize: function initialize() {\n    var subviews = this.model.get('subviews');\n    this.listenTo(subviews, 'add', this.renderSubview).listenTo(subviews, 'remove', this.removeSubview);\n  },\n  render: function render() {\n    this.$el.html(this.template());\n    this.renderSubviews();\n    return this;\n  },\n  renderSubviews: function renderSubviews() {\n    var _this = this;\n\n    this.model.get('subviews').forEach(function (model) {\n      return _this.renderSubview(model);\n    });\n  },\n  renderSubview: function renderSubview(model) {\n    var view = model.get('view');\n    this.$el.append(view.$el);\n    view.render();\n  },\n  removeSubview: function removeSubview(model) {\n    model.get('view').remove();\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/footer/view.js\n ** module id = 80\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/footer/view.js?");
 
 /***/ },
 /* 81 */
@@ -337,7 +357,44 @@
 /* 83 */
 /***/ function(module, exports) {
 
-	eval("module.exports = \"Sample text\\r\\n\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/footer/markup.html\n ** module id = 83\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/footer/markup.html?");
+	eval("module.exports = \"\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/footer/markup.html\n ** module id = 83\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/footer/markup.html?");
+
+/***/ },
+/* 84 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _view = __webpack_require__(85);\n\nvar _view2 = _interopRequireDefault(_view);\n\nvar _viewModel = __webpack_require__(89);\n\nvar _viewModel2 = _interopRequireDefault(_viewModel);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar model = new _viewModel2.default();\nvar view = new _view2.default({\n  model: model\n});\n\nview.render().$el.prependTo('.app-container');\n\nexports.default = model;\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/header/index.js\n ** module id = 84\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/header/index.js?");
+
+/***/ },
+/* 85 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\n__webpack_require__(86);\n\nvar _markup = __webpack_require__(88);\n\nvar _markup2 = _interopRequireDefault(_markup);\n\nvar _lodash = __webpack_require__(18);\n\nvar _lodash2 = _interopRequireDefault(_lodash);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.View.extend({\n  className: 'header',\n  template: _lodash2.default.template(_markup2.default),\n  initialize: function initialize() {\n    var subviews = this.model.get('subviews');\n    this.listenTo(subviews, 'add', this.renderSubview).listenTo(subviews, 'remove', this.removeSubview);\n  },\n  render: function render() {\n    this.$el.html(this.template());\n    this.renderSubviews();\n    return this;\n  },\n  renderSubviews: function renderSubviews() {\n    var _this = this;\n\n    this.model.get('subviews').forEach(function (model) {\n      return _this.renderSubview(model);\n    });\n  },\n  renderSubview: function renderSubview(model) {\n    var view = model.get('view');\n    this.$('.js-subviews').append(view.$el);\n    view.render();\n  },\n  removeSubview: function removeSubview(model) {\n    model.get('view').remove();\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/header/view.js\n ** module id = 85\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/header/view.js?");
+
+/***/ },
+/* 86 */
+/***/ function(module, exports) {
+
+	eval("// removed by extract-text-webpack-plugin\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/header/index.scss\n ** module id = 86\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/header/index.scss?");
+
+/***/ },
+/* 87 */,
+/* 88 */
+/***/ function(module, exports) {
+
+	eval("module.exports = \"<div class=\\\"header__options js-subviews\\\"></div>\\r\\n<div class=\\\"header__title\\\">Movie list</div>\\r\\n\";\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/header/markup.html\n ** module id = 88\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/header/markup.html?");
+
+/***/ },
+/* 89 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.Model.extend({\n  defaults: function defaults() {\n    return {\n      subviews: new _backbone2.default.Collection()\n    };\n  },\n  registerSubview: function registerSubview(view) {\n    this.get('subviews').add({\n      view: view\n    });\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/header/viewModel.js\n ** module id = 89\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/header/viewModel.js?");
+
+/***/ },
+/* 90 */
+/***/ function(module, exports, __webpack_require__) {
+
+	eval("'use strict';\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _backbone = __webpack_require__(17);\n\nvar _backbone2 = _interopRequireDefault(_backbone);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _backbone2.default.Model.extend({\n  defaults: function defaults() {\n    return {\n      subviews: new _backbone2.default.Collection()\n    };\n  },\n  registerSubview: function registerSubview(view) {\n    this.get('subviews').add({\n      view: view\n    });\n  }\n});\n\n/*****************\n ** WEBPACK FOOTER\n ** ./viewer/app/footer/viewModel.js\n ** module id = 90\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./viewer/app/footer/viewModel.js?");
 
 /***/ }
 /******/ ]);

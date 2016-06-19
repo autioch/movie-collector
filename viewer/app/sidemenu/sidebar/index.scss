@@ -1,3 +1,5 @@
+@import 'styles/header';
+
 %clearfix {
   &:after{
     display: table;
@@ -15,13 +17,10 @@
   max-width: 100%;
   transition: left 350ms;
   background: #fff;
+  border-right: solid 1px #ccc;
+  box-shadow: 0 0 0.5em #aaa;
 
   &.is-expanded {
     left: 0;
   }
-}
-
-.sidebar__close {
-  float: right;
-  @extend %clearfix;
 }

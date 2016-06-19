@@ -1,10 +1,10 @@
 import listView from './list';
-import './topmenu';
+import './header';
 import './footer';
-// import './sidemenu';
+import './sidemenu';
 import './index.scss';
 
 window
-  .fetch('data/queryOmdb.json')
+  .fetch('data/ffProbe.json')
   .then(response => response.json())
   .then(list => listView.render(list));
