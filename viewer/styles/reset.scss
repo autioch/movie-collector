@@ -10,11 +10,3 @@ body {
   font: 14px Verdana;
   color: #333;
 }
-
-%clearfix {
-  &:after{
-    display: table;
-    content: '';
-    clear: both;
-  }
-}

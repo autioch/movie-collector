@@ -1,2 +1,2 @@
-require('./index.scss');
+require('./styles/index.scss');
 require('./app');
