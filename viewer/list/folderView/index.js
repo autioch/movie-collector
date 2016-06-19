@@ -62,6 +62,10 @@ const FolderView = Backbone.View.extend({
       this.videoViews.forEach(view => view.remove());
       this.videoViews = [];
     }
+  },
+  remove() {
+    this.model.set('isExpanded', false);
+    Backbone.View.prototype.remove.call(this);
   }
 });
 

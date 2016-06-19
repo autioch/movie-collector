@@ -1,6 +1,9 @@
 import ListView from './view';
+import FolderCollection from 'collection';
 
-const listView = new ListView();
+const listView = new ListView({
+  collection: new FolderCollection()
+});
 
 listView.$el.appendTo('.app-container');
 

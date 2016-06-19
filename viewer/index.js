@@ -3,12 +3,10 @@ import './header';
 import listView from './list';
 import './footer';
 import './sidemenu';
-import FolderCollection from './collection';
 
 
 function renderList(data) {
-  const collection = new FolderCollection(data.subFolders);
-  listView.collection = collection;
+  listView.collection.reset(data.subFolders);
   listView.render();
 }
 

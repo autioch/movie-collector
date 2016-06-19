@@ -1,12 +1,18 @@
 .folder-view {
   border-bottom: solid 1px #ddd;
+  width: 100%;
 }
 
 .folder-view__content {
-  margin-left: 1.5em;
-  height: 0;
+  max-height: 0;
   overflow: hidden;
+  position: relative;
+  background: #fff;
+
   .is-expanded > & {
-    height: auto;
+    max-height: 100%;
+    z-index: 1;
+    border-top: solid 1px #ccc;
+    box-shadow: 0 0 .5em #aaa;
   }
 }

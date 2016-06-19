@@ -19,7 +19,7 @@ const webpackConfig = {
   },
   resolve: {
     root: [
-      path.join(__dirname)
+      path.join(__dirname, 'viewer')
     ],
     alias: {
       lodash: 'underscore'
