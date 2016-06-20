@@ -3,13 +3,6 @@ import Backbone from 'backbone';
 import debounce from 'lodash.debounce';
 import './index.scss';
 
-function getHiddenIndexes(startIndex, previousStartIndex, count) {
-  if (startIndex < previousStartIndex) {
-    return [startIndex + count, previousStartIndex + count];
-  }
-  return [previousStartIndex, startIndex];
-}
-
 export default Backbone.View.extend({
   itemHeight: 30,
   itemView: null,
@@ -18,7 +11,7 @@ export default Backbone.View.extend({
     scroll: 'updateItems'
   },
   initialize() {
-    this._lastIndex = 0;
+    this._lastStartIndex = 0;
     this._dict = {};
     this.removeItemsDebounced = debounce(this.removeItems, 300);
   },
@@ -56,15 +49,21 @@ export default Backbone.View.extend({
     this.showItems(startIndex, endIndex);
     this.removeItemsDebounced();
   },
+  getHiddenIndexes(startIndex, count) {
+    if (startIndex < this._lastStartIndex) {
+      return [startIndex + count, this._lastStartIndex + count];
+    }
+    return [this._lastStartIndex, startIndex];
+  },
   hideItems(startIndex, count) {
-    const indexes = getHiddenIndexes(startIndex, this._lastIndex, count);
+    const indexes = this.getHiddenIndexes(startIndex, count);
     for (let i = indexes[0]; i <= indexes[1]; i++) {
       const view = this._dict[i];
       if (view) {
         view.__virtualListHidden = true;
       }
     }
-    this._lastIndex = startIndex;
+    this._lastStartIndex = startIndex;
   },
   getView(index) {
     const cachedView = this._dict[index];

@@ -57,7 +57,7 @@ const webpackConfig = {
   ],
   resolveLoader: {
     root: [
-      path.join(__dirname, '..', 'node_modules')
+      path.join(__dirname, 'node_modules')
     ]
   },
   postcss: function() {

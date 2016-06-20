@@ -4,13 +4,12 @@
 }
 
 .folder-view__content {
-  max-height: 0;
   overflow: hidden;
   position: relative;
   background: #fff;
 
   .is-expanded > & {
-    max-height: 100%;
+    height: auto;
     z-index: 1;
     border-top: solid 1px #ccc;
     box-shadow: 0 0 .5em #aaa;
