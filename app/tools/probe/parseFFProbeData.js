@@ -17,19 +17,13 @@ module.exports = function parseFFProbeData(ffProbeData) {
     size: ffProbeData.format.size,
     bitrate: ffProbeData.format.bit_rate,
     probeScore: ffProbeData.format.probe_score,
-    audio: []
+    audio: [],
+    video: []
   };
-
-  let videoStreamFound = false;
 
   ffProbeData.streams.forEach(function(stream) {
     if (stream.codec_type === 'video') {
-      if (videoStreamFound) {
-        throw 'Found multiple video streams in a ffrProbe data.';
-      }
-      videoStreamFound = true;
-      data.video = parseVideoData(stream);
-      return;
+      return data.video.push(parseVideoData(stream));
     }
     if (stream.codec_type === 'audio') {
       data.audio.push(parseAudioData(stream));

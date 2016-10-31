@@ -5,7 +5,8 @@ module.exports = {
   input: '',
 
   /* Optional.
-   * Collected data will be saved in the folder. */
+   * Collected data will be saved in the file .
+   * Value of output must be name of the file to save data.  */
   output: '',
 
   /* Optional.
@@ -27,9 +28,14 @@ module.exports = {
   omdbForce: false,
 
   /* Optional.
-   * If set to true, gathered data will be used for statistics.
-   * Separate file fill be produced containing the results. */
+   * If set, gathered data will be used for statistics.
+   * Value of stat must be name of the file to save data.  */
   stat: false,
+
+  /* Optional.
+   * If set to true, gathered data will be checked for problems.
+   * Value of stat must be name of the file to save data. */
+  check: false,
 
   /* Required.
    * Files that should be recognized as videos */

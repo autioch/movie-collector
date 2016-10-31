@@ -18,7 +18,7 @@ module.exports = function omdb(config, videoDataArray) {
   }
 
   const videosToQuery = config.omdbForce ? videoDataArray : videoDataArray.filter(shouldQueryVideo);
-  const bar = progressBar('Query IMDB', videosToQuery.length);
+  const bar = progressBar('Query OMDB', videosToQuery.length);
 
   return bluebird.all(videosToQuery.map(videoData => request(videoData).tap(() => bar.tick())));
 };

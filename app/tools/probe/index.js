@@ -18,7 +18,7 @@ module.exports = function ffProbe(config, videoDataArray) {
   process.env.FFMPEG_PATH = path.join(config.ffmpeg, 'bin', 'ffmpeg.exe');
   process.env.FFPROBE_PATH = path.join(config.ffmpeg, 'bin', 'ffprobe.exe');
 
-  const videosToQuery = config.ffmpegForce ? videoDataArray : videoDataArray.filter(videoData => !videoData.ffmpeg);
+  const videosToQuery = config.ffmpegForce ? videoDataArray : videoDataArray.filter(videoData => !videoData.ffmpeg || videoData.ffmpeg.error);
   const bar = progressBar('ffProbe', videosToQuery.length);
 
   return bluebird.all(videosToQuery.map(videoData => probeVideo(videoData).tap(() => bar.tick())));

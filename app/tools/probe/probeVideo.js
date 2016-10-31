@@ -14,5 +14,9 @@ module.exports = function probe(videoData) {
     .then(data => Object.assign(videoData, {
       ffmpeg: parseFFProbeData(data)
     }))
-    .catch(err => console.log(`Failed to probe ${videoData.file}, ${err.message}`));
+    .catch(function(err) {
+      videoData.ffmpeg = {
+        error: err
+      };
+    });
 };

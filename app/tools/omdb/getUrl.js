@@ -15,7 +15,7 @@ module.exports = function getUrl(videoData) {
     t: videoData.name.replace('  ', '+'),
   };
   if (videoData.year) {
-    params.year = videoData.year;
+    params.y = videoData.year;
   }
   return staticUrl + querystring.stringify(params);
 };

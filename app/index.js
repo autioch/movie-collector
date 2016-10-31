@@ -31,4 +31,5 @@ fs
   .then(() => tools.probe(config, videoDataArray))
   .then(() => tools.omdb(config, videoDataArray))
   .then(() => tools.save(config, folderData))
+  .then(() => tools.check(config, videoDataArray))
   .then(() => tools.stat(config, videoDataArray));
