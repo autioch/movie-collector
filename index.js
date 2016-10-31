@@ -1,1 +1,1 @@
-require('./collector');
+require('./app');

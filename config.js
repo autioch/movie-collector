@@ -1,21 +1,15 @@
 const path = require('path');
 
 module.exports = {
-  rootPath: 'g:/filmy',
-  formats: {
-    video: ['avi', 'mp4', 'mkv', 'm4v'],
-    subtitle: ['srt', 'txt', 'sub', 'idx'],
-    ignore: ['jpg', 'bmp']
-  },
-  paths: {
-    ffmpeg: path.join(__dirname, 'ffmpeg', 'bin', 'ffmpeg.exe'),
-    ffprobe: path.join(__dirname, 'ffmpeg', 'bin', 'ffprobe.exe')
-  },
-  steps: [
-    'parseDir',
-    'parseVideo',
-    'ffProbe',
-    'queryOmdb',
-    'stat'
-  ]
+  input: path.join(__dirname, 'output', 'fullData.json'),
+  // input: path.join('e:', 'movie'),
+  output: path.join(__dirname, 'output', 'fullData.json'),
+  ffmpeg: path.join(__dirname, '..', 'ffmpeg'),
+  // ffmpegForce: true,
+  omdb: true,
+  // omdbForce: true,
+  stat: path.join(__dirname, 'output', 'stats.json'),
+  videoFormats: ['avi', 'mp4', 'mkv', 'm4v'],
+  subtitleFormats: ['srt', 'txt', 'sub', 'idx'],
+  ignoredFormats: ['jpg', 'bmp'],
 };

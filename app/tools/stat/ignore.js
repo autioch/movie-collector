@@ -1,0 +1,21 @@
+module.exports = [
+  'created',
+  'ffmpeg.bitrate',
+  'ffmpeg.duration',
+  'ffmpeg.size',
+  'ffmpeg.video.duration',
+  'file',
+  'name',
+  'omdb.actors',
+  'omdb.awards',
+  'omdb.imdbid',
+  'omdb.imdbvotes',
+  'omdb.plot',
+  'omdb.released',
+  'omdb.runtime',
+  'omdb.title',
+  'omdb.writer',
+  'omdbUrl',
+  'path',
+  'size'
+];
