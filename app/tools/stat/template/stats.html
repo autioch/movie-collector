@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Movie list</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="stats.css">
+</head>
+
+<body>
+  <h3>Folder count: ${stats.folderCount}</h3>
+  <h3>Movie count: ${stats.movieCount}</h3>
+  <% stats.numericStats && stats.numericStats.forEach(function(stat){ %>
+    <h3>${stat.title}</h3>
+    <table class="stat__table">
+      <tr>
+        <td>Min: ${stat.min}</td>
+        <td>Average: ${stat.average}</td>
+        <td>Weighted: ${stat.weighted}</td>
+        <td>Max: ${stat.max}</td>
+      </tr>
+      <tr>
+        <td>Variety: ${stat.variety}</td>
+        <td>Count: ${stat.count}</td>
+        <td>Top: ${stat.top.key} (${stat.top.value})</td>
+        <td>Bottom: ${stat.bottom.key} (${stat.bottom.value})</td>
+      </tr>
+    </table>
+    <canvas class="stat__canvas--numeric"></canvas>
+    <% }) %>
+      <% stats.stringStats && stats.stringStats.forEach(function(stat){ %>
+        <h3>${stat.title}</h3>
+        <table class="stat__table">
+          <tr>
+            <td>Variety: ${stat.variety}</td>
+            <td>Count: ${stat.count}</td>
+            <td>Top: ${stat.top.key} (${stat.top.value})</td>
+            <td>Bottom: ${stat.bottom.key} (${stat.bottom.value})</td>
+          </tr>
+        </table>
+        <canvas class="stat__canvas--string"></canvas>
+        <% }) %>
+          <script type="text/javascript">
+            window.stats = <%= json %>;
+          </script>
+          <script type="text/javascript" src="stats.js"></script>
+</body>
+
+</html>

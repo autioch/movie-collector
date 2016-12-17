@@ -1,8 +1,7 @@
 /**
  * Attempts to read language of a stream from its tags.
- * @method getLanguage
- * @param  {object} tags tags property of a stream.
- * @return {string} language Language if successfull, `?` otherwise.
+ * @param  {Object} tags tags property of a stream.
+ * @return {String} language Language if successfull, `?` otherwise.
  */
 module.exports = function getLanguage(tags) {
   if (tags) {
@@ -10,5 +9,6 @@ module.exports = function getLanguage(tags) {
       return tags.language;
     }
   }
+
   return '?';
 };

@@ -1,15 +1,14 @@
 const ignore = require('./ignore');
 
 module.exports = function collectData(videoArray) {
-
   const scanData = {};
 
   function scanForData(prefix, object) {
     prefix = prefix.length ? `${prefix}.` : '';
     Object.keys(object)
-      .filter(key => ignore.indexOf(key) < 0)
-      .filter(key => ignore.indexOf(prefix + key) < 0)
-      .forEach(key => addData(prefix + key, object[key]));
+      .filter((key) => ignore.indexOf(key) < 0)
+      .filter((key) => ignore.indexOf(prefix + key) < 0)
+      .forEach((key) => addData(prefix + key, object[key]));
   }
 
   function addData(prefixedKey, value) {
@@ -17,11 +16,11 @@ module.exports = function collectData(videoArray) {
       return scanData[prefixedKey].values.push(value);
     }
     if (Array.isArray(value)) {
-      return value.forEach(function(val, index) {
+      return value.forEach((val, index) => {
         addData(`${prefixedKey}[${index}]`, val);
       });
     }
-    if ('object' === typeof value && value !== null) {
+    if (typeof value === 'object' && value !== null) {
       return scanForData(prefixedKey, value);
     }
     scanData[prefixedKey] = {
@@ -31,7 +30,7 @@ module.exports = function collectData(videoArray) {
     };
   }
 
+  videoArray.forEach((video) => scanForData('', video));
 
-  videoArray.forEach(video => scanForData('', video));
   return scanData;
 };

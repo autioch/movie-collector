@@ -1,35 +1,29 @@
-const path = require('path');
-const utils = require('./utils');
+const { verbose, prepareFolders, getVideos } = require('./utils');
+const { getData, probe, omdb, save, check } = require('./tools');
 const config = require('./config');
-const tools = require('./tools');
-const bluebird = require('bluebird');
-const fs = bluebird.promisifyAll(require('fs'));
-
-/// Make this folder now, before we collect all data and it turns out we can't make that folder.
-if (config.output) {
-  utils.mkdirp(path.dirname(config.output));
-}
 
 let folderData = {};
 let videoDataArray = [];
 
-fs
-  .statAsync(config.input)
-  .then(function(stats) {
-    if (stats.isFile()) {
-      return tools.load(config.input);
-    }
-    if (stats.isDirectory()) {
-      return tools.scan(config.input);
-    }
-    return bluebird.reject();
+verbose('APP', 'Movie collector starting.');
+
+prepareFolders(config)
+  .tap(() => verbose('APP', 'Folders prepared'))
+  .then(() => {
+    verbose('APP', 'Collecting data');
+    getData(config)
+      .tap(() => verbose('APP', 'Data collected'))
+      .then((data) => {
+        folderData = data;
+        videoDataArray = getVideos(folderData);
+      })
+      .tap(() => verbose('APP', 'Executing tools'))
+      .then(() => probe(config, videoDataArray))
+      .then(() => omdb(config, videoDataArray))
+      .then(() => save(config, folderData))
+      .then(() => check(config, videoDataArray))
+      // .then(() => stat(config, videoDataArray))
+      .tap(() => verbose('APP', 'Done executing tools'))
+      .catch((err) => console.log(err));
   })
-  .then(function(data) {
-    folderData = data;
-    videoDataArray = utils.getVideos(folderData);
-  })
-  .then(() => tools.probe(config, videoDataArray))
-  .then(() => tools.omdb(config, videoDataArray))
-  .then(() => tools.save(config, folderData))
-  .then(() => tools.check(config, videoDataArray))
-  .then(() => tools.stat(config, videoDataArray));
+  .catch((err) => console.log(err));

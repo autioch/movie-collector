@@ -1,15 +1,12 @@
 const throttle = require('lodash.throttle');
 
-/**
- * Array of `queryFunc` functions to execute.
- * @type {Array}
- */
-let queryArray = [];
+const queryArray = [];
 
+const throttleDuration = 500;
 
 /**
  * Retrieves first function in a query, executes it and throttles next request.
- * @method executeRequest
+ * @return {undefined} Nothing
  */
 function executeFunction() {
   if (queryArray.length) {
@@ -18,21 +15,16 @@ function executeFunction() {
   }
 }
 
-/**
- * Execute request wrapped so it will execute only once every 500ms.
- * @method throttleRequest
- */
-const throttleExecution = throttle(executeFunction, 500);
-
+const throttleExecution = throttle(executeFunction, throttleDuration);
 
 /**
  * Enqueues function to be executed.
- * @method functionQuery
  * @param  {function} funcToQuery Function that will be queried  for execution.
- * @return {integer} queryLength Amount of function to be queried.
+ * @return {Number} queryLength Amount of function to be queried.
  */
 module.exports = function query(funcToQuery) {
   queryArray.push(funcToQuery);
   throttleExecution();
+
   return queryArray.length;
 };

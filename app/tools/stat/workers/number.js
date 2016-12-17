@@ -3,6 +3,7 @@ const updateDict = require('./updateDict');
 function sortFloat(a, b) {
   const floatA = parseFloat(a);
   const floatB = parseFloat(b);
+
   return floatA > floatB ? 1 : (floatB > floatA ? -1 : 0);
 }
 
@@ -15,8 +16,10 @@ module.exports = function statNumber(stat) {
   let min = values[0];
   let max = 0;
   let sum = 0;
-  values.sort(sortFloat).forEach(function(value) {
+
+  values.sort(sortFloat).forEach((value) => {
     const num = parseFloat(value, 10);
+
     if (!isNaN(num)) {
       if (min > num) {
         min = num;
@@ -30,12 +33,15 @@ module.exports = function statNumber(stat) {
   });
 
   const keys = Object.keys(dict);
-  keys.forEach(function(key) {
+
+  keys.forEach((key) => {
     const parsed = parseFloat(key, 10);
+
     keysSum += parsed;
     dividend += parsed * dict[key];
     divider += dict[key];
   });
+
   return {
     key: stat.key,
     type: stat.type,

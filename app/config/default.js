@@ -1,4 +1,5 @@
 module.exports = {
+
   /* Required.
    * If value resolves to a folder, it will be scanned and a folderData object will be produced.
    * If value resolves to a json, it will be read and treated like a folderData. */
@@ -29,7 +30,7 @@ module.exports = {
 
   /* Optional.
    * If set, gathered data will be used for statistics.
-   * Value of stat must be name of the file to save data.  */
+   * Value of stat must be name of the folder to save data.  */
   stat: false,
 
   /* Optional.
@@ -48,4 +49,8 @@ module.exports = {
   /* Required.
    * Files that should be ignored */
   ignoredFormats: ['jpg', 'bmp'],
+
+  /* Optional
+   * If set to true, additional output will be logged in the console */
+  verbose: false
 };

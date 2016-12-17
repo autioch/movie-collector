@@ -1,35 +1,18 @@
 const defaultConfig = require('./default');
 const inlineConfig = require('./inline');
-const requiredConfig = require('./required');
-const path = require('path');
+const fileConfig = require('./file');
+const validate = require('./validate');
 
-let fileConfig = {};
+let fileConfigContent = {};
+
 if (inlineConfig.config) {
-  try {
-    fileConfig = require(path.join(path.resolve('.'), inlineConfig.config));
-  } catch (err) {
-    console.log('Could not read config file. ', err.message);
-  }
+  fileConfigContent = fileConfig(inlineConfig.config);
 }
 
-const config = Object.assign({}, defaultConfig, fileConfig, inlineConfig);
+const config = Object.assign({}, defaultConfig, fileConfigContent, inlineConfig);
 
-let allOptionsValid = true;
-
-Object.keys(requiredConfig).forEach(function(key) {
-  const type = requiredConfig[key];
-  if (type === 'string' && !(('string' === typeof config[key]) && (config[key].length > 0))) {
-    console.error(`Option '${key}' must be a non-empty string.`);
-    allOptionsValid = false;
-  }
-  if (type === 'array' && !Array.isArray(config[key])) {
-    console.error(`Option '${key}' must be an array.`);
-    allOptionsValid = false;
-  }
-});
-
-if (!allOptionsValid) {
-  process.exit(1);
+if (!validate(config)) {
+  throw Error('Invalid options found.');
 }
 
 module.exports = config;
