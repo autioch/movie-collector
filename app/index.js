@@ -1,29 +1,12 @@
-const { verbose, prepareFolders, getVideos } = require('./utils');
-const { getData, probe, omdb, save, check } = require('./tools');
-const config = require('./config');
+const { setFolders } = require('./utils');
+const prepare = require('./prepare');
+const tools = require('./tools');
 
-let folderData = {};
-let videoDataArray = [];
+module.exports = function collector(config) {
+  const dataPromise = setFolders(config).then(() => prepare(config));
 
-verbose('APP', 'Movie collector starting.');
-
-prepareFolders(config)
-  .tap(() => verbose('APP', 'Folders prepared'))
-  .then(() => {
-    verbose('APP', 'Collecting data');
-    getData(config)
-      .tap(() => verbose('APP', 'Data collected'))
-      .then((data) => {
-        folderData = data;
-        videoDataArray = getVideos(folderData);
-      })
-      .tap(() => verbose('APP', 'Executing tools'))
-      .then(() => probe(config, videoDataArray))
-      .then(() => omdb(config, videoDataArray))
-      .then(() => save(config, folderData))
-      .then(() => check(config, videoDataArray))
-      // .then(() => stat(config, videoDataArray))
-      .tap(() => verbose('APP', 'Done executing tools'))
-      .catch((err) => console.log(err));
-  })
-  .catch((err) => console.log(err));
+  return tools
+    .filter((tool) => !!config[tool.key])
+    .reduce((previousResult, tool) => previousResult.then((videos) => tool.action(videos, config)), dataPromise)
+    .catch((err) => console.log(err));
+};

@@ -19,7 +19,9 @@ function differentDurations(minutes1, minutes2) {
  * @param  {Object} videoData Data of a video to check.
  * @return {mixed}            False if durations are similar, object with report otherwise.
  */
-module.exports = function checkMixed({ omdb, ffmpeg }) {
+module.exports = function checkMixed(videoData) {
+  const { omdb, ffmpeg } = videoData;
+
   if (omdb && omdb.runtime && ffmpeg && ffmpeg.duration) {
     const omdbMinutes = parseInt(omdb.runtime, 10);
     const ffmpegMinutes = Math.floor(ffmpeg.duration / seconds);

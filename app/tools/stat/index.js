@@ -1,17 +1,9 @@
 const workers = require('./workers');
 const collectData = require('./collectData');
-const { progressBar, verbose } = require('../../utils');
-const fs = require('bluebird').promisifyAll(require('fs'));
+const { progressBar, saveJson } = require('../../utils');
 
-module.exports = function stat(config, videoArray) {
-  if (!config.stat) {
-    verbose('TOOL STAT', 'Statistics disabled. Skipping.');
-
-    return;
-  }
-  const data = collectData(videoArray);
-
-  verbose('TOOL STAT', 'Stats data collected');
+module.exports = function prepareStatData(videos, config) {
+  const data = collectData(videos);
   const bar = progressBar('Stat data', 1);
 
   const stats = Object
@@ -19,12 +11,9 @@ module.exports = function stat(config, videoArray) {
     .sort()
     .map((key) => data[key])
     .filter((statistic) => !!workers[statistic.type])
-    .map((statistic) => workers[workers[statistic.type] ? statistic.type : 'unknown'](stat));
+    .map((statistic) => workers[workers[statistic.type] ? statistic.type : 'unknown'](statistic));
 
-  verbose('TOOL STAT', 'Stats data prepared');
-
-  return fs
-    .writeFileAsync(config.stat, JSON.stringify(stats, null, '  '))
-    .tap(() => verbose('TOOL STAT', 'Stats data saved to file.'))
-    .tap(() => bar.tick());
+  return saveJson(config.stat, stats)
+    .tap(() => bar.tick())
+    .then(() => videos);
 };

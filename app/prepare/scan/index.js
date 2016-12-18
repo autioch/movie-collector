@@ -1,6 +1,7 @@
 const getItemData = require('./getItemData');
 const sortFolderData = require('./sortFolderData');
-const { progressBar, verbose } = require('../../../utils');
+const flattenFolders = require('./flattenFolders');
+const { progressBar } = require('../../utils');
 
 /**
  * Parses given folderPath into and object describing its all contents.
@@ -8,12 +9,12 @@ const { progressBar, verbose } = require('../../../utils');
  * @return {Promise}       Promise Resolves to object describing its all contents.
  */
 module.exports = function scan(config) {
-  verbose('TOOL SCAN', config.input);
+  const { input } = config;
+
   const bar = progressBar('Scan folder', 1);
 
-  return getItemData(config.input, '')
-    .tap(() => verbose('TOOL SCAN', 'Scanned'))
-    .then((folderData) => sortFolderData(config, folderData))
-    .tap(() => verbose('TOOL SCAN', 'Cleaned up'))
+  return getItemData(input, '')
+    .then((folderData) => sortFolderData(folderData))
+    .then((folderData) => flattenFolders(folderData))
     .tap(() => bar.tick());
 };

@@ -3,7 +3,6 @@ const getUrl = require('./getUrl');
 const query = require('./query');
 const Bluebird = require('bluebird');
 const parseOmdbData = require('./parseOmdbData');
-const { verbose } = require('../../utils');
 
 /**
  * Places a request to omdb in a queue.
@@ -13,13 +12,9 @@ const { verbose } = require('../../utils');
 module.exports = function request(videoData) {
   return new Bluebird((resolve) => {
     query(() => {
-      const url = getUrl(videoData);
-
-      videoData.omdbUrl = url;
-      verbose('TOOL OMDB', `Request ${videoData.name}`);
+      videoData.omdbUrl = getUrl(videoData);
       http
-        .get(url, (res) => {
-          verbose('TOOL OMDB', `Response ${videoData.name}`);
+        .get(videoData.omdbUrl, (res) => {
           let omdbData = '';
 
           if (res.statusCode >= 200 || res.statusCode <= 299) {
@@ -27,10 +22,9 @@ module.exports = function request(videoData) {
             res.on('end', () => Object.assign(videoData, { omdb: parseOmdbData(omdbData) }));
           }
 
-          return resolve();
+          return resolve(videoData);
         })
         .on('error', (err) => {
-          verbose('TOOL OMDB', `Error ${videoData.name}`);
           videoData.omdb = { error: `Http error: ${err.message}` };
 
           return resolve();

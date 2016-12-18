@@ -44,7 +44,7 @@ module.exports = function mkdrip(folderPath) {
       if (err) {
         reject(err);
       } else {
-        resolve();
+        resolve(folderPath);
       }
     });
   });

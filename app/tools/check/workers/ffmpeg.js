@@ -3,7 +3,9 @@
  * @param  {Object} videoData Data of a video to check.
  * @return {mixed}            Information about errors.
  */
-module.exports = function checkffmpeg({ ffmpeg, size }) {
+module.exports = function checkffmpeg(videoData) {
+  const { ffmpeg, size } = videoData;
+
   if (!ffmpeg) {
     return false;
   }

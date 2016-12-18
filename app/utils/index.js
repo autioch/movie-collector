@@ -1,8 +1,7 @@
 module.exports = {
-  getVideos: require('./getVideos'),
+  saveJson: require('./saveJson'),
   mkdirp: require('./mkdirp'),
   padRight: require('./padRight'),
   progressBar: require('./progressBar'),
-  prepareFolders: require('./prepareFolders'),
-  verbose: require('./verbose')
+  setFolders: require('./setFolders')
 };

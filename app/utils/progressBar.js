@@ -1,7 +1,6 @@
 /* eslint no-magic-numbers: 0 */
 const ProgressBar = require('progress');
 const padRight = require('./padRight');
-const config = require('../config');
 
 const maxLabelWidth = 20;
 const fixedWidth = maxLabelWidth + // label
@@ -65,9 +64,5 @@ function getOptions(total) {
  * @return {ProgressBar}       Instance of ProgressBar
  */
 module.exports = function progressBar(title, total) {
-  if (config.verbose) {
-    return { tick() {} };
-  }
-
   return new ProgressBar(getTemplate(title, total), getOptions(total));
 };

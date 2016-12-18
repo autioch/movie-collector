@@ -2,7 +2,6 @@ const path = require('path');
 const bluebird = require('bluebird');
 const ffProbeAsync = bluebird.promisify(require('fluent-ffmpeg').ffprobe);
 const parseFFProbeData = require('./parseFFProbeData');
-const { verbose } = require('../../utils');
 
 /**
  * Uses ffprobe to read extra information about videos. Video object is extended with found data.
@@ -10,11 +9,10 @@ const { verbose } = require('../../utils');
  * @return {Object} videoData Original object extended with extra information.
  */
 module.exports = function probe(videoData) {
-  verbose('TOOL PROBE', `Probe ${videoData.name}`);
+  const { path: videoPath, file } = videoData;
 
-  return ffProbeAsync(path.join(videoData.path, videoData.file))
+  return ffProbeAsync(path.join(videoPath, file))
     .then((data) => Object.assign(videoData, { ffmpeg: parseFFProbeData(data) }))
-    .tap(() => verbose('TOOL PROBE', `Done ${videoData.name}`))
     .catch((err) => {
       videoData.ffmpeg = { error: err };
     });

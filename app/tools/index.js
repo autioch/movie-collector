@@ -1,8 +1,16 @@
-module.exports = {
-  check: require('./check'),
-  getData: require('./getData'),
-  omdb: require('./omdb'),
-  probe: require('./probe'),
-  save: require('./save'),
-  stat: require('./stat')
-};
+module.exports = [{
+  key: 'omdb',
+  action: require('./omdb')
+}, {
+  key: 'ffmpeg',
+  action: require('./ffmpeg')
+}, {
+  key: 'check',
+  action: require('./check')
+}, {
+  key: 'stat',
+  action: require('./stat')
+}, {
+  key: 'output',
+  action: require('./output')
+}];

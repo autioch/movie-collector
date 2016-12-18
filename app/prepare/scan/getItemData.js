@@ -30,7 +30,8 @@ function getFolderData(parentFolderPath, folderName) {
  * @return {promise} Promise Resolves to and object containing data.
  */
 function getItemData(parentFolderPath, itemName) {
-  return fs.statAsync(path.join(parentFolderPath, itemName))
+  return fs
+    .statAsync(path.join(parentFolderPath, itemName))
     .then((stats) => {
       if (stats.isFile()) {
         return getFileData(stats, parentFolderPath, itemName);

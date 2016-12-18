@@ -1,6 +1,6 @@
 const bluebird = require('bluebird');
 const request = require('./request');
-const { progressBar, verbose } = require('../../utils');
+const { progressBar } = require('../../utils');
 
 /**
  * Decides if video should be queried.
@@ -9,37 +9,29 @@ const { progressBar, verbose } = require('../../utils');
  */
 
 function shouldQueryVideo(videoData) {
-  return !videoData.omdb || videoData.omdb.error || Object.keys(videoData.omdb).length === 0;
+  const { omdb } = videoData;
+
+  return !omdb || omdb.error || Object.keys(omdb).length === 0;
 }
 
 /**
  * Extends each video found in folder and its subfolder with data from omdb.
+ * @param  {Array} videos Array of videos to update.
  * @param  {Object} config         Application config.
- * @param  {Array} videoDataArray Array of videos to update.
  * @return {Promise}              Promise resolving when all vidoes are updated.
  */
-module.exports = function omdb(config, videoDataArray) {
-  if (!config.omdb) {
-    verbose('TOOL OMDB', 'Disabled');
+module.exports = function prepareOmdbData(videos, config) {
+  const { omdbForce } = config;
 
-    return;
-  }
+  let videosToQuery = videos;
 
-  let videosToQuery = videoDataArray;
-
-  if (!config.omdbForce) {
-    videosToQuery = videoDataArray.filter(shouldQueryVideo);
+  if (!omdbForce) {
+    videosToQuery = videos.filter(shouldQueryVideo);
   }
 
   const bar = progressBar('Query OMDB', videosToQuery.length);
 
-  verbose('TOOL OMDB', `${videosToQuery.length} queries`);
-
   return bluebird
-    .all(videosToQuery
-      .map((videoData) => request(videoData)
-        .tap(() => bar.tick())
-      )
-    )
-    .tap(() => verbose('TOOL OMDB', 'Done'));
+    .all(videosToQuery.map((video) => request(video).tap(() => bar.tick())));
+    // .then(() => videos);
 };

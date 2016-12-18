@@ -13,5 +13,5 @@ const datetimeFields = ['atime', 'mtime', 'ctime', 'birthtime'];
 module.exports = function getCreationTime(fileStats) {
   const times = datetimeFields.map((field) => fileStats[field].getTime());
 
-  return new Date(Math.min.apply(null, times));
+  return new Date(Math.min(...times));
 };

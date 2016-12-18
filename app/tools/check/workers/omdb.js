@@ -8,42 +8,42 @@ function normalizeName(name) {
 }
 
 module.exports = function checkOmdb(videoData) {
-  const omdbData = videoData.omdb;
+  const { omdb, year, name } = videoData;
 
-  if (!omdbData) {
+  if (!omdb) {
     return false;
   }
 
-  if (omdbData.error) {
+  if (omdb.error) {
     return {
       label: 'Omdb error',
-      error: omdbData.error
+      error: omdb.error
     };
   }
 
-  if (Object.keys(omdbData).length === 0) {
+  if (Object.keys(omdb).length === 0) {
     return { label: 'No omdb data' };
   }
 
   const errors = [];
 
-  if (!omdbData.year) {
+  if (!omdb.year) {
     errors.push({ label: 'No omdb year' });
-  } else if (omdbData.year !== videoData.year) {
+  } else if (omdb.year !== year) {
     errors.push({
       label: 'Different year',
-      file: videoData.year,
-      omdb: omdbData.year
+      file: year,
+      omdb: omdb.year
     });
   }
 
-  if (!omdbData.title) {
+  if (!omdb.title) {
     errors.push({ label: 'No omdb title' });
-  } else if (normalizeName(omdbData.title) !== normalizeName(videoData.name)) {
+  } else if (normalizeName(omdb.title) !== normalizeName(name)) {
     errors.push({
       label: 'Different video name',
-      file: videoData.name,
-      omdb: omdbData.title
+      file: name,
+      omdb: omdb.title
     });
   }
 
