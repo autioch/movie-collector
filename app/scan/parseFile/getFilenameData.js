@@ -20,7 +20,7 @@ module.exports = function getFilenameData(fileName) {
 
   return {
     ext: fileName.substr(-extensionSize),
-    name: fileName.substring(nameOffset, fileName.length - extensionSize - 1),
+    title: fileName.substring(nameOffset, fileName.length - extensionSize - 1),
     year
   };
 };

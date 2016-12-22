@@ -6,19 +6,20 @@ const { videoFormats, subtitleFormats, ignoredFormats } = require('../../config'
  * - finds subtitles for videos based on name of the files in folder,
  * - groups up unidentified files and mismatched subtitles.
  * @param  {Object} folderData Result of resolved parseDir.getItemData.
+ * @param  {String} parentFolderName Name of the parent folder.
  * @return {Object} Object Sorted data for the folder and its subfolders.
  */
-module.exports = function sortFolderData(folderData) {
+module.exports = function sortFolder(folderData, parentFolderName = '') {
   const videos = [];
-  const subFolders = [];
+  const folders = [];
 
-  const other = folderData.items
+  /* Recursion. Get all subfolders and sort their data.  */
+  const files = folderData.items.filter((item) => !(item.items && folders.push(sortFolder(item, folderData.name))));
 
-    /* Recursion. Move all subfolders from `other to `subfolders` and sort their data.  */
-    .filter((item) => !(item.items && subFolders.push(sortFolderData(item))))
+  const other = files
 
     /* Move all videos from `other` to `videos` */
-    .filter((item) => !(videoFormats.indexOf(item.ext) > -1 && videos.push(item)))
+    .filter((item) => !(videoFormats.indexOf(item.ext) > -1 && videos.push(Object.assign(item, { parentFolder: folderData.name }))))
 
     /* Skip subtitles with matching video and set videos subs. */
     .filter((item) => {
@@ -38,11 +39,13 @@ module.exports = function sortFolderData(folderData) {
     /* Skip all ignored files */
     .filter((item) => ignoredFormats.indexOf(item.ext) < 0);
 
-  /* Return sorted contents of the folder*/
-  return {
+  folders.unshift({
+    parentFolderName,
     name: folderData.name,
     videos,
-    subFolders,
     other
-  };
+  });
+
+  /* Return sorted contents of the folder*/
+  return folders;
 };

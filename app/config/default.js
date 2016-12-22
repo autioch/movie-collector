@@ -1,12 +1,12 @@
 module.exports = {
 
   /* Required.
-   * If value resolves to a folder, it will be scanned and an array of videoData will be produced.
-   * If value resolves to a json, it will be read and treated like a array of videoData. */
+   * If value resolves to a folder, it will be scanned and an array of videos will be produced.
+   * If value resolves to a json, it will be read and treated like a array of videos. */
   input: '',
 
   /* Optional.
-   * Collected data will be saved in the file .
+   * In addition to returning from app, collected data will be saved in the file .
    * Value of output must be name of the file to save data.  */
   output: '',
 
@@ -29,13 +29,13 @@ module.exports = {
   omdbForce: false,
 
   /* Optional.
+   * If set to true, gathered data will be checked for problems. */
+  check: false,
+
+  /* Optional.
    * If set, gathered data will be used for statistics.
    * Value of stat must be name of the folder to save data.  */
   stat: false,
-
-  /* Optional.
-   * If set to true, gathered data will be checked for problems. */
-  check: false,
 
   /* Required.
    * Files that should be recognized as videos */

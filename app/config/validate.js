@@ -1,3 +1,4 @@
+/* Simplified json schema validation */
 const requiredConfig = require('./required');
 
 /**

@@ -8,7 +8,7 @@ const getCreationTime = require('./getCreationTime');
  * @param  {String} fileName  Name of the file
  * @return {Object} object
  */
-module.exports = function getFileData(stats, folderPath, fileName) {
+module.exports = function parseFile(stats, folderPath, fileName) {
   return Object.assign({
     path: folderPath,
     file: fileName,

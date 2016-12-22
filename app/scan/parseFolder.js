@@ -1,7 +1,7 @@
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
 const path = require('path');
-const getFileData = require('./getFileData');
+const parseFile = require('./parseFile');
 
 /**
  * Generates an object describing folder and its contents
@@ -9,7 +9,7 @@ const getFileData = require('./getFileData');
  * @param  {String} folderName Child folder name
  * @return {promise} Promise Resolves to an object containing data.
  */
-function getFolderData(parentFolderPath, folderName) {
+function parseFolder(parentFolderPath, folderName) {
   const folderPath = path.join(parentFolderPath, folderName);
 
   return fs
@@ -29,19 +29,19 @@ function getFolderData(parentFolderPath, folderName) {
  * @param  {String} itemName Item to describe.
  * @return {promise} Promise Resolves to and object containing data.
  */
-function getItemData(parentFolderPath, itemName) {
+function getItemData(parentFolderPath, itemName = '') {
   return fs
     .statAsync(path.join(parentFolderPath, itemName))
     .then((stats) => {
       if (stats.isFile()) {
-        return getFileData(stats, parentFolderPath, itemName);
+        return parseFile(stats, parentFolderPath, itemName);
       }
       if (stats.isDirectory()) {
-        return getFolderData(parentFolderPath, itemName);
+        return parseFolder(parentFolderPath, itemName);
       }
 
       return bluebird.resolve();
     });
 }
 
-module.exports = getItemData;
+module.exports = parseFolder;

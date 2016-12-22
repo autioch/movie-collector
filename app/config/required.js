@@ -1,3 +1,4 @@
+/* Simplified json schema */
 module.exports = {
   input: 'string',
   videoFormats: 'array',
