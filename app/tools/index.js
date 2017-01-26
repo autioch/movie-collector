@@ -1,4 +1,10 @@
 module.exports = [{
+  key: 'prepare',
+  action: require('./prepare')
+}, {
+  key: 'input',
+  action: require('./input')
+}, {
   key: 'omdb',
   action: require('./omdb')
 }, {

@@ -1,6 +1,6 @@
 const bluebird = require('bluebird');
 const request = require('./request');
-const { progressBar } = require('../../utils');
+const { getTicker } = require('../../utils');
 
 /**
  * Decides if video should be queried.
@@ -29,9 +29,9 @@ module.exports = function prepareOmdbData(videos, config) {
     videosToQuery = videos.filter(shouldQueryVideo);
   }
 
-  const bar = progressBar('Query OMDB', videosToQuery.length);
+  const ticker = getTicker('Query OMDB', videosToQuery.length);
 
   return bluebird
-    .all(videosToQuery.map((video) => request(video).tap(() => bar.tick())));
-    // .then(() => videos);
+    .map(videosToQuery, (video) => request(video).tap(ticker))
+    .then(() => videos);
 };

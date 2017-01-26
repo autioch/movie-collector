@@ -8,6 +8,6 @@ const fs = require('bluebird').promisifyAll(require('fs'));
  */
 module.exports = function saveJson(fileName, fileContents) {
   return fs
-    .writeFileAsync(fileName, JSON.stringify(fileContents, null, '  '))
+    .writeFileAsync(fileName, JSON.stringify(fileContents, null, '  '), 'utf8')
     .then(() => fileContents);
 };

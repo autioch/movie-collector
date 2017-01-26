@@ -8,7 +8,7 @@ function normalizeName(name) {
 }
 
 module.exports = function checkOmdb(videoData) {
-  const { omdb, year, name } = videoData;
+  const { omdb, year, title } = videoData;
 
   if (!omdb) {
     return false;
@@ -39,10 +39,10 @@ module.exports = function checkOmdb(videoData) {
 
   if (!omdb.title) {
     errors.push({ label: 'No omdb title' });
-  } else if (normalizeName(omdb.title) !== normalizeName(name)) {
+  } else if (normalizeName(omdb.title) !== normalizeName(title)) {
     errors.push({
       label: 'Different video name',
-      file: name,
+      file: title,
       omdb: omdb.title
     });
   }

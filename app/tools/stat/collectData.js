@@ -15,14 +15,17 @@ module.exports = function collectData(videoArray) {
     if (scanData.hasOwnProperty(prefixedKey)) {
       return scanData[prefixedKey].values.push(value);
     }
+
     if (Array.isArray(value)) {
-      return value.forEach((val, index) => {
-        addData(`${prefixedKey}[${index}]`, val);
+      return value.forEach((val) => {
+        addData(`${prefixedKey}[]`, val);
       });
     }
+
     if (typeof value === 'object' && value !== null) {
       return scanForData(prefixedKey, value);
     }
+
     scanData[prefixedKey] = {
       key: prefixedKey,
       type: typeof value,

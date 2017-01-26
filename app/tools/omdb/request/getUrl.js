@@ -7,12 +7,12 @@ const staticUrl = 'http://www.omdbapi.com/?';
  * @return {String} url String to use for a request.
  */
 module.exports = function getUrl(videoData) {
-  const { name, year } = videoData;
+  const { title, year } = videoData;
   const params = {
     plot: 'short',
     r: 'json',
     type: 'movie',
-    t: name.replace('  ', '+')
+    t: title.replace('  ', '+')
   };
 
   if (year) {

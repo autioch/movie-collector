@@ -1,5 +1,4 @@
-const { progressBar } = require('../../utils');
-const flattenDeep = require('lodash.flattendeep');
+const { getTicker } = require('../../utils');
 const workers = require('./workers');
 
 /**
@@ -8,12 +7,15 @@ const workers = require('./workers');
  * @return {undefined} Nothing.
  */
 module.exports = function prepareCheckData(videos) {
-  const bar = progressBar('Check data', 1);
+  const ticker = getTicker('Check data', 1);
 
   videos.forEach((video) => {
-    video.errors = flattenDeep(workers.map((worker) => worker(video))).filter((error) => !!error);
+    video.errors = workers
+      .reduce((errors, worker) => errors.concat(worker(video)), [])
+      .filter((error) => !!error);
   });
-  bar.tick();
+
+  ticker();
 
   return videos;
 };

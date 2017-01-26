@@ -1,12 +1,9 @@
-const { setFolders } = require('./utils');
-const scan = require('./scan');
+const Bluebird = require('bluebird');
 const tools = require('./tools');
 
 module.exports = function collector(config) {
-  const dataPromise = setFolders(config).then(() => scan(config));
-
   return tools
     .filter((tool) => !!config[tool.key])
-    .reduce((previousResult, tool) => previousResult.then((videos) => tool.action(videos, config)), dataPromise)
+    .reduce((previousResult, tool) => previousResult.then((videos) => tool.action(videos, config)), Bluebird.resolve([]))
     .catch((err) => console.log(err));
 };

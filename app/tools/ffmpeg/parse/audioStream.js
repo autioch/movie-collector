@@ -5,7 +5,7 @@ const getLanguage = require('./getLanguage');
  * @param  {Object} audioStream Stream from ffProbeData.
  * @return {Object} audioData Relevant information about stream.
  */
-module.exports = function parseAudioData(audioStream) {
+module.exports = function parseAudioStream(audioStream) {
   return {
     codecName: audioStream.codec_name,
     codecLongName: audioStream.codec_long_name,

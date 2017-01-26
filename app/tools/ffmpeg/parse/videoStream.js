@@ -18,7 +18,7 @@ module.exports = function parseVideoData(videoStream) {
     pixFmt: videoStream.pix_fmt,
     level: videoStream.level,
     isAvc: videoStream.is_avc,
-    duration: videoStream.duration,
+    duration: Math.round(videoStream.duration),
     language: getLanguage(videoStream.tags),
     fps: getFps(videoStream.r_frame_rate)
   };

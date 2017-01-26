@@ -23,7 +23,7 @@ module.exports = function checkMixed(videoData) {
   const { omdb, ffmpeg } = videoData;
 
   if (omdb && omdb.runtime && ffmpeg && ffmpeg.duration) {
-    const omdbMinutes = parseInt(omdb.runtime, 10);
+    const omdbMinutes = omdb.runtime;
     const ffmpegMinutes = Math.floor(ffmpeg.duration / seconds);
 
     if (differentDurations(omdbMinutes, ffmpegMinutes)) {

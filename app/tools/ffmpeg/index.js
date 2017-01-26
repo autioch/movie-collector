@@ -1,8 +1,10 @@
 /* eslint no-process-env: 0 */
 const path = require('path');
-const probeVideo = require('./probeVideo');
-const { progressBar } = require('../../utils');
+const probe = require('./probe');
+const { getTicker } = require('../../utils');
 const bluebird = require('bluebird');
+
+const MAX_PROBES = 3;
 
 /**
  * Extends each video found in folder and its subfolder with data from omdb.
@@ -20,9 +22,9 @@ module.exports = function ffmpeg(videos, config) {
     videosToQuery = videos.filter((video) => !video.ffmpeg || video.ffmpeg.error);
   }
 
-  const bar = progressBar('ffProbe', videosToQuery.length);
+  const ticker = getTicker('ffProbe', videosToQuery.length);
 
   return bluebird
-    .all(videosToQuery.map((video) => probeVideo(video).tap(() => bar.tick())))
+    .map(videosToQuery, (video) => probe(video).tap(ticker), { concurrency: MAX_PROBES })
     .then(() => videos);
 };

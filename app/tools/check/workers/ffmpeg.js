@@ -4,7 +4,7 @@
  * @return {mixed}            Information about errors.
  */
 module.exports = function checkffmpeg(videoData) {
-  const { ffmpeg, size } = videoData;
+  const { ffmpeg, file: { size } } = videoData;
 
   if (!ffmpeg) {
     return false;

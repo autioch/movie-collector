@@ -1,4 +1,4 @@
-const { progressBar, saveJson } = require('../../utils');
+const { getTicker, saveJson } = require('../../utils');
 
 /**
  * Saves scan output to file for later reuse insted of another scan.
@@ -9,9 +9,9 @@ const { progressBar, saveJson } = require('../../utils');
 module.exports = function outputData(videos, config) {
   const { output } = config;
 
-  const bar = progressBar('Save data', 1);
+  const ticker = getTicker('Save data', 1);
 
   return saveJson(output, videos)
-    .tap(() => bar.tick())
+    .tap(ticker)
     .then(() => videos);
 };

@@ -1,9 +1,20 @@
 module.exports = {
 
+  /* Optional.
+   * If set to true, all specified folders are created before all other operations.
+   * If set to false, no folders are created.
+   */
+  prepare: true,
+
   /* Required.
    * If value resolves to a folder, it will be scanned and an array of videos will be produced.
-   * If value resolves to a json, it will be read and treated like a array of videos. */
+   * If value resolves to a json file, it will be read and treated like a array of videos. */
   input: '',
+
+  /* Optional.
+   * If set to true, all unknown files will be logged in console.
+   * If set to false, no extra information will be logged. */
+  other: true,
 
   /* Optional.
    * In addition to returning from app, collected data will be saved in the file .

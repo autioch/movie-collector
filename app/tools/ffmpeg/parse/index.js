@@ -1,5 +1,5 @@
-const parseAudioData = require('./parseAudioData');
-const parseVideoData = require('./parseVideoData');
+const audioStream = require('./audioStream');
+const videoStream = require('./videoStream');
 
 /**
  * Parses result of a ffprobe into more friendly format.
@@ -14,11 +14,11 @@ module.exports = function parseFFProbeData(ffProbeData) {
   return {
     formatName: format.format_name,
     formatLongName: format.format_long_name,
-    duration: format.duration,
+    duration: Math.round(format.duration),
     size: format.size,
     bitrate: format.bit_rate,
     probeScore: format.probe_score,
-    audio: streams.filter((stream) => stream.codec_type === 'audio').map(parseAudioData),
-    video: streams.filter((stream) => stream.codec_type === 'video').map(parseVideoData)
+    audio: streams.filter((stream) => stream.codec_type === 'audio').map(audioStream),
+    video: streams.filter((stream) => stream.codec_type === 'video').map(videoStream)
   };
 };

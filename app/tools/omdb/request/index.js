@@ -2,7 +2,7 @@ const http = require('http');
 const getUrl = require('./getUrl');
 const query = require('./query');
 const Bluebird = require('bluebird');
-const parseOmdbData = require('./parseOmdbData');
+const parse = require('./parse');
 
 /**
  * Places a request to omdb in a queue.
@@ -19,7 +19,7 @@ module.exports = function request(videoData) {
 
           if (res.statusCode >= 200 || res.statusCode <= 299) {
             res.on('data', (chunk) => (omdbData += chunk));
-            res.on('end', () => Object.assign(videoData, { omdb: parseOmdbData(omdbData) }));
+            res.on('end', () => Object.assign(videoData, { omdb: parse(omdbData) }));
           }
 
           return resolve(videoData);
