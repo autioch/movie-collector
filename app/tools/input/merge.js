@@ -16,7 +16,9 @@ function compareFunction(videoA, videoB) {
 }
 
 module.exports = function merge(config, cacheVideos, scanVideos) {
-  scanVideos.foreach((pathVideo) => {
+  // console.log(`Cache: ${cacheVideos.length} video(s)`);
+  // console.log(`Scan:  ${scanVideos.length} video(s)`);
+  scanVideos.forEach((pathVideo) => {
     const foundVideo = cacheVideos.find((cacheVideo) => cacheVideo.title === pathVideo.title && cacheVideo.year === pathVideo.year);
 
     if (foundVideo) {
@@ -25,16 +27,17 @@ module.exports = function merge(config, cacheVideos, scanVideos) {
     }
   });
 
+  const oldVideos = cacheVideos.filter((video) => !video.__foundInScan);
+
+  // console.log(`Old:   ${oldVideos.length} video(s)`);
+
   if (config.inputTrim) {
-    if (!config.inputPath) {
-      return cacheVideos;
+    if (config.inputPath) {
+      return scanVideos.sort(compareFunction);
     }
 
-    return scanVideos.sort(compareFunction);
+    return cacheVideos.sort(compareFunction);
   }
 
-  return cacheVideos
-    .filter((video) => !video.__foundInScan)
-    .concat(scanVideos)
-    .sort(compareFunction);
+  return scanVideos.concat(oldVideos).sort(compareFunction);
 };

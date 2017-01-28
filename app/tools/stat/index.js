@@ -18,7 +18,7 @@ module.exports = function prepareStatData(videos, config) {
     .filter((statistic) => !!workers[statistic.type])
     .map((statistic) => workers[workers[statistic.type] ? statistic.type : 'unknown'](statistic));
 
-  return saveJson(path.join(config.outputPath, 'stats.json'), stats)
+  return saveJson(path.join(config.outputPath, 'stat', 'stat.json'), stats)
     .tap(ticker)
     .then(() => videos);
 };

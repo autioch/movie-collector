@@ -15,7 +15,7 @@ module.exports = function getInputData(videos, config) {
 
   if (config.inputCache) {
     cachePromise = fs
-      .readFileAsync(config.input, 'utf8')
+      .readFileAsync(config.inputCache, 'utf8')
       .then(JSON.parse);
   } else {
     cachePromise = bluebird.resolve([]);
@@ -24,15 +24,19 @@ module.exports = function getInputData(videos, config) {
   cachePromise.then(ticker);
 
   if (config.inputPath) {
-    scanPromise = scanFolder(config);
+    scanPromise = scanFolder(config.inputPath);
   } else {
-    scanPromise = bluebird.resolve([]);
+    scanPromise = bluebird.resolve({
+      videos: [],
+      other: []
+    });
   }
 
   scanPromise.then(ticker);
 
   return bluebird.join(cachePromise, scanPromise, function workData(cacheData, scanData) {
     if (config.outputUnknown && scanData.other.length > 0) {
+      console.log(`Found ${scanData.other.length} unkown file(s).`);
       saveJson(path.join(config.outputPath, 'unknown.json'), scanData.other);
     }
 

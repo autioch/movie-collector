@@ -1,6 +1,20 @@
-// const path = require('path');
 const Bluebird = require('bluebird');
 const mkdirp = require('./mkdirp');
+const path = require('path');
+
+function makeSubfolders(config) {
+  const folderPaths = [];
+
+  if (config.outputStat) {
+    folderPaths.push(path.join(config.outputPath, 'stat'));
+  }
+
+  if (config.outputList) {
+    folderPaths.push(path.join(config.outputPath, 'list'));
+  }
+
+  return Bluebird.all(folderPaths.map((folderPath) => mkdirp(folderPath)));
+}
 
 /**
  * Creates all folder paths specified in the config.
@@ -13,5 +27,7 @@ module.exports = function prepareFolders(videos, config) {
     return Bluebird.resolve(videos);
   }
 
-  return mkdirp(config.outputPath).then(() => videos);
+  return mkdirp(config.outputPath)
+    .then(() => makeSubfolders(config))
+    .then(() => videos);
 };

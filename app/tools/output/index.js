@@ -1,5 +1,6 @@
 const { getTicker, saveJson } = require('../../utils');
 const bluebird = require('bluebird');
+const path = require('path');
 
 /**
  * Saves scan output to file for later reuse insted of another scan.
@@ -14,7 +15,7 @@ module.exports = function outputData(videos, config) {
 
   const ticker = getTicker('Save data', 1);
 
-  return saveJson(config.outputPath, 'data.json', videos)
+  return saveJson(path.join(config.outputPath, 'data.json'), videos)
     .tap(ticker)
     .then(() => videos);
 };

@@ -6,12 +6,11 @@ module.exports = {
    */
   prepare: true,
 
-  /* Required instead or with inputCache.
-   * If specified, path will be scanned for videos. */
+  /* Requires one or both of options below.
+   * If inputPath is specified, path will be scanned for videos.
+   * If inputCache is specified, file contents will be read and treated as videos scanned before.
+   * If both are specified, data will be merged. Merge rule is specified by inputTrim. */
   inputPath: false,
-
-  /* Required instead or with inputPath.
-   * If specified, file contents will be read and treated as videos scanned before. */
   inputCache: false,
 
   /* Optimal.
@@ -24,7 +23,8 @@ module.exports = {
   ffmpeg: false,
 
   /* Optional.
-   * If set to true, all movies, even with valid ffmpeg data will be probed. */
+   * If set to true, all movies, even with valid ffmpeg data will be probed.
+   * If set to false, only movies without ffmpeg data or with error will be probed.*/
   ffmpegForce: false,
 
   /* Optional.
@@ -33,7 +33,8 @@ module.exports = {
   omdb: false,
 
   /* Optional.
-   * If set to true, all movies, even with valid omdb data will be checked. */
+   * If set to true, all movies, even with valid omdb data will be queried.
+   * If set to false, only movies without omdb data or with error will be queried.*/
   omdbForce: false,
 
   /* Optional.
