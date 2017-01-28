@@ -11,7 +11,7 @@ const throttleDuration = 500;
 function executeFunction() {
   if (queryArray.length) {
     queryArray.pop()();
-    throttleExecution();
+    throttleExecution(); //eslint-disable-line
   }
 }
 

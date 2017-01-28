@@ -1,4 +1,3 @@
-/* eslint no-magic-numbers: 0 */
 const ProgressBar = require('progress');
 const getTemplate = require('./getTemplate');
 const getOptions = require('./getOptions');

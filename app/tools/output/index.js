@@ -3,10 +3,10 @@ const bluebird = require('bluebird');
 const path = require('path');
 
 /**
- * Saves scan output to file for later reuse insted of another scan.
- * @param  {Object} videos     Array of video data.
- * @param  {Object} config     Application config
- * @return {Promise}           Promise resolving when data is saved.
+ * Saves json with videos array.
+ * @param  {Array} videos    Array of videos to check.
+ * @param  {Object} config   Application config.
+ * @return {Promise}         Promise resolving to videos array.
  */
 module.exports = function outputData(videos, config) {
   if (!config.outputData) {

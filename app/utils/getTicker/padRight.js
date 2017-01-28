@@ -1,3 +1,4 @@
+/* eslint no-param-reassign: 0 */
 /**
  * Appends characters to end of string until it has required length.
  * @param  {String} text    Text to extend

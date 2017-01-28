@@ -5,6 +5,8 @@
  */
 module.exports = function checkFile(videoData) {
   if (!videoData.year) {
-    return { label: 'No year in file name' };
+    return {
+      label: 'No year in file name'
+    };
   }
 };

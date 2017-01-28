@@ -8,7 +8,6 @@ const yearSize = 4;
  * @param  {String} fileName Name of a video file
  * @return {Object} object Object containing extension, year and name of video
  */
-
 module.exports = function getFilenameData(fileName) {
   let year;
   let nameOffset = 0;

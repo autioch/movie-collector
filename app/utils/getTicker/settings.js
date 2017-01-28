@@ -1,3 +1,4 @@
+/* eslint no-magic-numbers: 0 */
 const maxLabelWidth = 20;
 const fixedWidth = maxLabelWidth + // label
   2 + // space

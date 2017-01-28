@@ -19,13 +19,17 @@ module.exports = function request(videoData) {
 
           if (res.statusCode >= 200 || res.statusCode <= 299) {
             res.on('data', (chunk) => (omdbData += chunk));
-            res.on('end', () => Object.assign(videoData, { omdb: parse(omdbData) }));
+            res.on('end', () => Object.assign(videoData, {
+              omdb: parse(omdbData)
+            }));
           }
 
           return resolve(videoData);
         })
         .on('error', (err) => {
-          videoData.omdb = { error: `Http error: ${err.message}` };
+          videoData.omdb = {
+            error: `Http error: ${err.message}`
+          };
 
           return resolve();
         });

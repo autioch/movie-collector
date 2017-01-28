@@ -20,6 +20,11 @@ const arrayProperties = [
   'Language'
 ];
 
+/**
+ * Extracts and formats data retrieved from omdb.
+ * @param  {Object} omdbData Raw omdb data.
+ * @return {Object}          Formatted data.
+ */
 module.exports = function extractData(omdbData) {
   const data = textProperties.reduce((result, key) => {
     result[key.toLowerCase()] = omdbData[key];

@@ -7,6 +7,11 @@ function normalizeName(name) {
   return name.replace(/[^0-9a-z ]/gi, '').toLowerCase();
 }
 
+/**
+ * Checks video details collected from omdb.
+ * @param  {Object} videoData Video data.
+ * @return {Array}            Array of found errors.
+ */
 module.exports = function checkOmdb(videoData) {
   const { omdb, year, title } = videoData;
 
@@ -22,13 +27,17 @@ module.exports = function checkOmdb(videoData) {
   }
 
   if (Object.keys(omdb).length === 0) {
-    return { label: 'No omdb data' };
+    return {
+      label: 'No omdb data'
+    };
   }
 
   const errors = [];
 
   if (!omdb.year) {
-    errors.push({ label: 'No omdb year' });
+    errors.push({
+      label: 'No omdb year'
+    });
   } else if (omdb.year !== year) {
     errors.push({
       label: 'Different year',
@@ -38,7 +47,9 @@ module.exports = function checkOmdb(videoData) {
   }
 
   if (!omdb.title) {
-    errors.push({ label: 'No omdb title' });
+    errors.push({
+      label: 'No omdb title'
+    });
   } else if (normalizeName(omdb.title) !== normalizeName(title)) {
     errors.push({
       label: 'Different video name',

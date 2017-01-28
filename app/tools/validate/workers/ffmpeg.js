@@ -18,13 +18,17 @@ module.exports = function checkffmpeg(videoData) {
   }
 
   if (Object.keys(ffmpeg).length === 0) {
-    return { label: 'No ffmpeg data' };
+    return {
+      label: 'No ffmpeg data'
+    };
   }
 
   const errors = [];
 
   if (!ffmpeg.video) {
-    errors.push({ label: 'No ffmpeg video stream data' });
+    errors.push({
+      label: 'No ffmpeg video stream data'
+    });
   } else if (ffmpeg.video.length !== 1) {
     errors.push({
       label: 'Invalid video stream count',
@@ -33,7 +37,9 @@ module.exports = function checkffmpeg(videoData) {
   }
 
   if (!ffmpeg.size) {
-    errors.push({ label: 'No ffmpeg size data' });
+    errors.push({
+      label: 'No ffmpeg size data'
+    });
   } else if (ffmpeg.size !== size) {
     errors.push({
       label: 'Different size data',

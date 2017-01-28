@@ -28,6 +28,7 @@
     "node": ">=7"
   },
   "scripts": {
-    "default": "node index --config=./config.js"
+    "default": "node index --config=./config.js",
+    "lint": "eslint ./app --fix --ext .js & exit 0"
   }
 }

@@ -3,9 +3,10 @@ const workers = require('./workers');
 const Bluebird = require('bluebird');
 
 /**
- * Checks videoData for missing or incoherent data.
- * @param  {Array} videos  Array of videoData to check.
- * @return {undefined} Nothing.
+ * Validates video data, by checking missing fields and incoherent values.
+ * @param  {Array} videos    Array of videos to check.
+ * @param  {Object} config   Application config.
+ * @return {Promise}         Promise resolving to videos array.
  */
 module.exports = function validate(videos, config) {
   if (!config.validate) {

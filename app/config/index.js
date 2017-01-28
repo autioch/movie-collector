@@ -15,6 +15,7 @@ if (!validate(config)) {
   throw Error('Invalid options found.');
 }
 
+/* At least one of these must be specified. */
 if (!config.inputPath && !config.inputCache) {
   throw Error('No input option specified.');
 }

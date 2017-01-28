@@ -1,3 +1,9 @@
+/**
+ * Defines order of 2 videos.
+ * @param  {Object} videoA Video data.
+ * @param  {Object} videoB Video data.
+ * @return {Number}        Order of the file.
+ */
 function compareFunction(videoA, videoB) {
   if (videoA.title < videoB.title) {
     return -1;
@@ -15,6 +21,13 @@ function compareFunction(videoA, videoB) {
   return 0;
 }
 
+/**
+ * Merges video cache with scan data. Sorts out duplicates and old videos.
+ * @param  {Object} config   Application config.
+ * @param  {Array} cacheVideos Array of cached videos from the json.
+ * @param  {Array} scanVideos  Array of videos found during folder scan.
+ * @return {Array}             Array of videos.
+ */
 module.exports = function merge(config, cacheVideos, scanVideos) {
   // console.log(`Cache: ${cacheVideos.length} video(s)`);
   // console.log(`Scan:  ${scanVideos.length} video(s)`);

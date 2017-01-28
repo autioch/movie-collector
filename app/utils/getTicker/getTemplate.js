@@ -1,3 +1,5 @@
+/* eslint no-magic-numbers: 0 */
+/* eslint no-param-reassign: 0 */
 const padRight = require('./padRight');
 const { maxLabelWidth } = require('./settings');
 

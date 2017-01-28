@@ -7,7 +7,6 @@ const { getTicker } = require('../../utils');
  * @param  {Object} videoData Object describing video.
  * @return {Boolean}          True if video should be queried, false otherwise.
  */
-
 function shouldQueryVideo(videoData) {
   const { omdb } = videoData;
 
@@ -16,9 +15,9 @@ function shouldQueryVideo(videoData) {
 
 /**
  * Extends each video found in folder and its subfolder with data from omdb.
- * @param  {Array} videos Array of videos to update.
- * @param  {Object} config         Application config.
- * @return {Promise}              Promise resolving when all vidoes are updated.
+ * @param  {Array} videos    Array of videos to check.
+ * @param  {Object} config   Application config.
+ * @return {Promise}         Promise resolving to videos array.
  */
 module.exports = function prepareOmdbData(videos, config) {
   if (!config.omdb) {

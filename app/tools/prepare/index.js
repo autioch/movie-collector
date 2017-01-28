@@ -2,6 +2,11 @@ const Bluebird = require('bluebird');
 const mkdirp = require('./mkdirp');
 const path = require('path');
 
+/**
+ * For each output specified, creates a folder.
+ * @param  {Object} config   Application config.
+ * @return {Promise}         Promise resolving to the array of folder paths.
+ */
 function makeSubfolders(config) {
   const folderPaths = [];
 
@@ -18,9 +23,9 @@ function makeSubfolders(config) {
 
 /**
  * Creates all folder paths specified in the config.
- * @param  {Array} videos Array of video data.
- * @param  {Object} config Application config.
- * @return {Promise}       Promise resolving when all directories have been created.
+ * @param  {Array} videos    Array of videos to check.
+ * @param  {Object} config   Application config.
+ * @return {Promise}         Promise resolving to videos array.
  */
 module.exports = function prepareFolders(videos, config) {
   if (!config.prepare) {

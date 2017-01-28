@@ -4,21 +4,27 @@ const fs = bluebird.promisifyAll(require('fs'));
 const parseFile = require('./parseFile');
 const sortFiles = require('./sortFiles');
 
+/**
+ * Extracts videos and other files from folder and its subfolders
+ * @param  {String} folderPath Path of the folder.
+ * @return {Object}            Object containing videos and other files.
+ */
 function scanFolder(folderPath) {
   return fs
     .readdirAsync(folderPath)
     .map((itemName) => statItem(folderPath, itemName))
     .then(parseFolderItems)
-    .catch((err) => {
-      console.log(err);
-
-      return {
-        videos: [],
-        other: []
-      };
-    });
+    .catch(() => ({
+      videos: [],
+      other: []
+    }));
 }
 
+/**
+ * Parses folder contents. Subfolder contents are merged into results.
+ * @param  {Array} items List of items inside the folder.
+ * @return {Object}      Object containing videos and other files.
+ */
 function parseFolderItems(items) {
   const folders = items.filter((item) => item.stats.isDirectory()).map((item) => path.join(item.folderPath, item.itemName));
   const files = items.filter((item) => item.stats.isFile()).map(parseFile);
@@ -36,6 +42,12 @@ function parseFolderItems(items) {
     }));
 }
 
+/**
+ * Collects information about folder item.
+ * @param  {String} folderPath Path of the folder.
+ * @param  {String} itemName   Name of the item inside the folder.
+ * @return {Object}            Details of the item.
+ */
 function statItem(folderPath, itemName) {
   return fs
     .statAsync(path.join(folderPath, itemName))

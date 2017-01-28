@@ -1,10 +1,20 @@
 const updateDict = require('./updateDict');
 
+/**
+ * Decides order of string fields containing floats.
+ * @param  {String} a [description]
+ * @param  {String} b [description]
+ * @return {Number}   Order of the strings.
+ */
 function sortFloat(a, b) {
   const floatA = parseFloat(a);
   const floatB = parseFloat(b);
 
-  return floatA > floatB ? 1 : (floatB > floatA ? -1 : 0);
+  if (floatA > floatB) {
+    return 1;
+  }
+
+  return floatB > floatA ? -1 : 0;
 }
 
 module.exports = function statNumber(stat) {

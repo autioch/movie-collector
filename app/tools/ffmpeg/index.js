@@ -7,15 +7,17 @@ const bluebird = require('bluebird');
 const MAX_PROBES = 3;
 
 /**
- * Extends each video found in folder and its subfolder with data from omdb.
- * @param  {Array} videos Array of videos to check.
- * @param  {Object} config        Application config
- * @return {Promise}              Promise resolving when all videos have been probed.
+ * Extends each video with data probed using ffmpeg.
+ * @param  {Array} videos    Array of videos to check.
+ * @param  {Object} config   Application config.
+ * @return {Promise}         Promise resolving to videos array.
  */
 module.exports = function ffmpeg(videos, config) {
   if (!config.ffmpeg) {
     return bluebird.resolve(videos);
   }
+
+  /* Fluent ffmpeg requires these. */
   process.env.FFMPEG_PATH = path.join(config.ffmpeg, 'bin', 'ffmpeg.exe');
   process.env.FFPROBE_PATH = path.join(config.ffmpeg, 'bin', 'ffprobe.exe');
 
@@ -28,6 +30,8 @@ module.exports = function ffmpeg(videos, config) {
   const ticker = getTicker('ffProbe', videosToQuery.length);
 
   return bluebird
-    .map(videosToQuery, (video) => probe(video).tap(ticker), { concurrency: MAX_PROBES })
+    .map(videosToQuery, (video) => probe(video).tap(ticker), {
+      concurrency: MAX_PROBES
+    })
     .then(() => videos);
 };

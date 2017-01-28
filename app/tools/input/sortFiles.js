@@ -1,5 +1,10 @@
 const { videoFormats, subtitleFormats, ignoredFormats } = require('../../config');
 
+/**
+ * Sorts and filters files found inside a folder.
+ * @param  {Array} folderFiles Array of folder files.
+ * @return {Object}            Object containing videos and other files.
+ */
 module.exports = function sortFiles(folderFiles) {
   const videos = [];
 

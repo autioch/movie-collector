@@ -7,6 +7,12 @@ const merge = require('./merge');
 
 const totalSteps = 2;
 
+/**
+ * Retrieves cache, scans folder and merges the results.
+ * @param  {Array} videos   Array of videos to check.
+ * @param  {Object} config  Application config.
+ * @return {Promise}        Promise resolving to videos array.
+ */
 module.exports = function getInputData(videos, config) {
   const ticker = getTicker('Scan for data', totalSteps);
 
