@@ -46,13 +46,4 @@ function statItem(folderPath, itemName) {
     }));
 }
 
-module.exports = function scan(config) {
-  return scanFolder(config.input).then((foundFiles) => {
-    if (config.other && foundFiles.other.length > 0) {
-      console.log('\t', 'Found unknown files:');
-      foundFiles.other.forEach((other) => console.log('\t', other.file.name));
-    }
-
-    return foundFiles.videos;
-  });
-};
+module.exports = scanFolder;

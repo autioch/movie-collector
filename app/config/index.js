@@ -15,4 +15,8 @@ if (!validate(config)) {
   throw Error('Invalid options found.');
 }
 
+if (!config.inputPath && !config.inputCache) {
+  throw Error('No input option specified.');
+}
+
 module.exports = config;

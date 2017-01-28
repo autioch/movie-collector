@@ -21,6 +21,9 @@ function shouldQueryVideo(videoData) {
  * @return {Promise}              Promise resolving when all vidoes are updated.
  */
 module.exports = function prepareOmdbData(videos, config) {
+  if (!config.omdb) {
+    return bluebird.resolve(videos);
+  }
   const { omdbForce } = config;
 
   let videosToQuery = videos;

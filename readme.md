@@ -15,7 +15,7 @@ For list of available options and descriptions, see `app/config/default.js`.
 
 Params can be passed as inline arguments, with format:
 ```
-node app --input=./inputData/data.json --omdb --stat --check
+node app --inputJson=./inputData/data.json --omdb --stat --validate
 ```
 
 Also, configuration file is accepted, that is regular js file:

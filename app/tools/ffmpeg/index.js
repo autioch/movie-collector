@@ -13,6 +13,9 @@ const MAX_PROBES = 3;
  * @return {Promise}              Promise resolving when all videos have been probed.
  */
 module.exports = function ffmpeg(videos, config) {
+  if (!config.ffmpeg) {
+    return bluebird.resolve(videos);
+  }
   process.env.FFMPEG_PATH = path.join(config.ffmpeg, 'bin', 'ffmpeg.exe');
   process.env.FFPROBE_PATH = path.join(config.ffmpeg, 'bin', 'ffprobe.exe');
 

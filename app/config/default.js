@@ -6,20 +6,17 @@ module.exports = {
    */
   prepare: true,
 
-  /* Required.
-   * If value resolves to a folder, it will be scanned and an array of videos will be produced.
-   * If value resolves to a json file, it will be read and treated like a array of videos. */
-  input: '',
+  /* Required instead or with inputCache.
+   * If specified, path will be scanned for videos. */
+  inputPath: false,
 
-  /* Optional.
-   * If set to true, all unknown files will be logged in console.
-   * If set to false, no extra information will be logged. */
-  other: true,
+  /* Required instead or with inputPath.
+   * If specified, file contents will be read and treated as videos scanned before. */
+  inputCache: false,
 
-  /* Optional.
-   * In addition to returning from app, collected data will be saved in the file .
-   * Value of output must be name of the file to save data.  */
-  output: '',
+  /* Optimal.
+   * If set to true, data for videos that were not found in inputPath will not be included in output. */
+  inputTrim: false,
 
   /* Optional.
    * If set, should point to folder containing bin folder with ffmpeg executables.
@@ -41,22 +38,37 @@ module.exports = {
 
   /* Optional.
    * If set to true, gathered data will be checked for problems. */
-  check: false,
-
-  /* Optional.
-   * If set, gathered data will be used for statistics.
-   * Value of stat must be name of the folder to save data.  */
-  stat: false,
+  validate: false,
 
   /* Required.
-   * Files that should be recognized as videos */
+   * In addition to returning from app, all file output will be placed in that path. */
+  outputPath: false,
+
+  /* Optional.
+   * If set to true, json of videos will be generated. */
+  outputData: false,
+
+  /* Optional.
+   * If set to true, json of unknown files will be generated. */
+  outputUnknown: false,
+
+  /* Optional.
+   * If set to true, html list will be generated. */
+  outputList: false,
+
+  /* Optional.
+   * If set to true, statistics and html page will be generated. */
+  outputStat: false,
+
+  /* Required.
+   * Files that should be recognized as videos. */
   videoFormats: ['avi', 'mp4', 'mkv', 'm4v'],
 
   /* Required.
-   * Files that should be recognized as subtitles */
+   * Files that should be recognized as subtitles. */
   subtitleFormats: ['srt', 'txt', 'sub', 'idx'],
 
   /* Required.
-   * Files that should be ignored */
+   * Files that should be ignored. */
   ignoredFormats: ['jpg', 'bmp']
 };
