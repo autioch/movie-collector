@@ -18,6 +18,10 @@ module.exports = {
   inputTrim: false,
 
   /* Optional.
+   * If set to true, json content will be minified. */
+  minify: false,
+
+  /* Optional.
    * If set, should point to folder containing bin folder with ffmpeg executables.
    * ffmpeg will be used to probe the videos without ffmpeg data. */
   ffmpeg: false,

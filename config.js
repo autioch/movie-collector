@@ -2,13 +2,14 @@ const path = require('path');
 
 module.exports = {
   prepare: true,
-  inputPath: path.join('e:', 'movie'),
+  // inputPath: path.join('e:', 'movie'),
   inputCache: path.join(__dirname, 'output', 'data.json'),
-  inputTrim: true,
+  // inputTrim: true,
   ffmpeg: path.join(__dirname, '..', 'ffmpeg'),
   // ffmpegForce: true,
   omdb: true,
-  omdbForce: true,
+  // omdbForce: true,
+  minify: true,
   validate: true,
   outputPath: path.join(__dirname, 'output'),
   outputData: true,

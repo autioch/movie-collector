@@ -1,4 +1,7 @@
 const fs = require('bluebird').promisifyAll(require('fs'));
+const { minify } = require('../config');
+
+const stringifier = minify ? (contents) => JSON.stringify(contents) : (contents) => JSON.stringify(contents, null, '  ');
 
 /**
  * Saves data as a json, then returns the data.
@@ -8,6 +11,6 @@ const fs = require('bluebird').promisifyAll(require('fs'));
  */
 module.exports = function saveJson(fileName, fileContents) {
   return fs
-    .writeFileAsync(fileName, JSON.stringify(fileContents, null, '  '), 'utf8')
+    .writeFileAsync(fileName, stringifier(fileContents), 'utf8')
     .then(() => fileContents);
 };
