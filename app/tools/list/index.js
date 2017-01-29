@@ -1,4 +1,7 @@
+const path = require('path');
 const bluebird = require('bluebird');
+const parseVideo = require('./parseVideo');
+const { getTicker, saveJson } = require('../../utils');
 
 /**
  * Generates a web app for browsing videos.
@@ -11,5 +14,9 @@ module.exports = function listData(videos, config) {
     return bluebird.resolve(videos);
   }
 
-  return bluebird.resolve(videos);
+  const ticker = getTicker('Save list', 1);
+
+  return saveJson(path.join(config.outputPath, 'list', 'list.json'), videos.map(parseVideo))
+    .tap(ticker)
+    .then(() => videos);
 };
