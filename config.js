@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   prepare: true,
-  // inputPath: path.join('e:', 'movie'),
+  // inputPath: path.join('g:', 'filmy'),
   inputCache: path.join(__dirname, 'output', 'data.json'),
   // inputTrim: true,
   // ffmpeg: path.join(__dirname, '..', 'ffmpeg'),

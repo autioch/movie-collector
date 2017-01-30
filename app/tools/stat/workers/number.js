@@ -30,7 +30,7 @@ module.exports = function statNumber(stat) {
   values.sort(sortFloat).forEach((value) => {
     const num = parseFloat(value, 10);
 
-    if (!isNaN(num)) {
+    if (!isNaN(num) && num !== null) {
       if (min > num) {
         min = num;
       }
@@ -39,7 +39,7 @@ module.exports = function statNumber(stat) {
       }
       sum += num;
     }
-    updateDict(dict, value.toString());
+    updateDict(dict, value === null ? 'null' : value.toString());
   });
 
   const keys = Object.keys(dict);

@@ -4,7 +4,6 @@ const textProperties = [
   'Rated',
   'Released',
   'Plot',
-  'Country',
   'Awards',
   'Metascore',
   'imdbRating',
@@ -15,6 +14,7 @@ const textProperties = [
 const arrayProperties = [
   'Genre',
   'Actors',
+  'Country',
   'Director',
   'Writer',
   'Language'
