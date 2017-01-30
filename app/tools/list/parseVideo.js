@@ -2,7 +2,6 @@ const seconds = 60;
 
 const sizes = 1024;
 const mb = sizes * sizes;
-const votesRegex = /\./g;
 
 function parseMetascore(metascore) {
   return (metascore && metascore != 'N/A') ? parseInt(metascore, 10) : undefined;
@@ -11,11 +10,6 @@ function parseMetascore(metascore) {
 function parseImdbRating(imdbrating) {
   return (imdbrating && imdbrating != 'N/A') ? parseInt(imdbrating, 10) : undefined;
 }
-
-function parseImdbVotes(imdbvotes) {
-  return (imdbvotes && imdbvotes != 'N/A') ? parseInt(imdbvotes.replace(votesRegex, ''), 10) : undefined;
-}
-
 module.exports = function parseVideo(video) {
   const { omdb = {}, ffmpeg = {} } = video;
 
@@ -28,7 +22,7 @@ module.exports = function parseVideo(video) {
     year: parseInt(video.year, 10),
     metascore: parseMetascore(omdb.metascore),
     imdbRating: parseImdbRating(omdb.imdbrating),
-    imdbVotes: parseImdbVotes(omdb.imdbvotes),
+    imdbVotes: omdb.imdbvotes,
     size: Math.floor(video.file.size / mb),
     errors: video.errors || []
   };

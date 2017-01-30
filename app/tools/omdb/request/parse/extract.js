@@ -1,3 +1,6 @@
+
+const dotsRegex = /\./g;
+
 const textProperties = [
   'Title',
   'Year',
@@ -5,10 +8,14 @@ const textProperties = [
   'Released',
   'Plot',
   'Awards',
+  'imdbID'
+];
+
+const numberProperties = [
   'Metascore',
   'imdbRating',
   'imdbVotes',
-  'imdbID'
+  'Runtime'
 ];
 
 const arrayProperties = [
@@ -26,17 +33,19 @@ const arrayProperties = [
  * @return {Object}          Formatted data.
  */
 module.exports = function extractData(omdbData) {
-  const data = textProperties.reduce((result, key) => {
-    result[key.toLowerCase()] = omdbData[key];
+  const data = {};
 
-    return result;
-  }, {});
+  textProperties.forEach((key) => {
+    data[key.toLowerCase()] = omdbData[key];
+  });
 
-  data.runtime = parseInt(omdbData.Runtime, 10);
+  numberProperties.forEach((key) => {
+    data[key.toLowerCase()] = parseFloat(omdbData[key].replace(dotsRegex, ''));
+  });
 
-  return arrayProperties.reduce((result, key) => {
-    result[key.toLowerCase()] = omdbData[key].split(',').map((value) => value.trim());
+  arrayProperties.forEach((key) => {
+    data[key.toLowerCase()] = omdbData[key].split(',').map((value) => value.trim());
+  });
 
-    return result;
-  }, data);
+  return data;
 };

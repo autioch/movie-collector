@@ -12,7 +12,6 @@ module.exports = [
   'omdb.awards',
   'omdb.error',
   'omdb.imdbid',
-  'omdb.imdbvotes',
   'omdb.plot',
   'omdb.released',
   'omdb.title',
