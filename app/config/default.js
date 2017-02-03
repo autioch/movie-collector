@@ -57,6 +57,11 @@ module.exports = {
    * If set to true, json of unknown files will be generated. */
   outputUnknown: false,
 
+/* Optional.
+ * If set to true, json containing only errors will be generated.
+ * This will only work when validation is set to true. */
+  outputErrors: false,
+
   /* Optional.
    * If set to true, html list will be generated. */
   outputList: false,

@@ -4,6 +4,7 @@ const fs = bluebird.promisifyAll(require('fs'));
 const scanFolder = require('./scanFolder');
 const { getTicker, saveJson } = require('../../utils');
 const merge = require('./merge');
+const update = require('./update');
 
 const totalSteps = 2;
 
@@ -46,6 +47,6 @@ module.exports = function getInputData(videos, config) {
       saveJson(path.join(config.outputPath, 'unknown.json'), scanData.other);
     }
 
-    return merge(config, cacheData, scanData.videos);
+    return update(merge(config, cacheData, scanData.videos));
   });
 };

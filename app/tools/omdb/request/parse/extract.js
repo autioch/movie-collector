@@ -1,9 +1,7 @@
-
-const dotsRegex = /\./g;
+const separatorRegex = /(\.|,| )/g;
 
 const textProperties = [
   'Title',
-  'Year',
   'Rated',
   'Released',
   'Plot',
@@ -12,6 +10,7 @@ const textProperties = [
 ];
 
 const numberProperties = [
+  'Year',
   'Metascore',
   'imdbRating',
   'imdbVotes',
@@ -40,7 +39,7 @@ module.exports = function extractData(omdbData) {
   });
 
   numberProperties.forEach((key) => {
-    data[key.toLowerCase()] = parseFloat(omdbData[key].replace(dotsRegex, ''));
+    data[key.toLowerCase()] = parseFloat(omdbData[key].replace(separatorRegex, ''));
   });
 
   arrayProperties.forEach((key) => {
