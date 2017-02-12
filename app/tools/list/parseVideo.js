@@ -11,7 +11,7 @@ function parseImdbRating(imdbrating) {
   return (imdbrating && imdbrating != 'N/A') ? parseInt(imdbrating, 10) : undefined;
 }
 module.exports = function parseVideo(video) {
-  const { omdb = {}, ffmpeg = {} } = video;
+  const { omdb = {}, ffmpeg = {}, file = {} } = video;
 
   return {
     title: video.title,
@@ -23,6 +23,13 @@ module.exports = function parseVideo(video) {
     metascore: parseMetascore(omdb.metascore),
     imdbRating: parseImdbRating(omdb.imdbrating),
     imdbVotes: omdb.imdbvotes,
+    created: file.created,
+    formatLongName: ffmpeg.formatLongName,
+    audioChannels: ffmpeg.audio.map((item) => item.channels).join(','),
+    displayAspectRatio: ffmpeg.video[0].displayAspectRatio,
+    fps: ffmpeg.video[0].fps.toString(),
+    width: ffmpeg.video[0].width,
+    height: ffmpeg.video[0].height,
     size: Math.floor(video.file.size / mb),
     errors: video.errors || []
   };
