@@ -2,13 +2,13 @@ const updateDict = require('./updateDict');
 
 /**
  * Decides order of string fields containing floats.
- * @param  {String} a [description]
- * @param  {String} b [description]
+ * @param  {String} valueA [description]
+ * @param  {String} valueB [description]
  * @return {Number}   Order of the strings.
  */
-function sortFloat(a, b) {
-  const floatA = parseFloat(a);
-  const floatB = parseFloat(b);
+function sortFloat(valueA, valueB) {
+  const floatA = parseFloat(valueA);
+  const floatB = parseFloat(valueB);
 
   if (floatA > floatB) {
     return 1;

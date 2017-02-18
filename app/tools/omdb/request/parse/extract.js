@@ -1,29 +1,29 @@
 const separatorRegex = /(\.|,| )/g;
 
 const textProperties = [
-  'Title',
+  'Awards',
+  'imdbID',
+  'Plot',
   'Rated',
   'Released',
-  'Plot',
-  'Awards',
-  'imdbID'
+  'Title'
 ];
 
 const numberProperties = [
-  'Year',
-  'Metascore',
   'imdbRating',
   'imdbVotes',
-  'Runtime'
+  'Metascore',
+  'Runtime',
+  'Year'
 ];
 
 const arrayProperties = [
-  'Genre',
   'Actors',
   'Country',
   'Director',
-  'Writer',
-  'Language'
+  'Genre',
+  'Language',
+  'Writer'
 ];
 
 /**
@@ -32,7 +32,9 @@ const arrayProperties = [
  * @return {Object}          Formatted data.
  */
 module.exports = function extractData(omdbData) {
-  const data = {};
+  const data = {
+    created: new Date().toJSON()
+  };
 
   textProperties.forEach((key) => {
     data[key.toLowerCase()] = omdbData[key];

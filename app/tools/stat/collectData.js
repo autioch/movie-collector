@@ -3,8 +3,9 @@ const ignore = require('./ignore');
 module.exports = function collectData(videoArray) {
   const scanData = {};
 
-  function scanForData(prefix, object) {
-    prefix = prefix.length ? `${prefix}.` : '';
+  function scanForData(prefixedKey, object) {
+    const prefix = prefixedKey.length ? `${prefixedKey}.` : '';
+
     Object.keys(object)
       .filter((key) => ignore.indexOf(key) < 0)
       .filter((key) => ignore.indexOf(prefix + key) < 0)

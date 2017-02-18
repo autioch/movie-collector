@@ -12,6 +12,7 @@ module.exports = function parseFFProbeData(ffProbeData) {
   const { format, streams } = ffProbeData;
 
   return {
+    created: new Date().toJSON(),
     formatName: format.format_name,
     formatLongName: format.format_long_name,
     duration: Math.round(format.duration),

@@ -18,8 +18,11 @@ module.exports = function sortFiles(folderFiles) {
       if (subtitleFormats.indexOf(item.file.ext) > -1) {
         const matchingVideo = videos.find((movie) => movie.title === item.title);
 
+        /* Create separate subs objects for future features. */
         if (matchingVideo) {
-          matchingVideo.file.subs = item.file.ext;
+          matchingVideo.subs = {
+            ext: item.file.ext
+          };
 
           return false;
         }

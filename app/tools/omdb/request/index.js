@@ -1,8 +1,14 @@
 const http = require('http');
 const getUrl = require('./getUrl');
-const query = require('./query');
 const Bluebird = require('bluebird');
 const parse = require('./parse');
+const { getQuery } = require('../../../utils');
+
+const HTTP_OK_MIN = 200;
+const HTTP_OK_MAX = 299;
+
+/* Creates an instance of a query for omdb requests. */
+const query = getQuery();
 
 /**
  * Places a request to omdb in a queue.
@@ -17,14 +23,15 @@ module.exports = function request(videoData) {
         .get(videoData.omdbUrl, (res) => {
           let omdbData = '';
 
-          if (res.statusCode >= 200 || res.statusCode <= 299) {
+          if (res.statusCode >= HTTP_OK_MIN || res.statusCode <= HTTP_OK_MAX) {
             res.on('data', (chunk) => (omdbData += chunk));
-            res.on('end', () => Object.assign(videoData, {
-              omdb: parse(omdbData)
-            }));
+            res.on('end', () => {
+              Object.assign(videoData, {
+                omdb: parse(omdbData)
+              });
+              resolve(videoData);
+            });
           }
-
-          return resolve(videoData);
         })
         .on('error', (err) => {
           videoData.omdb = {
