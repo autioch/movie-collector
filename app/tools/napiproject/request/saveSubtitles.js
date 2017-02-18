@@ -6,7 +6,7 @@ const SUB_FORMAT = 'srt';
 module.exports = function saveSubtitles(videoData, subtitle) {
   const { file: { folder, name, ext } } = videoData;
   const fullName = path.join(folder, name);
-  const subsFilename = `${fullName.slice(0, -ext.length)}.${SUB_FORMAT}`;
+  const subsFilename = `${fullName.slice(0, -ext.length)}${SUB_FORMAT}`;
 
   return new Promise((resolve) => {
     const file = fs.createWriteStream(subsFilename);
