@@ -23,7 +23,7 @@ function shouldQueryVideo(videoData) {
  * @return {Promise}         Promise resolving to videos array.
  */
 module.exports = function prepareNapiProject(videos, config) {
-  if (!config.napiproject) {
+  if (!config.napiProject) {
     return bluebird.resolve(videos);
   }
 

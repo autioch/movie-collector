@@ -9,7 +9,9 @@ module.exports = function getFps(rFrameRate) {
   if (parts.length > 0) {
     return Math.round(parts[0] / parts[1]);
   }
-  const other = parseInt(rFrameRate, 10);
+  const other = parseFloat(rFrameRate);
+
+  console.log(rFrameRate, other);
 
   if (!isNaN(other)) {
     return other;

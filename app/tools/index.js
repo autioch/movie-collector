@@ -10,6 +10,7 @@ module.exports = [
   /* Additional data. */
   require('./ffmpeg'),
   require('./omdb'),
+  require('./napiproject'),
 
   /* Check collected data. */
   require('./validate'),

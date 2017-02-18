@@ -37,9 +37,15 @@ module.exports = function validate(videos, config) {
       errors: video.errors
     }));
 
-    return saveJson(path.join(config.outputPath, 'errors.json'), errors)
-      .tap(ticker)
-      .then(() => videos);
+    if (errors.length) {
+      return saveJson(path.join(config.outputPath, 'errors.json'), errors)
+        .tap(ticker)
+        .then(() => videos);
+    }
+
+    ticker();
+
+    return videos;
   }
 
   return videos;
