@@ -1,8 +1,8 @@
 module.exports = {
 
   /* Optional.
-   * If set to true, all specified folders are created before all other operations.
-   * If set to false, no folders are created.
+   * If set to true, all specified folders are set before all other operations.
+   * If set to false, no folders are set.
    */
   prepare: true,
 
@@ -40,6 +40,11 @@ module.exports = {
    * If set to true, all movies, even with valid omdb data will be queried.
    * If set to false, only movies without omdb data or with error will be queried.*/
   omdbForce: false,
+
+  /* Optional.
+   * If set to true, https://www.napiprojekt.pl/ will be queried for subtitles.
+   * Movies that already have subtitles will not be checked again. */
+  napiProject: false,
 
   /* Optional.
    * If set to true, gathered data will be checked for problems. */
@@ -80,5 +85,5 @@ module.exports = {
 
   /* Required.
    * Files that should be ignored. */
-  ignoredFormats: ['jpg', 'bmp']
+  ignoredFormats: ['jpg', 'bmp', 'png']
 };

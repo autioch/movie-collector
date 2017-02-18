@@ -6,7 +6,8 @@ const textProperties = [
   'Plot',
   'Rated',
   'Released',
-  'Title'
+  'Title',
+  'Poster'
 ];
 
 const numberProperties = [
@@ -33,7 +34,7 @@ const arrayProperties = [
  */
 module.exports = function extractData(omdbData) {
   const data = {
-    created: new Date().toJSON()
+    generated: new Date().toJSON()
   };
 
   textProperties.forEach((key) => {

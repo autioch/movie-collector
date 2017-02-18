@@ -16,12 +16,14 @@ module.exports = function sortFiles(folderFiles) {
     /* Skip subtitles with matching video and set videos subs. */
     .filter((item) => {
       if (subtitleFormats.indexOf(item.file.ext) > -1) {
-        const matchingVideo = videos.find((movie) => movie.title === item.title);
+        const matchingVideo = videos.find((movie) => movie.title === item.title && movie.year === item.year);
 
         /* Create separate subs objects for future features. */
         if (matchingVideo) {
           matchingVideo.subs = {
-            ext: item.file.ext
+            ext: item.file.ext,
+            created: item.file.created,
+            generated: new Date().toJSON()
           };
 
           return false;

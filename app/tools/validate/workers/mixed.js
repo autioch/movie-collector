@@ -1,6 +1,6 @@
 const seconds = 60;
 
-const maxDurationDiff = 10;
+const maxDurationDiff = 15;
 
 const label = 'Different duration';
 

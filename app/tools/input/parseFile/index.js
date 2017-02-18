@@ -18,7 +18,8 @@ module.exports = function parseFile(itemData) {
       folder: folderPath,
       name: itemName,
       size: stats.size,
-      created: getCreationTime(stats)
+      created: getCreationTime(stats),
+      generated: new Date().toJSON()
     }
   };
 };

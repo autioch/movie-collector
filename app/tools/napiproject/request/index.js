@@ -19,6 +19,7 @@ const query = getQuery();
 module.exports = function request(videoData) {
   return new Bluebird((resolve) => {
     query(() => {
+      videoData.subs = {};
       getPostData(videoData)
         .then((postData) => {
           const options = getOptions(postData);
@@ -35,9 +36,7 @@ module.exports = function request(videoData) {
           });
 
           req.on('error', (err) => {
-            videoData.subs = {
-              error: `Http error: ${err.message}`
-            };
+            videoData.subs.error = `Http error: ${err.message}`;
 
             return resolve();
           });

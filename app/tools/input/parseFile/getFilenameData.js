@@ -13,7 +13,7 @@ module.exports = function getFilenameData(fileName) {
   let nameOffset = 0;
 
   if (fileName.startsWith('[')) {
-    year = fileName.substr(1, yearSize);
+    year = parseInt(fileName.substr(1, yearSize), 10);
     nameOffset = yearDataSize;
   }
 
