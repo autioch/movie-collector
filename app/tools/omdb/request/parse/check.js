@@ -10,7 +10,8 @@ module.exports = function check(omdbData) {
     data = JSON.parse(omdbData);
   } catch (err) {
     return {
-      error: `JSON parse error: ${err.message}`
+      error: `JSON parse error: ${err.message}`,
+      omdbData
     };
   }
 

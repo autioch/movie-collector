@@ -26,8 +26,9 @@ function scanFolder(folderPath) {
  * @return {Object}      Object containing videos and other files.
  */
 function parseFolderItems(items) {
-  const folders = items.filter((item) => item.stats.isDirectory()).map((item) => path.join(item.folderPath, item.itemName));
-  const files = items.filter((item) => item.stats.isFile()).map(parseFile);
+  const readItems = items.filter((item) => !!item);
+  const folders = readItems.filter((item) => item.stats.isDirectory()).map((item) => path.join(item.folderPath, item.itemName));
+  const files = readItems.filter((item) => item.stats.isFile()).map(parseFile);
   const { videos, other } = sortFiles(files);
 
   return bluebird
@@ -55,7 +56,8 @@ function statItem(folderPath, itemName) {
       folderPath,
       itemName,
       stats
-    }));
+    }))
+    .catch(() => false);
 }
 
 module.exports = scanFolder;

@@ -8,7 +8,7 @@ const HTTP_OK_MIN = 200;
 const HTTP_OK_MAX = 299;
 
 /* Creates an instance of a query for omdb requests. */
-const query = getQuery();
+const query = getQuery(1000);
 
 /**
  * Places a request to omdb in a queue.

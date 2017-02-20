@@ -51,7 +51,7 @@ module.exports = function checkffmpeg(videoData) {
   if (ffmpeg.unkown.length) {
     errors.push({
       label: 'Unkown streams',
-      streams: ffmpeg.unkown
+      count: ffmpeg.unkown.length
     });
   }
 
