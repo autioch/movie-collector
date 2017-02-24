@@ -1,6 +1,7 @@
 const path = require('path');
 const bluebird = require('bluebird');
 const parse = require('./parse');
+const parser = require('./parser');
 const { getTicker, saveJson } = require('../../utils');
 
 /**
@@ -16,7 +17,7 @@ module.exports = function listData(videos, config) {
 
   const ticker = getTicker('Save list', 1);
 
-  return saveJson(path.join(config.outputPath, 'list', 'data.json'), videos.map(parse))
+  return saveJson(path.join(config.outputPath, 'list', 'data.json'), videos.map(parse).map(parser))
     .tap(ticker)
     .then(() => videos);
 };
