@@ -40,28 +40,32 @@ module.exports = function itemParser(item) {
     item.imdbVotesRounded = roundValue(item.imdbVotes);
   }
   if (!item.genre || !item.genre.length) {
-    item.genre = null;
+    item.genre = undefined;
   }
   if (!item.actors || !item.actors.length) {
-    item.actors = null;
+    item.actors = undefined;
   } else {
     item.actors = item.actors.sort();
   }
   if (!item.director || !item.director.length) {
-    item.director = null;
+    item.director = undefined;
   } else {
     item.director = item.director.sort();
   }
   if (!item.writer || !item.writer.length) {
-    item.writer = null;
+    item.writer = undefined;
   } else {
     item.writer = item.writer.map((writer) => writer.replace(/\([^)]+\)/, '').trim()).sort();
   }
   if (!item.subtitles || !item.subtitles.length) {
-    item.subtitles = null;
+    item.subtitles = undefined;
   } else {
     item.subtitles = uniq(item.subtitles.map((sub) => subtitlesMap[sub] || 'Other').sort());
   }
+  if (item.created) {
+    item.added = item.created.substr(0, 10);
+  }
+  item.created = undefined;
 
   return item;
 };
