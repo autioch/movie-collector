@@ -6,3 +6,4 @@
 5. ~~Store information about file date and each tool usage per video~~.
 6. Validate `generated` dates.
 7. Update methods for checking if tools should be executed based on generated dates.
+8. Make config a promise.
