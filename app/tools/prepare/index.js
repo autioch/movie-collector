@@ -16,6 +16,7 @@ function makeSubfolders(config) {
 
   if (config.outputList) {
     folderPaths.push(path.join(config.outputPath, 'list'));
+    folderPaths.push(path.join(config.outputPath, 'list', 'data'));
   }
 
   return Bluebird.all(folderPaths.map((folderPath) => mkdirp(folderPath)));

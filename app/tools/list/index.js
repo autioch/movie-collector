@@ -1,8 +1,11 @@
 const path = require('path');
 const bluebird = require('bluebird');
 const parse = require('./parse');
-const parser = require('./parser');
 const { getTicker, saveJson } = require('../../utils');
+const qbMovieList = require('qb-movie-list');
+const copySchema = require('./copySchema');
+
+const totalSteps = 3;
 
 /**
  * Generates a web app for browsing videos.
@@ -15,9 +18,20 @@ module.exports = function listData(videos, config) {
     return bluebird.resolve(videos);
   }
 
-  const ticker = getTicker('Save list', 1);
+  const ticker = getTicker('Save list', totalSteps);
+  const buildFolder = path.join(config.outputPath, 'list');
 
-  return saveJson(path.join(config.outputPath, 'list', 'data.json'), videos.map(parse).map(parser))
+  return bluebird
+
+    /* Wrap native promise. */
+    .resolve(qbMovieList({
+      buildFolder,
+      isProduction: config.minify
+    }))
+    .tap(ticker)
+    .then(() => saveJson(path.join(buildFolder, 'data', 'items.json'), videos.map(parse)))
+    .tap(ticker)
+    .then(() => copySchema(config))
     .tap(ticker)
     .then(() => videos);
 };
