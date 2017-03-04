@@ -29,8 +29,6 @@ function compareFunction(videoA, videoB) {
  * @return {Array}             Array of videos.
  */
 module.exports = function merge(config, cacheVideos, scanVideos) {
-  // console.log(`Cache: ${cacheVideos.length} video(s)`);
-  // console.log(`Scan:  ${scanVideos.length} video(s)`);
   scanVideos.forEach((pathVideo) => {
     const foundVideo = cacheVideos.find((cacheVideo) => cacheVideo.title === pathVideo.title && cacheVideo.year === pathVideo.year);
 
@@ -41,8 +39,6 @@ module.exports = function merge(config, cacheVideos, scanVideos) {
   });
 
   const oldVideos = cacheVideos.filter((video) => !video.__foundInScan);
-
-  // console.log(`Old:   ${oldVideos.length} video(s)`);
 
   if (config.inputTrim) {
     if (config.inputPath) {

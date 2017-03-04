@@ -11,11 +11,9 @@ module.exports = function getFps(rFrameRate) {
   }
   const other = parseFloat(rFrameRate);
 
-  console.log(rFrameRate, other);
-
-  if (!isNaN(other)) {
-    return other;
+  if (isNaN(other)) {
+    return -1;
   }
 
-  return -1;
+  return other;
 };
