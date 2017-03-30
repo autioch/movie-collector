@@ -14,9 +14,9 @@ module.exports = function getTemplate(title, total) {
     title = padRight(title, maxLabelWidth);
   }
   if (title.length > maxLabelWidth) {
-    title = `${title.slice(0, 16) }...`;
+    title = `${title.slice(0, 16)}...`;
   }
-  let template = `${title }  :percent  `;
+  let template = `${title}  :percent  `;
 
   if (total < 10) {
     template += '  ';
@@ -28,5 +28,5 @@ module.exports = function getTemplate(title, total) {
     template += '  ';
   }
 
-  return `${template }:current/:total  :bar`;
+  return `${template}:current/:total  :bar`;
 };

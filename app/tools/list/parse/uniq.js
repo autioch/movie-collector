@@ -1,6 +1,6 @@
 module.exports = function uniq(array) {
   const seen = {
-    'undefined': 1,
+    undefined: 1,
     'null': 1,
     'N/A': 1
   };
@@ -12,6 +12,7 @@ module.exports = function uniq(array) {
 
     if (seen[item] !== 1) {
       seen[item] = 1;
+
       // items[j++] = item;
       items.push(item);
     }

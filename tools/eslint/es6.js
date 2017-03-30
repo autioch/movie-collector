@@ -1,114 +1,136 @@
 module.exports = {
-  env: {
-    es6: true
-  },
-  parserOptions: {
-    ecmaVersion: 6,
-    sourceType: 'module',
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true
-    }
-  },
   rules: {
 
-    // require braces around arrow function bodies
+    // Require braces around arrow function bodies
     'arrow-body-style': ['error', 'as-needed', {
       requireReturnForObjectLiteral: false
     }],
 
-    // require parentheses around arrow function arguments
-    'arrow-parens': ['error', 'always'],
+    // Require parentheses around arrow function arguments
+    'arrow-parens': ['error', 'always', {
+      requireForBlockBody: true
+    }],
 
-    // enforce consistent spacing before and after the arrow in arrow functions
+    // Enforce consistent spacing before and after the arrow in arrow functions
     'arrow-spacing': ['error', {
-      'before': true,
-      'after': true
+      after: true,
+      before: true
     }],
 
-    // require super() calls in constructors
-    'constructor-super': ['warn'],
+    // Require super() calls in constructors
+    'constructor-super': ['error'],
 
-    // enforce consistent spacing around * operators in generator functions
-    'generator-star-spacing': ['warn', {
-      'before': true,
-      'after': false
+    // Enforce consistent spacing around * operators in generator functions
+    'generator-star-spacing': ['error', {
+      after: true,
+      before: true
     }],
 
-    // disallow reassigning class members
+    // Disallow reassigning class members
     'no-class-assign': ['error'],
 
-    // disallow arrow functions where they could be confused with comparisons
-    'no-confusing-arrow': ['warn'],
+    // Disallow arrow functions where they could be confused with comparisons
+    'no-confusing-arrow': ['error', {
+      allowParens: false
+    }],
 
-    // disallow reassigning const variables
+    // Disallow reassigning const variables
     'no-const-assign': ['error'],
 
-    // disallow duplicate class members
+    // Disallow duplicate class members
     'no-dupe-class-members': ['error'],
 
-    // disallow duplicate module imports
-    'no-duplicate-imports': ['error'],
+    // Disallow duplicate module imports
+    'no-duplicate-imports': ['error', {
+      includeExports: false
+    }],
 
-    // disallow new operators with the Symbol object
+    // Disallow new operators with the Symbol object
     'no-new-symbol': ['error'],
 
-    // disallow specified modules when loaded by import
-    'no-restricted-imports': ['off'],
+    // Disallow specified modules when loaded by import
+    'no-restricted-imports': ['error', {
+      paths: ['underscore', 'ramda']
+    }],
 
-    // disallow this/super before calling super() in constructors
-    'no-this-before-super': ['warn'],
+    // Disallow this/super before calling super() in constructors
+    'no-this-before-super': ['error'],
 
-    // disallow unnecessary computed property keys in object literals
+    // Disallow unnecessary computed property keys in object literals
     'no-useless-computed-key': ['error'],
 
-    // disallow unnecessary constructors
+    // Disallow unnecessary constructors
     'no-useless-constructor': ['error'],
 
-    // disallow renaming import, export, and destructured assignments to the same name
-    'no-useless-rename': ['warn'],
+    // Disallow renaming import, export, and destructured assignments to the same name
+    'no-useless-rename': ['error', {
+      ignoreDestructuring: false,
+      ignoreExport: false,
+      ignoreImport: false
+    }],
 
-    // require let or const instead of var
+    // Require let or const instead of var
     'no-var': ['error'],
 
-    // require or disallow method and property shorthand syntax for object literals
-    'object-shorthand': ['warn', 'always'],
+    // Require or disallow method and property shorthand syntax for object literals
+    'object-shorthand': ['error', 'always', {
+      avoidExplicitReturnArrows: true,
+      avoidQuotes: false,
+      ignoreConstructors: false
+    }],
 
-    // require arrow functions or named functions as callbacks
-    'prefer-arrow-callback': ['warn', {
+    // Require arrow functions as callbacks
+    'prefer-arrow-callback': ['error', {
       allowNamedFunctions: true
     }],
 
-    // require const declarations for variables that are never reassigned after declared
-    'prefer-const': ['error'],
+    // Require const declarations for variables that are never reassigned after declared
+    'prefer-const': ['error', {
+      destructuring: 'any',
+      ignoreReadBeforeAssign: false
+    }],
 
-    // disallow parseInt() in favor of binary, octal, and hexadecimal literals
+    // Require destructuring from arrays and/or objects
+    'prefer-destructuring': ['error', {
+      array: true,
+      object: true
+    }, {
+      enforceForRenamedProperties: false
+    }],
+
+    // Disallow parseInt() in favor of binary, octal, and hexadecimal literals
     'prefer-numeric-literals': ['off'],
 
-    // require rest parameters instead of arguments
+    // Require rest parameters instead of arguments
     'prefer-rest-params': ['error'],
 
-    // require spread operators instead of .apply()
+    // Require spread operators instead of .apply()
     'prefer-spread': ['error'],
 
-    // require template literals instead of string concatenation
-    'prefer-template': ['warn'],
+    // Require template literals instead of string concatenation
+    'prefer-template': ['error'],
 
-    // require generator functions to contain yield
-    'require-yield': ['warn'],
+    // Require generator functions to contain yield
+    'require-yield': ['error'],
 
-    // enforce spacing between rest and spread operators and their expressions
+    // Enforce spacing between rest and spread operators and their expressions
     'rest-spread-spacing': ['error', 'never'],
 
-    // enforce sorted import declarations within modules
+    // Enforce sorted import declarations within modules
+    /* Not using imports at all */
     'sort-imports': ['off'],
 
-    // require symbol descriptions
+    // Require symbol descriptions
     'symbol-description': ['error'],
 
-    // require or disallow spacing around embedded expressions of template strings
-    'template-curly-spacing': ['off'],
+    // Require or disallow spacing around embedded expressions of template strings
+    'template-curly-spacing': ['error', 'never'],
 
-    // require or disallow spacing around the * in yield* expressions
-    'yield-star-spacing': ['off']
+    // Require or disallow spacing around the * in yield* expressions
+    'yield-star-spacing': ['error', {
+      after: true,
+      before: true
+    }]
+
   }
 };

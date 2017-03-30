@@ -15,7 +15,7 @@ module.exports = function optionWithValue(optionString, config) {
 
   const valueArray = match[2].split(',');
 
-  config[match[1]] = (valueArray.length === 1) ? match[2] : valueArray;
+  config[match[1]] = valueArray.length === 1 ? match[2] : valueArray;
 
   return true;
 };

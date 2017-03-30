@@ -18,7 +18,7 @@
     "lodash.throttle": "^4.1.1",
     "md5-part-file": "^1.1.0",
     "progress": "^1.1.8",
-    "qb-movie-list": "^1.0.4",
+    "qb-movie-list": "^1.0.7",
     "xml2js": "^0.4.17"
   },
   "repository": {

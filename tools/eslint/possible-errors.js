@@ -1,98 +1,134 @@
 module.exports = {
   rules: {
 
-    // disallow assignment operators in conditional expressions
-    'no-cond-assign': ['warn'],
+    // Disallow await inside of loops
+    'no-await-in-loop': ['error'],
 
-    // disallow the use of console apart from warn and error
+    // Disallow comparing against -0
+    'no-compare-neg-zero': ['error'],
+
+    // Disallow assignment operators in conditional expressions
+    'no-cond-assign': ['error', 'except-parens'],
+
+    // Disallow the use of console
     'no-console': ['error', {
-      allow: ['warn', 'error']
+      allow: ['warn']
     }],
 
-    // disallow constant expressions in conditions
-    'no-constant-condition': ['error'],
+    // Disallow constant expressions in conditions
+    'no-constant-condition': ['error', {
+      checkLoops: true
+    }],
 
-    // disallow control characters in regular expressions
+    // Disallow control characters in regular expressions
     'no-control-regex': ['error'],
 
-    // disallow the use of debugger
+    // Disallow the use of debugger
     'no-debugger': ['error'],
 
-    // disallow duplicate arguments in function definitions
+    // Disallow duplicate arguments in function definitions
     'no-dupe-args': ['error'],
 
-    // disallow duplicate keys in object literals
+    // Disallow duplicate keys in object literals
     'no-dupe-keys': ['error'],
 
-    // disallow duplicate case labels
+    // Disallow duplicate case labels
     'no-duplicate-case': ['error'],
 
-    // disallow empty character classes in regular expressions
-    'no-empty-character-class': ['error'],
-
-    // disallow empty block statements
+    // Disallow empty block statements
     'no-empty': ['error', {
       allowEmptyCatch: true
     }],
 
-    // disallow reassigning exceptions in catch clauses
+    // Disallow empty character classes in regular expressions
+    'no-empty-character-class': ['error'],
+
+    // Disallow reassigning exceptions in catch clauses
     'no-ex-assign': ['error'],
 
-    // disallow unnecessary boolean casts
+    // Disallow unnecessary boolean casts
     'no-extra-boolean-cast': ['error'],
 
-    // disallow unnecessary parentheses
-    'no-extra-parens': ['warn', 'functions'],
+    // Disallow unnecessary parentheses
+    'no-extra-parens': ['error', 'all', {
+      conditionalAssign: true,
+      ignoreJSX: 'all',
+      nestedBinaryExpressions: false,
+      returnAssign: true
+    }],
 
-    // disallow unnecessary semicolons
+    // Disallow unnecessary semicolons
     'no-extra-semi': ['error'],
 
-    // disallow reassigning function declarations
+    // Disallow reassigning function declarations
     'no-func-assign': ['error'],
 
-    // disallow variable or function declarations in nested blocks
-    'no-inner-declarations': ['error'],
+    // Disallow variable or function declarations in nested blocks
+    'no-inner-declarations': ['error', 'both'],
 
-    // disallow invalid regular expression strings in RegExp constructors
-    'no-invalid-regexp': ['error'],
+    // Disallow invalid regular expression strings in RegExp constructors
+    'no-invalid-regexp': ['error', {
+      allowConstructorFlags: []
+    }],
 
-    // disallow irregular whitespace outside of strings and comments
-    'no-irregular-whitespace': ['error'],
+    // Disallow irregular whitespace outside of strings and comments
+    'no-irregular-whitespace': ['error', {
+      skipComments: false,
+      skipRegExps: false,
+      skipStrings: false,
+      skipTemplates: false
+    }],
 
-    // disallow calling global object properties as functions
+    // Disallow calling global object properties as functions
     'no-obj-calls': ['error'],
 
-    // disallow calling some Object.prototype methods directly on objects
+    // Disallow calling some Object.prototype methods directly on objects
     'no-prototype-builtins': ['off'],
 
-    // disallow multiple spaces in regular expressions
+    // Disallow multiple spaces in regular expressions
     'no-regex-spaces': ['error'],
 
-    // disallow sparse arrays
+    // Disallow sparse arrays
     'no-sparse-arrays': ['error'],
 
-    // disallow template literal placeholder syntax in regular strings
+    // Disallow template literal placeholder syntax in regular strings
     'no-template-curly-in-string': ['error'],
 
-    // disallow confusing multiline expressions
+    // Disallow confusing multiline expressions
     'no-unexpected-multiline': ['error'],
 
-    // disallow unreachable code after return, throw, continue, and break statements
+    // Disallow unreachable code after return, throw, continue, and break statements
     'no-unreachable': ['error'],
 
-    // disallow control flow statements in finally blocks
+    // Disallow control flow statements in finally blocks
     'no-unsafe-finally': ['error'],
 
-    // disallow negating the left operand of relational operators
+    // Disallow negating the left operand of relational operators
     'no-unsafe-negation': ['error'],
 
-    // require calls to isNaN() when checking for NaN
+    // Require calls to isNaN() when checking for NaN
     'use-isnan': ['error'],
 
-    // enforce valid JSDoc comments
-    'valid-jsdoc': ['warn'],
+    // Enforce valid JSDoc comments
+    'valid-jsdoc': ['error', {
+      matchDescription: '.+',
+      prefer: {
+        arg: 'param',
+        argument: 'param',
+        'class': 'constructor',
+        virtual: 'abstract'
+      },
+      preferType: {},
+      requireParamDescription: true,
+      requireReturn: true,
+      requireReturnDescription: true,
+      requireReturnType: true
+    }],
 
-    // enforce comparing typeof expressions against valid strings
-    'valid-typeof': ['error']
+    // Enforce comparing typeof expressions against valid strings
+    'valid-typeof': ['error', {
+      requireStringLiterals: false
+    }]
+
   }
 };

@@ -21,9 +21,8 @@ module.exports = function listData(videos, config) {
   const ticker = getTicker('Save list', totalSteps);
   const buildFolder = path.join(config.outputPath, 'list');
 
+  /* Wrap native promise. */
   return bluebird
-
-    /* Wrap native promise. */
     .resolve(qbMovieList({
       buildFolder,
       isProduction: config.minify

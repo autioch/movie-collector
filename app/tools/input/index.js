@@ -8,6 +8,13 @@ const update = require('./update');
 
 const totalSteps = 2;
 
+function inputArrayReducer(result, inputPath) {
+  return scanFolder(inputPath).then(({ videos, other }) => ({
+    videos: result.videos.concat(videos),
+    other: result.other.concat(other)
+  }));
+}
+
 /**
  * Retrieves cache, scans folder and merges the results.
  * @param  {Array} videos   Array of videos to check.
@@ -31,7 +38,14 @@ module.exports = function getInputData(videos, config) {
   cachePromise.then(ticker);
 
   if (config.inputPath) {
-    scanPromise = scanFolder(config.inputPath);
+    if (Array.isArray(config.inputPath)) {
+      scanPromise = bluebird.reduce(config.inputPath, inputArrayReducer, {
+        videos: [],
+        other: []
+      });
+    } else {
+      scanPromise = scanFolder(config.inputPath);
+    }
   } else {
     scanPromise = bluebird.resolve({
       videos: [],

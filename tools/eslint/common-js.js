@@ -1,34 +1,38 @@
 module.exports = {
   rules: {
 
-    // require return statements after callbacks
-    'callback-return': ['error'],
+    // Require return statements after callbacks
+    'callback-return': ['warn', ['callback'] ],
 
-    // require require() calls to be placed at top-level module scope
+    // Require require() calls to be placed at top-level module scope
     'global-require': ['off'],
 
-    // require error handling in callbacks
-    'handle-callback-err': ['error'],
+    // Require error handling in callbacks
+    'handle-callback-err': ['error', 'err'],
 
-    // disallow require calls to be mixed with regular variable declarations
-    'no-mixed-requires': ['error'],
+    // Disallow require calls to be mixed with regular variable declarations
+    'no-mixed-requires': ['error', {
+      allowCall: false,
+      grouping: true
+    }],
 
-    // disallow new operators with calls to require
+    // Disallow new operators with calls to require
     'no-new-require': ['error'],
 
-    // disallow string concatenation with __dirname and __filename
+    // Disallow string concatenation with __dirname and __filename
     'no-path-concat': ['error'],
 
-    // disallow the use of process.env
+    // Disallow the use of process.env
     'no-process-env': ['error'],
 
-    // disallow the use of process.exit()
+    // Disallow the use of process.exit()
     'no-process-exit': ['error'],
 
-    // disallow specified modules when loaded by require
-    'no-restricted-modules': ['error'],
+    // Disallow specified modules when loaded by require
+    'no-restricted-modules': ['error', 'repl'],
 
-    // disallow synchronous methods
-    'no-sync': ['warn']
+    // Disallow synchronous methods
+    'no-sync': ['error']
+
   }
 };

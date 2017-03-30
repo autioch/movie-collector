@@ -7,7 +7,7 @@ module.exports = {
   prepare: true,
 
   /* Requires one or both of options below.
-   * If inputPath is specified, path will be scanned for videos.
+   * If inputPath is specified, path will be scanned for videos. Can be an array.
    * If inputCache is specified, file contents will be read and treated as videos scanned before.
    * If both are specified, data will be merged. Merge rule is specified by inputTrim. */
   inputPath: false,

@@ -1,217 +1,261 @@
 module.exports = {
   rules: {
 
-    // enforce getter and setter pairs in objects
-    'accessor-pairs': ['error'],
+    // Enforce getter and setter pairs in objects
+    'accessor-pairs': ['error', {
+      getWithoutSet: false,
+      setWithoutGet: true
+    }],
 
-    // enforce return statements in callbacks of array methods
+    // Enforce return statements in callbacks of array methods
     'array-callback-return': ['error'],
 
-    // enforce the use of variables within the scope they are defined
+    // Enforce the use of variables within the scope they are defined
     'block-scoped-var': ['error'],
 
-    // enforce that class methods utilize this
-    'class-methods-use-this': ['error'],
+    // Enforce that class methods utilize this
+    'class-methods-use-this': ['error', {
+      exceptMethods: []
+    }],
 
-    // enforce a maximum cyclomatic complexity allowed in a program
-    'complexity': ['error', 20],
+    // Enforce a maximum cyclomatic complexity allowed in a program
+    complexity: ['error', {
+      max: 20
+    }],
 
-    // require return statements to either always or never specify values
-    'consistent-return': ['off'],
+    // Require return statements to either always or never specify values
+    'consistent-return': ['error', {
+      treatUndefinedAsUnspecified: true
+    }],
 
-    // enforce consistent brace style for all control statements
-    'curly': ['error'],
+    // Enforce consistent brace style for all control statements
+    curly: ['error', 'all'],
 
-    // require default cases in switch statements
-    'default-case': ['warn'],
+    // Require default cases in switch statements
+    'default-case': ['error'],
 
-    // enforce consistent newlines before and after dots
-    'dot-location': ['off'],
+    // Enforce consistent newlines before and after dots
+    'dot-location': ['error', 'property'],
 
-    // enforce dot notation whenever possible
-    'dot-notation': ['error'],
+    // Enforce dot notation whenever possible
+    'dot-notation': ['error', {
+      allowKeywords: true
+    }],
 
-    // require the use of === and !==
-    'eqeqeq': ['off'],
+    // Require the use of === and !==
+    eqeqeq: ['warn'],
 
-    // require for-in loops to include an if statement
-    'guard-for-in': ['off'],
+    // Require for-in loops to include an if statement
+    'guard-for-in': ['warn'],
 
-    // disallow the use of alert, confirm, and prompt
+    // Disallow the use of alert, confirm, and prompt
     'no-alert': ['error'],
 
-    // disallow the use of arguments.caller or arguments.callee
+    // Disallow the use of arguments.caller or arguments.callee
     'no-caller': ['error'],
 
-    // disallow lexical declarations in case clauses
+    // Disallow lexical declarations in case clauses
     'no-case-declarations': ['error'],
 
-    // disallow division operators explicitly at the beginning of regular expressions
-    'no-div-regex': ['off'],
+    // Disallow division operators explicitly at the beginning of regular expressions
+    'no-div-regex': ['warn'],
 
-    // disallow else blocks after return statements in if statements
-    'no-else-return': ['warn'],
+    // Disallow else blocks after return statements in if statements
+    'no-else-return': ['error'],
 
-    // disallow empty functions
-    'no-empty-function': ['off'],
+    // Disallow empty functions
+    'no-empty-function': ['warn'],
 
-    // disallow empty destructuring patterns
+    // Disallow empty destructuring patterns
     'no-empty-pattern': ['error'],
 
-    // disallow null comparisons without type-checking operators
-    'no-eq-null': ['warn'],
+    // Disallow null comparisons without type-checking operators
+    'no-eq-null': ['error'],
 
-    // disallow the use of eval()
+    // Disallow the use of eval()
     'no-eval': ['error'],
 
-    // disallow extending native types
-    'no-extend-native': ['error'],
+    // Disallow extending native types
+    'no-extend-native': ['error', {
+      exceptions: []
+    }],
 
-    // disallow unnecessary calls to .bind()
+    // Disallow unnecessary calls to .bind()
     'no-extra-bind': ['error'],
 
-    // disallow unnecessary labels
+    // Disallow unnecessary labels
     'no-extra-label': ['error'],
 
-    // disallow fallthrough of case statements
+    // Disallow fallthrough of case statements
     'no-fallthrough': ['error'],
 
-    // disallow leading or trailing decimal points in numeric literals
+    // Disallow leading or trailing decimal points in numeric literals
     'no-floating-decimal': ['error'],
 
-    // disallow assignments to native objects or read-only global variables
-    'no-global-assign': ['error'],
-
-    // disallow shorthand type conversions
-    'no-implicit-coercion': ['warn', {
-      allow: ['!!']
+    // Disallow assignments to native objects or read-only global variables
+    'no-global-assign': ['error', {
+      exceptions: []
     }],
 
-    // disallow variable and function declarations in the global scope
+    // Disallow shorthand type conversions
+    'no-implicit-coercion': ['error', {
+      allow: ['!!'],
+      'boolean': true,
+      number: true,
+      string: true
+    }],
+
+    // Disallow variable and function declarations in the global scope
     'no-implicit-globals': ['error'],
 
-    // disallow the use of eval()-like methods
+    // Disallow the use of eval()-like methods
     'no-implied-eval': ['error'],
 
-    // disallow this keywords outside of classes or class-like objects
+    // Disallow this keywords outside of classes or class-like objects
     'no-invalid-this': ['error'],
 
-    // disallow the use of the __iterator__ property
+    // Disallow the use of the __iterator__ property
     'no-iterator': ['error'],
 
-    // disallow labeled statements
-    'no-labels': ['error'],
+    // Disallow labeled statements
+    'no-labels': ['error', {
+      allowLoop: false,
+      allowSwitch: false
+    }],
 
-    // disallow unnecessary nested blocks
+    // Disallow unnecessary nested blocks
     'no-lone-blocks': ['error'],
 
-    // disallow function declarations and expressions inside loop statements
+    // Disallow function declarations and expressions inside loop statements
     'no-loop-func': ['error'],
 
-    // disallow magic numbers
-    'no-magic-numbers': ['warn', {
-      ignore: [-1, 0, 1, 10], // array operations, parseInt
-      ignoreArrayIndexes: true,
-      detectObjects: false
+    // Disallow magic numbers
+    'no-magic-numbers': ['error', {
+      detectObjects: true,
+      enforceConst: true,
+      ignore: [-1, 0, 1, 10],
+      ignoreArrayIndexes: false
     }],
 
-    // disallow multiple spaces
-    'no-multi-spaces': ['error'],
+    // Disallow multiple spaces
+    'no-multi-spaces': ['error', {
+      exceptions: {}
+    }],
 
-    // disallow multiline strings
+    // Disallow multiline strings
     'no-multi-str': ['error'],
 
-    // disallow new operators with the Function object
+    // Disallow new operators outside of assignments or comparisons
+    'no-new': ['error'],
+
+    // Disallow new operators with the Function object
     'no-new-func': ['error'],
 
-    // disallow new operators with the String, Number, and Boolean objects
+    // Disallow new operators with the String, Number, and Boolean objects
     'no-new-wrappers': ['error'],
 
-    // disallow new operators outside of assignments or comparisons
-    'no-new': ['off'],
-
-    // disallow octal escape sequences in string literals
-    'no-octal-escape': ['error'],
-
-    // disallow octal literals
+    // Disallow octal literals
     'no-octal': ['error'],
 
-    // disallow reassigning function parameters
-    'no-param-reassign': ['warn'],
+    // Disallow octal escape sequences in string literals
+    'no-octal-escape': ['error'],
 
-    // disallow the use of the __proto__ property
-    'no-proto': ['error'],
-
-    // disallow variable redeclaration
-    'no-redeclare': ['error'],
-
-    // disallow certain properties on certain objects
-    'no-restricted-properties': ['error'],
-
-    // disallow assignment operators in return statements
-    'no-return-assign': ['error'],
-
-    // disallow unnecessary return await
-    'no-return-await': ['error'],
-
-    // disallow javascript: urls
-    'no-script-url': ['error'],
-
-    // disallow assignments where both sides are exactly the same
-    'no-self-assign': ['error'],
-
-    // disallow comparisons where both sides are exactly the same
-    'no-self-compare': ['error'],
-
-    // disallow comma operators
-    'no-sequences': ['error'],
-
-    // disallow throwing literals as exceptions
-    'no-throw-literal': ['warn'],
-
-    // disallow unmodified loop conditions
-    'no-unmodified-loop-condition': ['error'],
-
-    // disallow unused expressions
-    'no-unused-expressions': ['error', {
-      allowShortCircuit: true,
-      allowTernary: true
+    // Disallow reassigning function parameters
+    'no-param-reassign': ['error', {
+      props: false
     }],
 
-    // disallow unused labels
+    // Disallow the use of the __proto__ property
+    'no-proto': ['error'],
+
+    // Disallow variable redeclaration
+    'no-redeclare': ['error', {
+      builtinGlobals: true
+    }],
+
+    // Disallow certain properties on certain objects
+    'no-restricted-properties': ['off'],
+
+    // Disallow assignment operators in return statements
+    'no-return-assign': ['error', 'always'],
+
+    // Disallow unnecessary return await
+    'no-return-await': ['error'],
+
+    // Disallow javascript: urls
+    'no-script-url': ['error'],
+
+    // Disallow assignments where both sides are exactly the same
+    'no-self-assign': ['error', {
+      props: true
+    }],
+
+    // Disallow comparisons where both sides are exactly the same
+    'no-self-compare': ['error'],
+
+    // Disallow comma operators
+    'no-sequences': ['error'],
+
+    // Disallow throwing literals as exceptions
+    'no-throw-literal': ['error'],
+
+    // Disallow unmodified loop conditions
+    'no-unmodified-loop-condition': ['error'],
+
+    // Disallow unused expressions
+    'no-unused-expressions': ['error', {
+      allowShortCircuit: false,
+      allowTernary: false
+    }],
+
+    // Disallow unused labels
     'no-unused-labels': ['error'],
 
-    // disallow unnecessary calls to .call() and .apply()
+    // Disallow unnecessary calls to .call() and .apply()
     'no-useless-call': ['error'],
 
-    // disallow unnecessary concatenation of literals or template literals
+    // Disallow unnecessary concatenation of literals or template literals
     'no-useless-concat': ['error'],
 
-    // disallow unnecessary escape characters
+    // Disallow unnecessary escape characters
     'no-useless-escape': ['error'],
 
-    // disallow redundant return statements
+    // Disallow redundant return statements
     'no-useless-return': ['error'],
 
-    // disallow void operators
+    // Disallow void operators
     'no-void': ['error'],
 
-    // disallow specified warning terms in comments
-    'no-warning-comments': ['off'],
+    // Disallow specified warning terms in comments
+    'no-warning-comments': ['error', {
+      location: 'start',
+      terms: ['fixme', 'xxx']
+    }],
 
-    // disallow with statements
+    // Disallow with statements
     'no-with': ['error'],
 
-    // enforce the consistent use of the radix argument when using parseInt()
-    'radix': ['warn'],
+    // Require using Error objects as Promise rejection reasons
+    'prefer-promise-reject-errors': ['error', {
+      allowEmptyReject: false
+    }],
 
-    // require var declarations be placed at the top of their containing scope
-    'vars-on-top': ['off'],
+    // Enforce the consistent use of the radix argument when using parseInt()
+    radix: ['error', 'always'],
 
-    // require parentheses around immediate function invocations
-    'wrap-iife': ['error'],
+    // Disallow async functions which have no await expression
+    'require-await': ['error'],
 
-    // require or disallow “Yoda” conditions
-    'yoda': ['warn']
+    // Require var declarations be placed at the top of their containing scope
+    'vars-on-top': ['error'],
+
+    // Require parentheses around immediate function invocations
+    'wrap-iife': ['error', 'inside', {
+      functionPrototypeMethods: false
+    }],
+
+    // Require or disallow “Yoda” conditions
+    yoda: ['error']
+
   }
 };

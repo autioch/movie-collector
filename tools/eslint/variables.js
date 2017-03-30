@@ -1,46 +1,56 @@
 module.exports = {
   rules: {
 
-    // require or disallow initialization in variable declarations
+    // Require or disallow initialization in variable declarations
     'init-declarations': ['off'],
 
-    // disallow catch clause parameters from shadowing variables in the outer scope
+    // Disallow catch clause parameters from shadowing variables in the outer scope
     'no-catch-shadow': ['error'],
 
-    // disallow deleting variables
+    // Disallow deleting variables
     'no-delete-var': ['error'],
 
-    // disallow labels that share a name with a variable
+    // Disallow labels that share a name with a variable
     'no-label-var': ['error'],
 
-    // disallow specified global variables
+    // Disallow specified global variables
     'no-restricted-globals': ['error'],
 
-    // disallow identifiers from shadowing restricted names
-    'no-shadow-restricted-names': ['error'],
-
-    // disallow variable declarations from shadowing variables declared in the outer scope
+    // Disallow variable declarations from shadowing variables declared in the outer scope
     'no-shadow': ['error', {
+      allow: [],
       builtinGlobals: true,
       hoist: 'all'
     }],
 
-    // disallow initializing variables to undefined
+    // Disallow identifiers from shadowing restricted names
+    'no-shadow-restricted-names': ['error'],
+
+    // Disallow the use of undeclared variables unless mentioned in /*global */ comments
+    'no-undef': ['error', {
+      'typeof': true
+    }],
+
+    // Disallow initializing variables to undefined
     'no-undef-init': ['error'],
 
-    // disallow the use of undeclared variables unless mentioned in /*global */ comments
-    'no-undef': ['error'],
+    // Disallow the use of undefined as an identifier
+    'no-undefined': ['error'],
 
-    // disallow the use of undefined as an identifier
-    'no-undefined': ['off'],
+    // Disallow unused variables
+    'no-unused-vars': ['error', {
+      args: 'all',
+      caughtErrors: 'all',
+      ignoreRestSiblings: false,
+      vars: 'all'
+    }],
 
-    // disallow unused variables
-    'no-unused-vars': ['error'],
-
-    // disallow the use of variables before they are defined
+    // Disallow the use of variables before they are defined
     'no-use-before-define': ['error', {
-      functions: false,
-      classes: false
+      classes: true,
+      functions: true,
+      variables: true
     }]
+
   }
 };
