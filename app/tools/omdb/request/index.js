@@ -24,7 +24,7 @@ module.exports = function request(videoData) {
           let omdbData = '';
 
           if (res.statusCode >= HTTP_OK_MIN || res.statusCode <= HTTP_OK_MAX) {
-            res.on('data', (chunk) => (omdbData += chunk));
+            res.on('data', (chunk) => omdbData += chunk);
             res.on('end', () => {
               Object.assign(videoData, {
                 omdb: parse(omdbData)

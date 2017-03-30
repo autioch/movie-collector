@@ -31,5 +31,9 @@
   "scripts": {
     "default": "node index --config=./config.js",
     "lint": "eslint ./app --fix --ext .js & exit 0"
+  },
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-config-qb": "^1.0.0"
   }
 }
