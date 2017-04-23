@@ -1,4 +1,5 @@
 const separatorRegex = /(\.|,| )/g;
+const writerRegex = /\([^)]+\)/g;
 
 const textProperties = [
   'Awards',
@@ -48,6 +49,8 @@ module.exports = function extractData(omdbData) {
   arrayProperties.forEach((key) => {
     data[key.toLowerCase()] = omdbData[key].split(',').map((value) => value.trim());
   });
+
+  data.writer = data.writer.replace(writerRegex, '').trim();
 
   return data;
 };

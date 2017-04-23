@@ -1,6 +1,6 @@
 {
   "name": "movie-collector",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "Parser for movie files, using ffmpeg and omdb.",
   "main": "index.js",
   "keywords": [

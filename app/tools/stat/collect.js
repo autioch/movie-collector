@@ -1,4 +1,6 @@
-const ignore = require('./ignore');
+const ignore = [
+  'errors'
+];
 
 module.exports = function collectData(videoArray) {
   const scanData = {};
@@ -14,27 +16,23 @@ module.exports = function collectData(videoArray) {
 
   function addData(prefixedKey, value) {
     if (scanData.hasOwnProperty(prefixedKey)) {
-      return scanData[prefixedKey].values.push(value);
-    }
-
-    if (Array.isArray(value)) {
-      return value.forEach((val) => {
+      scanData[prefixedKey].values.push(value);
+    } else if (Array.isArray(value)) {
+      value.forEach((val) => {
         addData(`${prefixedKey}[]`, val);
       });
+    } else if (typeof value === 'object' && value !== null) {
+      scanForData(prefixedKey, value);
+    } else {
+      scanData[prefixedKey] = {
+        key: prefixedKey,
+        type: typeof value,
+        values: [value]
+      };
     }
-
-    if (typeof value === 'object' && value !== null) {
-      return scanForData(prefixedKey, value);
-    }
-
-    scanData[prefixedKey] = {
-      key: prefixedKey,
-      type: typeof value,
-      values: [value]
-    };
   }
 
   videoArray.forEach((video) => scanForData('', video));
 
-  return scanData;
+  return Object.keys(scanData).map((key) => scanData[key]);
 };
