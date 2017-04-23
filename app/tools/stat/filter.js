@@ -13,7 +13,9 @@ const ignoredKeys = [
   'ffmpeg.video[].profile',
   'file.folder',
   'omdb.awards',
-  'omdb.year'
+  'omdb.year',
+  'omdb.error',
+  'subs.ext'
 ];
 
 function isIgnoredKey(statistic) {
