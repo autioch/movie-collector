@@ -2,6 +2,8 @@ const throttle = require('lodash.throttle');
 
 const DEFAULT_THROTTTLE = 500;
 
+/* TODO Add awaiting for called function execution. */
+
 /**
  * Returns function that allows querying functions to execure;
  * @param  {Number} throttleDuration Duration in miliseconds between each execution.
@@ -15,7 +17,6 @@ module.exports = function getQuery(throttleDuration = DEFAULT_THROTTTLE) {
    * Retrieves first function in a query, executes it and throttles next request.
    * @return {undefined} Nothing
    */
-
   function executeFunction() {
     if (queryArray.length) {
       queryArray.pop()();

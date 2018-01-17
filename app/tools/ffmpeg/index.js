@@ -1,37 +1,42 @@
 /* eslint no-process-env: 0 */
 const path = require('path');
-const probe = require('./probe');
-const { getTicker } = require('../../utils');
+const { getTicker, curry } = require('../../utils');
 const bluebird = require('bluebird');
+const ffProbeAsync = bluebird.promisify(require('fluent-ffmpeg').ffprobe);
+const parse = require('./parse');
 
 const MAX_PROBES = 3;
 
-/**
- * Extends each video with data probed using ffmpeg.
- * @param  {Array} videos    Array of videos to check.
- * @param  {Object} config   Application config.
- * @return {Promise}         Promise resolving to videos array.
- */
-module.exports = function ffmpeg(videos, config) {
-  if (!config.ffmpeg) {
-    return bluebird.resolve(videos);
-  }
-
+const ffmpegProbeFactory = curry(
+  (ffmpegPath, videoPath) => {
   /* Fluent ffmpeg requires these. */
-  process.env.FFMPEG_PATH = path.join(config.ffmpeg, 'bin', 'ffmpeg.exe');
-  process.env.FFPROBE_PATH = path.join(config.ffmpeg, 'bin', 'ffprobe.exe');
+    process.env.FFMPEG_PATH = path.join(ffmpegPath, 'bin', 'ffmpeg.exe');
+    process.env.FFPROBE_PATH = path.join(ffmpegPath, 'bin', 'ffprobe.exe');
 
-  let videosToQuery = videos;
-
-  if (!config.ffmpegForce) {
-    videosToQuery = videos.filter((video) => !video.ffmpeg || video.ffmpeg.error);
+    return ffProbeAsync(videoPath)
+      .then((data) => parse(data))
+      .catch((error) => error);
   }
+);
 
-  const ticker = getTicker('ffProbe', videosToQuery.length);
+const probeVideo = curry(
+  (ffmpegProbe, ticker, video) => ffmpegProbe(video)
+    .then((probeData) => Object.assign(video, {
+      ffmpeg: probeData
+    }))
+    .tap(ticker)
+);
 
-  return bluebird
-    .map(videosToQuery, (video) => probe(video).tap(ticker), {
-      concurrency: MAX_PROBES
-    })
-    .then(() => videos);
-};
+module.exports = curry(
+  ({ ffmpeg, ffmpegForce }, videos) => {
+    const videosToQuery = ffmpegForce ? videos : videos.filter((video) => !video.ffmpeg || video.ffmpeg.error);
+    const ffmpegProbe = ffmpegProbeFactory(ffmpeg);
+    const ticker = getTicker('ffProbe', videosToQuery.length);
+
+    return bluebird
+      .map(videosToQuery, probeVideo(ffmpegProbe, ticker), {
+        concurrency: MAX_PROBES
+      })
+      .then(() => videos);
+  }
+);
