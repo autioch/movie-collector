@@ -5,6 +5,8 @@ const settings = require('electron-settings');
 
 const container = document.body;
 
+require('./styles.css');
+
 function renderVideo(video) {
   return tag('tr', [
     tag('td.folder', video.file.folder),
