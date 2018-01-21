@@ -4,7 +4,7 @@
   font-family: Consolas;
 }
 
-.list td {
+.video {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
