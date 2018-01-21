@@ -13,6 +13,7 @@ const dataPath = 'data';
 module.exports = {
   watch: true,
   target: 'electron',
+  devtool: 'source-map',
   entry: join(sourcePath, 'index'),
   output: {
     path: distPath,

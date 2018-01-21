@@ -51,7 +51,9 @@ export default class TagGroup extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) { // eslint-disable-line no-unused-vars
-    settings.set(this.props.settingsKey, nextState.tags);
+    settings.set(this.props.settingsKey, nextState.tags, {
+      prettify: true
+    });
   }
 
   render() {
@@ -60,7 +62,7 @@ export default class TagGroup extends Component {
 
     return (
       <div>
-        <div>Acceptable {label}</div>
+        <div>{label}</div>
         <div>
           {tags.map((tag, index) => {
             const isLongTag = tag.length > 20;
@@ -94,7 +96,7 @@ export default class TagGroup extends Component {
                 borderStyle: 'dashed'
               }}
             >
-              <Icon type="plus" /> {label}
+              <Icon type="plus" />
             </Tag>
           )}
         </div>

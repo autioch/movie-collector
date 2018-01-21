@@ -22,3 +22,10 @@ Also, configuration file is accepted, that is regular js file:
 ```
 node app --config=./config.js
 ```
+
+
+
+## Electron react debug:
+```javascript
+require('electron-react-devtools').install()
+```
