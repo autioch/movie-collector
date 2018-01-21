@@ -1,8 +1,9 @@
-const path = require('path');
+// const path = require('path');
 const bluebird = require('bluebird');
 const fs = bluebird.promisifyAll(require('fs'));
 const scanFolder = require('./scanFolder');
-const { getTicker, saveJson } = require('../../utils');
+
+// const { getTicker, saveJson } = require('../../utils');
 const merge = require('./merge');
 const update = require('./update');
 
@@ -22,7 +23,7 @@ function inputArrayReducer(result, inputPath) {
  * @return {Promise}        Promise resolving to videos array.
  */
 module.exports = function getInputData(videos, config) {
-  const ticker = getTicker('Scan for data', totalSteps);
+  // const ticker = getTicker('Scan for data', totalSteps);
 
   let cachePromise;
   let scanPromise;
@@ -35,7 +36,7 @@ module.exports = function getInputData(videos, config) {
     cachePromise = bluebird.resolve([]);
   }
 
-  cachePromise.then(ticker);
+  // cachePromise.then(ticker);
 
   if (config.inputPath) {
     if (Array.isArray(config.inputPath)) {
@@ -53,13 +54,13 @@ module.exports = function getInputData(videos, config) {
     });
   }
 
-  scanPromise.then(ticker);
+  // scanPromise.then(ticker);
 
   return bluebird.join(cachePromise, scanPromise, function workData(cacheData, scanData) {
-    if (config.outputUnknown && scanData.other.length > 0) {
-      console.log(`Found ${scanData.other.length} unkown file(s).`);
-      saveJson(path.join(config.outputPath, 'unknown.json'), scanData.other);
-    }
+    // if (config.outputUnknown && scanData.other.length > 0) {
+    //   console.log(`Found ${scanData.other.length} unkown file(s).`);
+    //   saveJson(path.join(config.outputPath, 'unknown.json'), scanData.other);
+    // }
 
     return update(merge(config, cacheData, scanData.videos));
   });

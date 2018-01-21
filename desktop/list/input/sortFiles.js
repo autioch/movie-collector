@@ -1,4 +1,8 @@
-const { videoFormats, subtitleFormats, ignoredFormats } = require('../../config');
+// const { videoFormats, subtitleFormats, ignoredFormats } = require('../../config');
+
+const videoFormats = ['avi', 'mp4', 'mkv', 'm4v'];
+const subtitleFormats = ['srt', 'txt', 'sub', 'idx'];
+const ignoredFormats = ['jpg', 'bmp', 'png'];
 
 /**
  * Sorts and filters files found inside a folder.
