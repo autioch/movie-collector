@@ -1,10 +1,18 @@
 .list {
+ flex: 1;
+ overflow: auto;
+ width: 100%;
+}
+
+.list__table {
   width: 100%;
   table-layout: fixed;
   font-family: Consolas;
+  /* overflow: auto; */
+  /* flex: 1; */
 }
 
-.video {
+.title {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

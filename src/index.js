@@ -2,6 +2,7 @@ import App from './app';
 import React from 'react';
 import { render } from 'react-dom';
 import { join } from 'path';
+import './styles.scss';
 
 require('fs').readFile(join('.', 'src', 'videos.json'), 'utf8', (err, videosJson) => {
   if (err) {
@@ -9,5 +10,5 @@ require('fs').readFile(join('.', 'src', 'videos.json'), 'utf8', (err, videosJson
   }
   const videos = JSON.parse(videosJson);
 
-  render(<App videos={videos} />, document.body.querySelector('.app'));
+  render(<App videos={videos} />, document.body.querySelector('.app-container'));
 });

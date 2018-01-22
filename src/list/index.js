@@ -3,9 +3,11 @@ import Item from './item';
 import './styles.css';
 
 export default ({ videos }) => (
-  <table className="list">
-    <tbody>
-      {videos.map((video, index) => <Item video={video} key={index}/>)}
-    </tbody>
-  </table>
+  <div className="list">
+    <table className="list__table">
+      <tbody>
+        {videos.map((video, index) => <Item video={video} key={index}/>)}
+      </tbody>
+    </table>
+  </div>
 );
