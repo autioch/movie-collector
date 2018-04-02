@@ -6,6 +6,11 @@ body {
   height: 100%;
 }
 
-.app-container {
+div {
+  flex: none;
+}
+
+.app,
+#app-container {
   height: 100%;
 }

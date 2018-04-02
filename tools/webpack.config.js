@@ -26,10 +26,13 @@ module.exports = {
       loader: 'babel-loader',
       options: {
         presets: ['react'],
-        plugins: [ ['import', {
-          libraryName: 'antd',
-          style: 'css'
-        }] ]
+        plugins: [
+          ['import', {
+            libraryName: 'antd',
+            style: 'css'
+          }],
+          'transform-object-rest-spread'
+        ]
       }
     }, {
       test: /\.s?css$/,

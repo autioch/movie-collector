@@ -1,17 +1,27 @@
 import chooseInputPath from './chooseInputPath';
+import filterVideos from './filterVideos';
 import findVideos from './findVideos';
-
-// import loadVideos from './loadVideos';
+import loadVideos from './loadVideos';
 import setInputPath from './setInputPath';
 import setLoadingError from './setLoadingError';
+import setOutputPath from './setOutputPath';
+import setTitleSuggestion from './setTitleSuggestion';
 import setVideos from './setVideos';
+import setYearSuggestion from './setYearSuggestion';
+import toggleSetting from './toggleSetting';
+import toggleShowOnlyProblems from './toggleShowOnlyProblems';
 
 export default {
   chooseInputPath,
+  filterVideos,
   findVideos,
-
-  // loadVideos,
+  loadVideos,
   setInputPath,
   setLoadingError,
-  setVideos
+  setOutputPath,
+  setTitleSuggestion,
+  setVideos,
+  setYearSuggestion,
+  toggleSetting,
+  toggleShowOnlyProblems
 };

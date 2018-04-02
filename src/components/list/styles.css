@@ -4,22 +4,32 @@
  width: 100%;
 }
 
-.list__table {
+.video {
+  border-top: 1px solid #eee;
+  font-family: Courier;
+  padding: .5em 0;
+}
+
+.video__details {
+  display: flex;
+  /* overflow: hidden; */
   width: 100%;
-  table-layout: fixed;
-  font-family: Consolas;
-  /* overflow: auto; */
-  /* flex: 1; */
+}
+
+.folder {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 20vw;
+  margin-right: 1em;
 }
 
 .title {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.folder {
-  width: 12em;
+  flex: auto;
+  margin-right: 1em;
 }
 
 .extension {
@@ -32,4 +42,8 @@
 
 .created {
   width: 6em;
+}
+
+.is-different {
+  color: #36f;
 }

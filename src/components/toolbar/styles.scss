@@ -1,4 +1,28 @@
-.settings {
-  flex: none;
-  background: #def;
+.input-info {
+  position: relative;
+  // background: #def;
+}
+
+.input-info__count {
+  padding: 0 1em;
+  align-items: center;
+  display: flex;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.settings__list {
+  padding: .5em;
+}
+
+.settings-switch {
+  align-items: center;
+  display: flex;
+}
+
+.settings-switch__label {
+  padding-left: 1em;
 }

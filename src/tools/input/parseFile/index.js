@@ -1,6 +1,8 @@
 const getFilenameData = require('./getFilenameData');
 const getCreationTime = require('./getCreationTime');
 
+let nextId = 1;
+
 /**
  * Formats file data into better shaped object.
  * @param  {Object} itemData Raw data.
@@ -11,6 +13,7 @@ module.exports = function parseFile(itemData) {
   const { title, year, ext } = getFilenameData(itemName);
 
   return {
+    id: nextId++,
     title,
     year,
     file: {

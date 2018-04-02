@@ -12,6 +12,7 @@
     "lint:sass": "sass-lint -c .sass-lint.yml -v -q & exit 0"
   },
   "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "eslint": "^4.16.0",
     "eslint-config-qb": "^1.0.0",
     "eslint-plugin-react": "^7.5.1"

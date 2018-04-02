@@ -6,7 +6,7 @@ export default function loadVideos(state, param, actions) {
       actions.setLoadingError(err);
     }
 
-    actions.setVideos(JSON.parse(videosJson));
+    actions.setVideos(JSON.parse(videosJson)).filterVideos();
   });
 
   return {

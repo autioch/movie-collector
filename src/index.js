@@ -6,4 +6,4 @@ import initialState from './initialState';
 
 const store = app(actions, initialState, App, document.getElementById('app-container'));
 
-store.foreRender();
+store.findVideos('D:\\videos\\teledyski');

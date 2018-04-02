@@ -4,7 +4,8 @@ module.exports = {
   plugins: ['react'],
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
+      experimentalObjectRestSpread: true
     }
   },
   rules: {
@@ -19,6 +20,7 @@ module.exports = {
     'no-plusplus': ['off'],
     'camelcase': ['off'],
     'id-length': ['off'],
+    'max-length': ['off'],
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
   }
