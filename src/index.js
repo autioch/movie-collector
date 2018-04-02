@@ -1,14 +1,9 @@
-import App from './app';
-import React from 'react';
-import { render } from 'react-dom';
-import { join } from 'path';
 import './styles.scss';
+import { App } from './components';
+import actions from './actions';
+import { app } from './core';
+import initialState from './initialState';
 
-require('fs').readFile(join('.', 'src', 'videos.json'), 'utf8', (err, videosJson) => {
-  if (err) {
-    console.log(err.message);
-  }
-  const videos = JSON.parse(videosJson);
+const store = app(actions, initialState, App, document.getElementById('app-container'));
 
-  render(<App videos={videos} />, document.body.querySelector('.app-container'));
-});
+store.foreRender();

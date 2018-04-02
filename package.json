@@ -1,12 +1,15 @@
 {
   "name": "movie-collector",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
   "description": "",
+  "author": "",
   "main": "main.js",
   "scripts": {
     "dev": "webpack --config tools/webpack.config.js --hide-modules",
-    "app": "electron ."
+    "app": "electron .",
+    "lint": "eslint ./src --fix --ext .js & exit 0",
+    "lint:sass": "sass-lint -c .sass-lint.yml -v -q & exit 0"
   },
   "devDependencies": {
     "eslint": "^4.16.0",
