@@ -30,9 +30,10 @@ export default {
     category: CATEGORIES.INPUT.id
   }, {
     id: 'showOnlyProblems',
+    isFavorite: true,
     label: 'Show only problems',
     type: TYPES.BOOLEAN,
-    category: CATEGORIES.DATA_COLLECTION.id
+    category: CATEGORIES.INPUT.id
   }, {
     id: 'useFfmpeg',
     label: 'Scan file with ffmpeg for info',

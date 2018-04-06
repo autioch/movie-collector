@@ -1,17 +1,20 @@
-const tokenize = require('./tokenize');
-const extractYear = require('./extractYear');
+import tokenize from './tokenize';
+import extractYear from './extractYear';
+import truncate from './truncate';
+import trimTokens from './trimTokens';
+import capitalize from './capitalize';
 
 const manipulators = [
-  require('./truncate'),
-  require('./trimTokens'),
-  require('./capitalize')
+  truncate,
+  trimTokens,
+  capitalize
 ];
 
-module.exports = function suggestRename(itemName) {
+export default function suggestRename(itemName) {
   const { year, tokens } = extractYear(tokenize(itemName));
 
   return {
     year,
     title: manipulators.reduce((newTokens, manipulator) => manipulator(newTokens), tokens).join(' ')
   };
-};
+}

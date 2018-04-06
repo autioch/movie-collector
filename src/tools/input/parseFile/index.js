@@ -1,5 +1,5 @@
-const getFilenameData = require('./getFilenameData');
-const getCreationTime = require('./getCreationTime');
+import getFilenameData from './getFilenameData';
+import getCreationTime from './getCreationTime';
 
 let nextId = 1;
 
@@ -8,7 +8,7 @@ let nextId = 1;
  * @param  {Object} itemData Raw data.
  * @return {Object}          Formatted data.
  */
-module.exports = function parseFile(itemData) {
+export default function parseFile(itemData) {
   const { folderPath, itemName, stats } = itemData;
   const { title, year, ext } = getFilenameData(itemName);
 

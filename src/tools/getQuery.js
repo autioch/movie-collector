@@ -1,4 +1,5 @@
-const throttle = require('lodash.throttle');
+import throttle from 'lodash.throttle';
+import Bluebird from 'bluebird';
 
 const DEFAULT_THROTTTLE = 500;
 
@@ -19,8 +20,9 @@ module.exports = function getQuery(throttleDuration = DEFAULT_THROTTTLE) {
    */
   function executeFunction() {
     if (queryArray.length) {
-      queryArray.pop()();
-      throttleExecution(); //eslint-disable-line
+      Bluebird
+        .resolve(queryArray.shift()())
+        .then(() => throttleExecution()); //eslint-disable-line
     }
   }
 

@@ -1,4 +1,4 @@
-import suggestRename from '../../tools/suggestRename';
+import suggestRename from '../../../tools/suggestRename';
 
 export default function setVideos(state, videos) {
   videos.forEach((video) => {

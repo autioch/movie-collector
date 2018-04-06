@@ -1,8 +1,10 @@
 /* eslint-disable no-use-before-define */
-const path = require('path');
-const bluebird = require('bluebird');
-const fs = bluebird.promisifyAll(require('fs'));
-const parseFile = require('./parseFile');
+import path from 'path';
+import bluebird from 'bluebird';
+import rawFs from 'fs';
+import parseFile from './parseFile';
+
+const fs = bluebird.promisifyAll(rawFs);
 
 function parseFolderItems(items) {
   const readItems = items.filter((item) => !!item);
@@ -38,4 +40,4 @@ function scanFolder(folderPath) {
     }));
 }
 
-module.exports = scanFolder;
+export default scanFolder;

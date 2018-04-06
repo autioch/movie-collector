@@ -10,7 +10,7 @@ const NAME_REGEX = /^\[(\d\d\d\d)\] (.+)\.([a-z0-9]+)$/i;
  * @param  {String} fileName Name of a video file
  * @return {Object} object Object containing extension, year and name of video
  */
-module.exports = function getFilenameData(fileName) {
+export default function getFilenameData(fileName) {
   let year;
   let nameOffset = 0;
 
@@ -24,4 +24,4 @@ module.exports = function getFilenameData(fileName) {
     title: fileName.substring(nameOffset, fileName.length - extensionSize - 1),
     year
   };
-};
+}

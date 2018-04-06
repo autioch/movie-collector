@@ -11,10 +11,10 @@ import TYPES from './types';
 const CATEGORIES_LIST = Object.values(CATEGORIES).sort((catA, catB) => catA.order > catB.order);
 
 export default ({ state: { settings, settingValues }, store }) => (
-  <div>
+  <div className="settings">
     {CATEGORIES_LIST.map((category) =>
       <div key={category.id} >
-        <div>{category.label}</div>
+        <div className="settings__header">{category.label}</div>
         {settings
           .filter((setting) => setting.category === category.id)
           .map((setting) => {

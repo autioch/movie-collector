@@ -1,5 +1,5 @@
-export default function filterVideos({ videos, showOnlyProblems }) {
-  if (showOnlyProblems) {
+export default function filterVideos({ videos, settingValues }) {
+  if (settingValues.showOnlyProblems) {
     videos.forEach((video) => {
       const { suggestion } = video;
 

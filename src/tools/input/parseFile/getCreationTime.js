@@ -10,8 +10,8 @@ const datetimeFields = ['atime', 'mtime', 'ctime', 'birthtime'];
  * @param  {Object} fileStats fs.stat result for file
  * @return {Date} creationTime First date noted for a file
  */
-module.exports = function getCreationTime(fileStats) {
+export default function getCreationTime(fileStats) {
   const times = datetimeFields.map((field) => fileStats[field].getTime());
 
   return new Date(Math.min(...times)).toJSON();
-};
+}
