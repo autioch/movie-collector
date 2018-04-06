@@ -1,16 +1,20 @@
-const fs = require('bluebird').promisifyAll(require('fs'));
-const { minify } = require('../config');
+import Bluebird from 'bluebird';
+import rawFs from 'fs';
 
-const stringifier = minify ? (contents) => JSON.stringify(contents) : (contents) => JSON.stringify(contents, null, '  ');
+const fs = Bluebird.promisifyAll(rawFs);
+
+const serialize = (contents) => JSON.stringify(contents, null, '  ');
+const serializeMinify = (contents) => JSON.stringify(contents);
 
 /**
  * Saves data as a json, then returns the data.
  * @param  {String} fileName     [description]
  * @param  {mixed} fileContents [description]
+ * @param  {Boolean} minify [description]
  * @return {mixed}              [description]
  */
-module.exports = function saveJson(fileName, fileContents) {
+export default function saveJson(fileName, fileContents, minify = false) {
   return fs
-    .writeFileAsync(fileName, stringifier(fileContents), 'utf8')
+    .writeFileAsync(fileName, minify ? serializeMinify(fileContents) : serialize(fileContents), 'utf8')
     .then(() => fileContents);
-};
+}

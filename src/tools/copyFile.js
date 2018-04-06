@@ -1,5 +1,7 @@
-const Bluebird = require('bluebird');
-const fs = Bluebird.promisifyAll(require('fs'));
+import Bluebird from 'bluebird';
+import rawFs from 'fs';
+
+const fs = Bluebird.promisifyAll(rawFs);
 
 /**
  * Saves data as a json, then returns the data.
@@ -7,9 +9,9 @@ const fs = Bluebird.promisifyAll(require('fs'));
  * @param  {String} destinationFileName [description]
  * @return {mixed}              [description]
  */
-module.exports = function copyFile(sourceFileName, destinationFileName) {
+export default function copyFile(sourceFileName, destinationFileName) {
   return new Bluebird((resolve) => {
     fs.createReadStream(sourceFileName).pipe(fs.createWriteStream(destinationFileName));
     resolve();
   });
-};
+}

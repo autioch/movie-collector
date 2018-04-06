@@ -10,7 +10,7 @@ const DEFAULT_THROTTTLE = 500;
  * @param  {Number} throttleDuration Duration in miliseconds between each execution.
  * @return {Function} Function that allows adding items to the query.
  */
-module.exports = function getQuery(throttleDuration = DEFAULT_THROTTTLE) {
+export default function getQuery(throttleDuration = DEFAULT_THROTTTLE) {
   /* Query of functions to execute */
   const queryArray = [];
 
@@ -39,4 +39,4 @@ module.exports = function getQuery(throttleDuration = DEFAULT_THROTTTLE) {
 
     return queryArray.length;
   };
-};
+}
