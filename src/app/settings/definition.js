@@ -13,6 +13,7 @@ export default {
     videoFormats: ['avi', 'mp4', 'mkv', 'm4v'],
     subtitleFormats: ['srt', 'txt', 'sub', 'idx'],
     ignoredFormats: ['jpg', 'bmp', 'png'],
+    trashFormats: ['nfo'],
     outputPath: './output',
     cleanupFolder: false,
     minifyOutput: false,
@@ -25,7 +26,7 @@ export default {
   settings: [{
     id: 'inputDirectory',
     isFavorite: true,
-    label: 'Scan file with ffmpeg for info',
+    label: 'Input directory',
     type: TYPES.DIRECTORY,
     category: CATEGORIES.INPUT.id
   }, {
@@ -72,6 +73,11 @@ export default {
   }, {
     id: 'ignoredFormats',
     label: 'Ignored formats',
+    type: TYPES.LIST,
+    category: CATEGORIES.FILE_TYPES.id
+  }, {
+    id: 'trashFormats',
+    label: 'Trash formats',
     type: TYPES.LIST,
     category: CATEGORIES.FILE_TYPES.id
   }, {

@@ -8,5 +8,8 @@ export default {
   }, {
     id: 'renameAll',
     label: 'Apply all renames'
+  }, {
+    id: 'removeTrash',
+    label: 'Remove trash'
   }]
 };
