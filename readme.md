@@ -29,3 +29,6 @@ node app --config=./config.js
 ```javascript
 require('electron-react-devtools').install()
 ```
+
+
+https://github.com/autioch/movie-organize/tree/master/src

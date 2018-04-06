@@ -11,5 +11,8 @@ export default {
   }, {
     id: 'removeTrash',
     label: 'Remove trash'
+  }, {
+    id: 'moveToDirs',
+    label: 'Move to dirs'
   }]
 };
