@@ -12,7 +12,7 @@ function sliceTokens(tokens, whitespaceToken) {
   return tokens;
 }
 
-module.exports = function trimTokens(tokens) {
+export default function trimTokens(tokens) {
   return whitespaceTokens
     .reduce((newTokens, truncateToken) => sliceTokens(newTokens, truncateToken), tokens);
-};
+}

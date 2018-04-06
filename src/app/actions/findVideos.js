@@ -1,4 +1,4 @@
-import scanFolder from '../tools/input';
+import scanFolder from '../../tools/input';
 
 export default function findVideos(stats, inputPath, store) {
   scanFolder(inputPath)

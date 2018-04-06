@@ -1,8 +1,7 @@
+import settings from './app/settings/definition';
+
 export default {
   isLoading: false,
-  loadingError: null,
   videos: [],
-  videos: [],
-  inputPath: '',
-  showOnlyProblems: false
+  ...settings
 };

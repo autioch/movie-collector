@@ -39,7 +39,7 @@ function getSeparator(dirName) {
   return '.';
 }
 
-module.exports = function tokenize(dirName) {
+export default function tokenize(dirName) {
   const separator = getSeparator(dirName);
   const newText = normalize(dirName, separator);
   let tokens = split(newText, separator);
@@ -49,4 +49,4 @@ module.exports = function tokenize(dirName) {
   }
 
   return tokens;
-};
+}

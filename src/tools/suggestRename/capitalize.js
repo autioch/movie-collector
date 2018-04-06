@@ -40,7 +40,7 @@ function firstCapitalize(token) {
   return token[0].toUpperCase() + token.slice(1);
 }
 
-module.exports = function capitalize(tokens) {
+export default function capitalize(tokens) {
   return tokens.map((token, index) => {
     if (skipTransform(token, index, tokens)) {
       return token;
@@ -48,4 +48,4 @@ module.exports = function capitalize(tokens) {
 
     return firstCapitalize(middleCapitalize(token));
   });
-};
+}

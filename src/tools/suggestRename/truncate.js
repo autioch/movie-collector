@@ -28,6 +28,6 @@ function sliceTokens(tokens, truncateToken) {
   return tokens;
 }
 
-module.exports = function truncate(tokens) {
+export default function truncate(tokens) {
   return truncateTokens.reduce(sliceTokens, tokens);
-};
+}

@@ -33,7 +33,7 @@ function parseYear(token) {
   return parseInt(numbersOnly, 10);
 }
 
-module.exports = function extractYear(tokens) {
+export default function extractYear(tokens) {
   let year;
   const newTokens = [];
 
@@ -50,4 +50,4 @@ module.exports = function extractYear(tokens) {
     year,
     tokens: newTokens
   };
-};
+}

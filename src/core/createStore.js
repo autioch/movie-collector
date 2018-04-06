@@ -8,7 +8,7 @@ export default function createStore(actions, initialState = {}) {
 
   store.subscribe = subscribe;
   store.getState = () => state;
-  store.foreRender = notify;
+  store.forceRender = notify;
 
   const wireAction = (action) => (data) => { // eslint-disable-line id-blacklist
     merge(state, action(state, data, store) || {});

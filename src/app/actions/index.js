@@ -1,4 +1,3 @@
-import chooseInputPath from './chooseInputPath';
 import filterVideos from './filterVideos';
 import findVideos from './findVideos';
 import loadVideos from './loadVideos';
@@ -12,7 +11,6 @@ import toggleSetting from './toggleSetting';
 import toggleShowOnlyProblems from './toggleShowOnlyProblems';
 
 export default {
-  chooseInputPath,
   filterVideos,
   findVideos,
   loadVideos,
