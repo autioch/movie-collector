@@ -1,5 +1,22 @@
 .settings {
+  display: flex;
+}
+
+.settings-content {
   padding: .5em;
+  flex: auto;
+}
+
+.settings-toggle {
+  color: #aaa;
+  font-size: 1.5em;
+  padding: .25em;
+  cursor: pointer;
+  height: 3em;
+}
+
+.settings-toggle:hover {
+  color: #666;
 }
 
 .settings__header {

@@ -37,7 +37,7 @@ export default {
     category: CATEGORIES.INPUT.id
   }, {
     id: 'useFfmpeg',
-    label: 'Scan file with ffmpeg for info',
+    label: 'Scan file with ffmpeg',
     type: TYPES.BOOLEAN,
     category: CATEGORIES.DATA_COLLECTION.id
   }, {
@@ -47,12 +47,12 @@ export default {
     category: CATEGORIES.DATA_COLLECTION.id
   }, {
     id: 'useOmdb',
-    label: 'Query omdb for info',
+    label: 'Query OMDB',
     type: TYPES.BOOLEAN,
     category: CATEGORIES.DATA_COLLECTION.id
   }, {
     id: 'forceOmdb',
-    label: 'Force omdb for all files',
+    label: 'Force OMDB for all files',
     type: TYPES.BOOLEAN,
     category: CATEGORIES.DATA_COLLECTION.id
   }, {
@@ -92,17 +92,17 @@ export default {
     category: CATEGORIES.OUTPUT.id
   }, {
     id: 'minifyOutput',
-    label: 'Minify all outputted files',
+    label: 'Minify outputted files',
     type: TYPES.BOOLEAN,
     category: CATEGORIES.OUTPUT.id
   }, {
     id: 'reportUnknownFiles',
-    label: 'Report all unknown files',
+    label: 'Report unknown files',
     type: TYPES.BOOLEAN,
     category: CATEGORIES.OUTPUT.id
   }, {
     id: 'reportErrors',
-    label: 'Report all errors',
+    label: 'Report errors',
     type: TYPES.BOOLEAN,
     category: CATEGORIES.OUTPUT.id
   }, {

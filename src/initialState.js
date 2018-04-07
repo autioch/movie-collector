@@ -6,6 +6,7 @@ export default {
   videos: [],
   videosVisibleCount: 0,
   videosCount: 0,
+  settingsExpanded: false,
   ...buttons,
   ...settings
 };
