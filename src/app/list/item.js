@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default ({ video, setTitleSuggestion, setYearSuggestion }) => {
+export default ({ video, style, setTitleSuggestion, setYearSuggestion }) => {
   const { file, suggestion } = video;
 
   return (
-    <div className="video">
+    <div className="video" style={style}>
       <div className="video__details">
         <div className="folder">{file.folder}</div>
         <div className="year">{video.year}</div>

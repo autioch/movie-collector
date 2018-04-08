@@ -60,6 +60,11 @@ module.exports = {
     version: false,
     colors: true
   },
+  resolve: {
+    alias: {
+      'react-virtualized': 'react-virtualized/dist/es'
+    }
+  },
   plugins: [
     new ExtractTextPlugin({
       filename: join(assetsPath, `[name].css`),
