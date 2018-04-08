@@ -1,7 +1,7 @@
 export default function filterVideos({ videos, settingValues }) {
   if (settingValues.showOnlyProblems) {
     videos.forEach((video) => {
-      const { suggestion } = video;
+      const { suggestion = {} } = video;
 
       video.isVisible = suggestion.yearIsDifferent || suggestion.titleIsDifferent;
     });

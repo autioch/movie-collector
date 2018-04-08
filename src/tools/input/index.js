@@ -3,31 +3,27 @@ import path from 'path';
 import bluebird from 'bluebird';
 import rawFs from 'fs';
 import parseFile from './parseFile';
+import statItem from './statItem';
+import flattenInput from './flattenInput';
 
 const fs = bluebird.promisifyAll(rawFs);
 
 function parseFolderItems(items) {
-  const readItems = items.filter((item) => !!item);
-  const files = readItems.filter((item) => item.stats.isFile()).map(parseFile);
-
-  const subFolders = readItems
-    .filter((item) => item.stats.isDirectory())
-    .map((item) => path.join(item.folderPath, item.itemName));
+  const files = items.filter((item) => item.isFile).map(parseFile);
+  const subFolders = items.filter((item) => item.isDirectory);
 
   return bluebird
-    .map(subFolders, scanFolder)
-    .reduce((allFiles, subFolderFiles) => allFiles.concat(subFolderFiles), files);
+    .map(subFolders, parseSubFolder, {
+      concurrency: 3
+    })
+    .then((parsedSubFolders) => parsedSubFolders.concat(files));
 }
 
-function statItem(folderPath, itemName) {
-  return fs
-    .statAsync(path.join(folderPath, itemName))
-    .then((stats) => ({
-      folderPath,
-      itemName,
-      stats
-    }))
-    .catch(() => false);
+function parseSubFolder(folder) {
+  return scanFolder(path.join(folder.folderPath, folder.itemName)).then((items) => ({
+    ...folder,
+    items
+  }));
 }
 
 function scanFolder(folderPath) {
@@ -35,9 +31,9 @@ function scanFolder(folderPath) {
     .readdirAsync(folderPath)
     .map((itemName) => statItem(folderPath, itemName))
     .then(parseFolderItems)
-    .catch(() => ({
-      files: []
-    }));
+    .catch(() => []);
 }
 
-export default scanFolder;
+export default function scanInput(folderPath) {
+  return scanFolder(folderPath).then(flattenInput);
+}

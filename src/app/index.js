@@ -12,6 +12,7 @@ export default ({ state, store }) => (
     <Buttons state={state} store={store} />
     <List
       videos={state.videos.filter((video) => video.isVisible)}
+      settingValues={state.settingValues}
       setTitleSuggestion={store.setTitleSuggestion}
       setYearSuggestion={store.setYearSuggestion}
     />

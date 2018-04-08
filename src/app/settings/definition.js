@@ -36,6 +36,12 @@ export default {
     type: TYPES.BOOLEAN,
     category: CATEGORIES.INPUT.id
   }, {
+    id: 'showFullFolderPaths',
+    isFavorite: true,
+    label: 'Show full folder paths',
+    type: TYPES.BOOLEAN,
+    category: CATEGORIES.INPUT.id
+  }, {
     id: 'useFfmpeg',
     label: 'Scan file with ffmpeg',
     type: TYPES.BOOLEAN,
