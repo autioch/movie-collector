@@ -34,6 +34,6 @@ module.exports = function prepareOmdbData(videos, config) {
   const ticker = getTicker('Query OMDB', videosToQuery.length);
 
   return bluebird
-    .map(videosToQuery, (video) => request(video).tap(ticker))
+    .map(videosToQuery, (video) => request(video, config.omdbApiKey).tap(ticker))
     .then(() => videos);
 };

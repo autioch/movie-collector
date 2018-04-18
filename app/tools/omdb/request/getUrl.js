@@ -6,9 +6,10 @@ const staticUrl = 'http://www.omdbapi.com/?';
  * @param  {Object} videoData Object describing video.
  * @return {String} url String to use for a request.
  */
-module.exports = function getUrl(videoData) {
+module.exports = function getUrl(videoData, omdbApiKey) {
   const { title, year } = videoData;
   const params = {
+	apikey: omdbApiKey,
     plot: 'short',
     r: 'json',
     type: 'movie',

@@ -15,10 +15,10 @@ const query = getQuery(1000);
  * @param  {Object} videoData   Object describing video.
  * @return {promise} Promise Promise that will resolve when request is complete.
  */
-module.exports = function request(videoData) {
+module.exports = function request(videoData, omdbApiKey) {
   return new Bluebird((resolve) => {
     query(() => {
-      videoData.omdbUrl = getUrl(videoData);
+      videoData.omdbUrl = getUrl(videoData, omdbApiKey);
       http
         .get(videoData.omdbUrl, (res) => {
           let omdbData = '';
