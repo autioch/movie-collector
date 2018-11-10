@@ -1,22 +1,17 @@
-import suggestRename from '../../../tools/suggestRename';
+function flattenTree(videoTree) {
+  return videoTree.reduce((arr, item) => {
+    const content = item.isDirectory ? [item].concat(flattenTree(item.items)) : item;
 
-export default function setVideos({ data: videos }) {
-  videos.forEach((video) => {
-    if (!video.isFile) {
-      return;
-    }
+    return arr.concat(content);
+  }, []);
+}
 
-    const suggestion = suggestRename(video.file.title);
-
-    suggestion.yearIsDifferent = suggestion.year !== video.file.year;
-    suggestion.titleIsDifferent = suggestion.title !== video.file.title;
-
-    video.suggestion = suggestion;
-  });
+export default function setVideos({ data: videoTree }) {
+  const videoList = flattenTree(videoTree);
 
   return {
-    videos,
-    videosCount: videos.length,
-    isLoading: false
+    videoList,
+    videoTree,
+    isSearching: false
   };
 }

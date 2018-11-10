@@ -1,30 +1,11 @@
-.settings {
-  display: flex;
-}
-
-.settings-content {
-  padding: .5em;
-  flex: auto;
-}
-
-.settings-toggle {
-  color: #aaa;
-  font-size: 1.5em;
-  padding: .25em;
+.settings-directory {
+  align-items: center;
   cursor: pointer;
-  height: 3em;
+  display: flex;
+  width: 100%;
 }
 
-.settings-toggle:hover {
-  color: #666;
-}
-
-.settings__header {
-  margin: .5em 0;
-  font-size: 1.1em;
-  font-weight: bold;
-}
-
-.settings-item + .settings-item {
-  margin-top: .5em;
+.settings-directory__label {
+  white-space: nowrap;
+  margin-right: 1em;
 }

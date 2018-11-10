@@ -10,7 +10,12 @@ export default ({ state, store }) => (
   <div className="app">
     <Settings state={state} store={store} />
     <Buttons state={state} store={store} />
-    <List videoList={state.videoList} />
-    {state.isSearching && <Loader />}
+    <List
+      videos={state.videos.filter((video) => video.isVisible)}
+      settingValues={state.settingValues}
+      setTitleSuggestion={store.setTitleSuggestion}
+      setYearSuggestion={store.setYearSuggestion}
+    />
+    {state.isLoading && <Loader />}
   </div>
 );

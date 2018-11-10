@@ -1,10 +1,14 @@
-import scanFolder from '../../../tools/findVideos';
+import findVideosTool from '../../../tools/findVideos';
+
+const finder = findVideosTool();
 
 export default function findVideos({ state, store }) {
-  scanFolder()(state.settingValues.inputDirectory)
-    .then((files) => store.setVideos(files).filterVideos());
+  finder(state.inputDirectory)
+    .then((files) => store.setVideos(files));
 
   return {
-    isLoading: true
+    videoList: [],
+    videoTree: [],
+    isSearching: true
   };
 }

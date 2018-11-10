@@ -1,12 +1,7 @@
-import settings from './app/settings/definition';
-import buttons from './app/buttons/definition';
-
 export default {
-  isLoading: false,
-  videos: [],
-  videosVisibleCount: 0,
-  videosCount: 0,
+  isSearching: false,
   settingsExpanded: false,
-  ...buttons,
-  ...settings
+  inputDirectory: '.',
+  videoList: [],
+  videoTree: []
 };

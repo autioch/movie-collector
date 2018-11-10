@@ -9,7 +9,6 @@
   font-family: Courier;
   padding: 3px 0;
   flex: none;
-  background-color: #eee;
 }
 
 .video__details {
@@ -22,8 +21,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  width: 20vw;
   margin-right: 1em;
-  background-color: #eee;
 }
 
 .title {
