@@ -1,5 +1,5 @@
-const commonSummary = require('./commonSummary');
-const numericSummary = require('./numericSummary');
+import commonSummary from './commonSummary';
+import numericSummary from './numericSummary';
 
 function updateDict(dict, label) {
   if (dict.hasOwnProperty(label)) {

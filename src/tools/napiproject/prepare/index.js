@@ -1,6 +1,6 @@
-const getPostData = require('./getPostData');
-const getHash = require('./getHash');
-const querystring = require('querystring');
+import getPostData from './getPostData';
+import getHash from './getHash';
+import querystring from 'querystring';
 
 export default function prepareRequest(videoData) {
   return getHash(videoData).then((hash) => {

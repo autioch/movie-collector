@@ -1,10 +1,10 @@
-const path = require('path');
-const collect = require('./collect');
-const analyze = require('./analyze');
-const filter = require('./filter');
-const serialize = require('./serialize');
-const { saveJson } = require('../../utils');
-const Bluebird = require('bluebird');
+import path from 'path';
+import collect from './collect';
+import analyze from './analyze';
+import filter from './filter';
+import serialize from './serialize';
+import { saveJson } from '../../utils';
+import Bluebird from 'bluebird';
 
 module.exports = function prepareStatData(videos, config) {
   if (!config.outputStat) {

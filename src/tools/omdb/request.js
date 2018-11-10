@@ -1,5 +1,5 @@
-const http = require('http');
-const Bluebird = require('bluebird');
+import http from 'http';
+import Bluebird from 'bluebird';
 
 const HTTP_OK_MIN = 200;
 const HTTP_OK_MAX = 299;

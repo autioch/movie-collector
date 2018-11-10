@@ -1,5 +1,5 @@
-const subtitles = require('./subtitles');
-const ratingsMap = require('./ratingsMap');
+import subtitles from './subtitles';
+import ratingsMap from './ratingsMap';
 const seconds = 60;
 const sizes = 1024;
 const mb = sizes * sizes;

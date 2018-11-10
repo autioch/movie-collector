@@ -1,5 +1,5 @@
-const extract = require('./extract');
-const check = require('./check');
+import extract from './extract';
+import check from './check';
 
 module.exports = function parseOmdbData(omdbData) {
   const data = check(omdbData);

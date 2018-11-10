@@ -1,6 +1,6 @@
-const md5pf = require('md5-part-file');
-const Bluebird = require('bluebird');
-const path = require('path');
+import md5pf from 'md5-part-file';
+import Bluebird from 'bluebird';
+import path from 'path';
 
 const KB = 1024;
 const MB = KB * KB;

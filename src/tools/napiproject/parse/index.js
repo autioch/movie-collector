@@ -1,5 +1,5 @@
-const xml2js = require('xml2js');
-const saveSubtitles = require('./saveSubtitles');
+import xml2js from 'xml2js';
+import saveSubtitles from './saveSubtitles';
 
 module.exports = function parse(videoData, responseData) {
   return new Promise((resolve) => {

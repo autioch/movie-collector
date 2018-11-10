@@ -1,4 +1,4 @@
-const getLanguage = require('./getLanguage');
+import getLanguage from './getLanguage';
 
 /**
  * Filters relevant information from a subtitle stream.

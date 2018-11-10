@@ -1,6 +1,6 @@
-const audioStream = require('./audioStream');
-const videoStream = require('./videoStream');
-const subtitleStream = require('./subtitleStream');
+import audioStream from './audioStream';
+import videoStream from './videoStream';
+import subtitleStream from './subtitleStream';
 
 function isVideoStream(stream) {
   return stream.codec_type === 'video';

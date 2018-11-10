@@ -1,4 +1,4 @@
-const workers = require('./workers');
+import workers from './workers';
 
 function validateVideo(video) {
   return workers

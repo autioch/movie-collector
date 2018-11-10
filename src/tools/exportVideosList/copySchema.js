@@ -1,7 +1,7 @@
 import { promise as fs } from 'fs';
 
-const bluebird = require('bluebird');
-const path = require('path');
+import bluebird from 'bluebird';
+import path from 'path';
 
 const filesToCopy = [
   'filmweb.png',

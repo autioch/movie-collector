@@ -1,9 +1,9 @@
-const path = require('path');
-const bluebird = require('bluebird');
-const parse = require('./parse');
-const { saveJson } = require('../../utils');
-const qbMovieList = require('qb-movie-list');
-const copySchema = require('./copySchema');
+import path from 'path';
+import bluebird from 'bluebird';
+import parse from './parse';
+import { saveJson } from '../../utils';
+import qbMovieList from 'qb-movie-list';
+import copySchema from './copySchema';
 
 /**
  * Generates a web app for browsing videos.

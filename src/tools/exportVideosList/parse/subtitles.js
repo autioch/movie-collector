@@ -1,4 +1,4 @@
-const uniq = require('./uniq');
+import uniq from './uniq';
 
 const label = {
   eng: 'English',

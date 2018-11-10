@@ -1,5 +1,5 @@
-const getLanguage = require('./getLanguage');
-const getFps = require('./getFps');
+import getLanguage from './getLanguage';
+import getFps from './getFps';
 
 /**
  * Filters relevant information from a video stream.
