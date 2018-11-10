@@ -3,5 +3,6 @@ import settingsActions from './settings/actions';
 
 export default {
   ...buttonsActions,
-  ...settingsActions
+  ...settingsActions,
+  start() {}
 };

@@ -2,7 +2,7 @@ import electron from 'electron';
 
 const { dialog } = electron.remote;
 
-export default function choosePath(state, id, store) {
+export default function choosePath({ data: id, store }) {
   dialog.showOpenDialog({
     properties: ['openDirectory']
   }, (directories = []) => {

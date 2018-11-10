@@ -1,4 +1,4 @@
-export default function filterVideos({ videos, settingValues }) {
+export default function filterVideos({ state: { videos, settingValues } }) {
   if (settingValues.showOnlyProblems) {
     videos.forEach((video) => {
       const { suggestion = {} } = video;

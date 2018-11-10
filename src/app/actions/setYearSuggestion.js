@@ -1,4 +1,4 @@
-export default function setYearSuggestion({ videos }, { id, year }) {
+export default function setYearSuggestion({ state: { videos }, data: { id, year } }) {
   return {
     videos: videos.map((video) => {
       if (video.id === id) {

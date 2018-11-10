@@ -1,6 +1,6 @@
 import suggestRename from '../../../tools/suggestRename';
 
-export default function setVideos(state, videos) {
+export default function setVideos({ data: videos }) {
   videos.forEach((video) => {
     if (!video.isFile) {
       return;
