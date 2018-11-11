@@ -6,6 +6,5 @@ import './styles.scss';
 
 const store = createApp(actions, initialState, App, document.getElementById('app-container'));
 
-store.start();
-
-// store.findVideos('D:\\videos');
+// store.start();
+store.setPath('D:\\videos').findVideos();

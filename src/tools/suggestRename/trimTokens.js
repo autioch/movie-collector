@@ -13,6 +13,5 @@ function sliceTokens(tokens, whitespaceToken) {
 }
 
 export default function trimTokens(tokens) {
-  return whitespaceTokens
-    .reduce((newTokens, truncateToken) => sliceTokens(newTokens, truncateToken), tokens);
+  return whitespaceTokens.reduce((newTokens, truncateToken) => sliceTokens(newTokens, truncateToken), tokens);
 }

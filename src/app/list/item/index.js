@@ -1,12 +1,12 @@
 /* eslint-disable max-len*/
 import React from 'react';
-import VideoComponent from './video';
+import Fileomponent from './file';
 import FolderComponent from './folder';
 
 const PADDING = 30;
 
 export default ({ item, style, settingValues }) => {
-  const Component = item.isFile ? VideoComponent : item.isDirectory ? FolderComponent : undefined; // eslint-disable-line no-nested-ternary
+  const Component = item.isFile ? Fileomponent : item.isDirectory ? FolderComponent : undefined; // eslint-disable-line no-nested-ternary
 
   return (
     <div style={{

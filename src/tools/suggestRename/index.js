@@ -10,11 +10,13 @@ const manipulators = [
   capitalize
 ];
 
-export default function suggestRename(itemName) {
-  const { year, tokens } = extractYear(tokenize(itemName));
+export default function setup() {
+  return function tool(itemName) {
+    const { year, tokens } = extractYear(tokenize(itemName));
 
-  return {
-    year,
-    title: manipulators.reduce((newTokens, manipulator) => manipulator(newTokens), tokens).join(' ')
+    return {
+      year,
+      title: manipulators.reduce((newTokens, manipulator) => manipulator(newTokens), tokens).join(' ')
+    };
   };
 }

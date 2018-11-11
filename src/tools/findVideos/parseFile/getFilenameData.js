@@ -1,27 +1,23 @@
-const yearDataSize = 7;
-const extensionSize = 3;
-const yearSize = 4;
+import { basename, extname } from 'path';
 
-const NAME_REGEX = /^\[(\d\d\d\d)\] (.+)\.([a-z0-9]+)$/i;
+const YEAR_OFFSET = 7;
 
-/**
- * Attempts to extract release year, video name and extension from a filename.
- * For filenames with format `[yyyy] name.ext` extracts year and the rest of the filename.
- * @param  {String} fileName Name of a video file
- * @return {Object} object Object containing extension, year and name of video
- */
-export default function getFilenameData(fileName) {
+const NAME_REGEX = /^\[(\d\d\d\d)\] .+$/i;
+
+export default function getFilenameData(itemName) {
   let year;
   let nameOffset = 0;
+  const extension = extname(itemName);
+  const fileName = basename(itemName, extension);
 
   if (NAME_REGEX.test(fileName)) {
-    year = parseInt(fileName.substr(1, yearSize), 10);
-    nameOffset = yearDataSize;
+    year = parseInt(fileName.substr(1), 10);
+    nameOffset = YEAR_OFFSET;
   }
 
   return {
-    ext: fileName.substr(-extensionSize),
-    title: fileName.substring(nameOffset, fileName.length - extensionSize - 1),
+    ext: extension.substr(1), // remove dot
+    title: fileName.substr(nameOffset),
     year
   };
 }
