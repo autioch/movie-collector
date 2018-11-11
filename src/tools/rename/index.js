@@ -9,5 +9,9 @@ export default function rename(parentDir, oldName, newName) {
   const copyFrom = join(parentDir, oldName);
   const copyTo = join(parentDir, newName);
 
+  if (fs.existsSync(copyTo)) { // eslint-disable-line no-sync
+    return Promise.reject(Error(`File already exists: ${copyTo}`));
+  }
+
   return fs.renameAsync(copyFrom, copyTo);
 }

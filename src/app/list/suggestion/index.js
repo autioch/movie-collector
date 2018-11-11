@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SuggestionMask from './mask';
 import getDiff from './getDiff';
 import './styles.css';
-import { Button } from 'antd';
 
 export default class Suggestion extends Component {
   constructor(props, ...args) {
@@ -21,10 +20,11 @@ export default class Suggestion extends Component {
   calculateChange(suggestion, ignoreCamelCase) {
     const { original } = this.props;
     const diff = getDiff(original, suggestion, this.props.itemId, ignoreCamelCase);
+    const isEqual = diff.length === 1 && diff[0].type === 'same';
 
     return {
       suggestion,
-      isDifferent: suggestion !== original,
+      isDifferent: !isEqual,
       diff,
       ignoreCamelCase
     };

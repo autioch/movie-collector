@@ -10,20 +10,19 @@ export default function applyRenameFile({ state, data: itemId }) {
 
       const newName = item.suggestion.fullName;
 
-      const extras = item.category === CATEGORIES.FOLDER ? {} : {
-        file: {
+      /* Mutate to also update the item in the tree. */
+      item.itemName = newName;
+      item.id = join(item.folderPath, newName);
+
+      if (item.category !== CATEGORIES.FOLDER) {
+        item.file = {
           ...item.file,
           fileName: newName,
           title: newName
-        }
-      };
+        };
+      }
 
-      return {
-        ...item,
-        itemName: newName,
-        id: join(item.folderPath, newName),
-        ...extras
-      };
+      return item;
     })
   };
 }

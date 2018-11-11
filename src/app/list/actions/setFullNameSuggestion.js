@@ -8,7 +8,7 @@ export default function setFullNameSuggestion({ state, data }) {
       }
 
       item.suggestion = Object.assign({}, item.suggestion, {
-        fullName: suggestion
+        fullName: suggestion.trim()
       });
 
       return item;
