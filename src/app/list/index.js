@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import React from 'react';
 import Item from './item';
+import { AutoSizer, List } from 'react-virtualized';
 import './styles.css';
 
-import { AutoSizer, List } from 'react-virtualized';
-
-const FOLDER_HEIGHT = 30;
-const VIDEO_HEIGHT = 30;
+const ITEM_ROW_COUNT = 2;
+const ITEM_ROW_HEIGHT = 24;
+const ITEM_MARGIN = 2 * 2;
+const ITEM_HEIGHT = (ITEM_ROW_COUNT * ITEM_ROW_HEIGHT) + ITEM_MARGIN;
 
 export default ({ videoList }) => (
   <div className="list">
@@ -16,7 +17,7 @@ export default ({ videoList }) => (
           height={height}
           width={width}
           rowCount={videoList.length}
-          rowHeight={({ index }) => videoList[index].isFile ? VIDEO_HEIGHT : FOLDER_HEIGHT } // eslint-disable-line no-confusing-arrow
+          rowHeight={ITEM_HEIGHT}
           rowRenderer={
             ({ index, style }) =>
               <Item

@@ -5,10 +5,12 @@ import rawFs from 'fs';
 const fs = bluebird.promisifyAll(rawFs);
 
 export default function statItem(folderPath, itemName, depth) {
+  const fullPath = join(folderPath, itemName);
+
   return fs
-    .statAsync(join(folderPath, itemName))
+    .statAsync(fullPath)
     .then((stats) => ({
-      id: join(folderPath, itemName),
+      id: fullPath,
       folderPath,
       itemName,
       stats,

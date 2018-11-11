@@ -15,7 +15,8 @@ const CATEGORIES = {
   SUBTITLE: 'subtitle',
   IGNORED: 'ignored',
   SPAM: 'spam',
-  UNKNOWN: 'unknown'
+  UNKNOWN: 'unknown',
+  FOLDER: 'folder'
 };
 
 assignTypesToFileTypes(videoFileTypes, CATEGORIES.VIDEO);

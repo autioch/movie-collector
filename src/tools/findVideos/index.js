@@ -4,6 +4,8 @@ import bluebird from 'bluebird';
 import rawFs from 'fs';
 import parseFile from './parseFile';
 import statItem from './statItem';
+import suggestRename from '../suggestRename';
+import { CATEGORIES } from '../categorize/fileTypes';
 
 const fs = bluebird.promisifyAll(rawFs);
 
@@ -21,6 +23,8 @@ function parseFolderItems(items, depth) {
 function parseSubFolder(folder, depth) {
   return scanFolder(path.join(folder.folderPath, folder.itemName), depth).then((items) => ({
     ...folder,
+    category: CATEGORIES.FOLDER,
+    suggestion: suggestRename(folder.itemName),
     items
   }));
 }

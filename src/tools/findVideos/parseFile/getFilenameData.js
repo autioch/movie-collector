@@ -17,6 +17,7 @@ export default function getFilenameData(itemName) {
 
   return {
     ext: extension.substr(1), // remove dot
+    fileName,
     title: fileName.substr(nameOffset),
     year
   };
