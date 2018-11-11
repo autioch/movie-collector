@@ -1,0 +1,56 @@
+.item-suggestion {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.item-suggestion-input {
+  border: 0;
+  font-family: Courier;
+  outline: none;
+  width: 100%;
+  color: #fff;
+  caret-color: #212121;
+  height: 20px;
+}
+
+.item-suggestion-input.is-different {
+  background: #e4f4ff;
+}
+
+.item-suggestion-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  font-family: Courier;
+  background-color: transparent;
+  margin-top: 1px /* align with input */
+}
+
+.item-suggestion-apply {
+  margin: 0 .5em;
+  cursor: pointer;
+}
+
+.item-suggestion-apply.is-disabled {
+  pointer-events: none;
+  color: #ddd;
+}
+
+.item-suggestion-apply:hover {
+  color: #36f;
+}
+
+.item-suggestion-mask-item--different {
+  color: #f00;
+}
+
+.item-suggestion-mask-item--add {
+  color: #0f0;
+}
+
+.item-suggestion-mask-item--remove {
+  color: #00f;
+}

@@ -9,7 +9,7 @@ const ITEM_ROW_HEIGHT = 24;
 const ITEM_MARGIN = 2 * 2;
 const ITEM_HEIGHT = (ITEM_ROW_COUNT * ITEM_ROW_HEIGHT) + ITEM_MARGIN;
 
-export default ({ videoList }) => (
+export default ({ videoList, store, ignoreCamelCase }) => (
   <div className="list">
     <AutoSizer>
       {({ height, width }) => (
@@ -22,8 +22,10 @@ export default ({ videoList }) => (
             ({ index, style }) =>
               <Item
                 style={style}
-                key={index}
+                key={videoList[index].id}
                 item={videoList[index]}
+                ignoreCamelCase={ignoreCamelCase}
+                store={store}
               />
           }
         />

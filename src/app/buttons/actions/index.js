@@ -1,7 +1,11 @@
 import findVideos from './findVideos';
-import setVideos from './setVideos';
+import setVideoTree from './setVideoTree';
+import toggleIgnoreCamelCase from './toggleIgnoreCamelCase';
+import toggleShowOnlyRenames from './toggleShowOnlyRenames';
 
 export default {
   findVideos,
-  setVideos
+  setVideoTree,
+  toggleIgnoreCamelCase,
+  toggleShowOnlyRenames
 };

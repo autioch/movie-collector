@@ -1,5 +1,6 @@
 import React from 'react';
 import { Icon } from 'antd';
+import Suggestion from './suggestion';
 import { CATEGORIES } from '../../tools/categorize/fileTypes';
 
 const iconStyle = {
@@ -38,7 +39,7 @@ function getIcon(item) {
   }}>{item.file.ext}</div>;
 }
 
-export default ({ item, style }) => {
+export default ({ item, style, store, ignoreCamelCase }) => {
   const header = getHeader(item);
   const icon = getIcon(item);
 
@@ -54,7 +55,14 @@ export default ({ item, style }) => {
         </div>
         <div className="item-row">
           <div className="item-icon"></div>
-          <div className="item-header">{item.suggestion.fullName}</div>
+          <Suggestion
+            itemId={item.id}
+            original={header}
+            suggestion={item.suggestion.fullName}
+            ignoreCamelCase={ignoreCamelCase}
+            onChange={store.setFullNameSuggestion}
+            renameFile={store.renameFile}
+          />
         </div>
       </div>
     </div>

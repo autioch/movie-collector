@@ -1,3 +1,29 @@
-.buttons > button {
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
   margin: .5em;
+}
+
+.buttons-item {
+  display: flex;
+  align-items: center;
+}
+
+/* TODO laziness */
+label.buttons-item {
+  cursor: pointer;
+  padding: .25em .5em;
+  border-radius: .25em;
+}
+
+.buttons-item:hover {
+  background-color: #def;
+}
+
+.buttons-item + .buttons-item {
+  margin-left: 1em;
+}
+
+.buttons-item__label {
+  margin-left: .5em;
 }
